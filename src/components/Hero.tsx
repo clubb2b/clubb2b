@@ -3,52 +3,57 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22%23D4AF37%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M0%200h40v40H0z%22/%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{
+          backgroundImage: `url('/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png')`
+        }}
+      ></div>
       
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        {/* Logo/Shield */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-20 h-24 border-2 border-yellow-600 bg-gradient-to-b from-yellow-600 to-yellow-700 flex items-center justify-center transform rotate-45 rounded-sm">
-            <span className="text-black font-bold text-2xl transform -rotate-45">P</span>
-          </div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+      
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+        {/* Luxury Logo */}
+        <div className="mb-12">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-4 tracking-wider">
+            <span className="text-white font-thin">CLUB</span>{" "}
+            <span className="text-yellow-400 font-light">B2B</span>
+          </h1>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-thin text-yellow-400 tracking-[0.3em] mb-2">
+            PERFORMANCE
+          </h2>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-8"></div>
         </div>
 
-        {/* Main Title */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent leading-tight">
-          CLUB B2B
-          <br />
-          PERFORMANCE
-        </h1>
-
-        {/* Tagline */}
-        <p className="text-xl md:text-2xl text-yellow-500 mb-8 font-light tracking-wide">
-          DRIVEN BY HUSTLE. POWERED BY TRUST.
+        {/* Luxury Tagline */}
+        <p className="text-lg md:text-xl text-gray-300 mb-4 font-light tracking-wide">
+          Elite Cars | Global Import | VIP Rental Service
+        </p>
+        <p className="text-lg md:text-xl text-gray-300 mb-12 font-light tracking-wide">
+          From Canada to Africa
         </p>
 
-        {/* Opening Soon Badge */}
-        <div className="inline-block bg-gradient-to-r from-yellow-600 to-yellow-700 text-black px-8 py-3 rounded-full font-semibold text-lg mb-12 shadow-2xl">
-          OPENING SOON
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className="bg-transparent border-2 border-yellow-600 text-yellow-500 hover:bg-yellow-600 hover:text-black px-8 py-3 text-lg font-semibold transition-all duration-300">
-            VIEW INVENTORY
+        {/* Refined CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <Button className="bg-transparent border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
+            VIEW CARS FOR SALE
           </Button>
-          <Button className="bg-transparent border-2 border-yellow-600 text-yellow-500 hover:bg-yellow-600 hover:text-black px-8 py-3 text-lg font-semibold transition-all duration-300">
-            IMPORT WITH US
+          <Button className="bg-transparent border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
+            BOOK A RENTAL
           </Button>
-          <Button className="bg-gradient-to-r from-yellow-600 to-yellow-700 text-black hover:from-yellow-500 hover:to-yellow-600 px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg">
-            JOIN THE CLUB
+          <Button className="bg-yellow-400 text-black hover:bg-yellow-500 px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
+            CONTACT VP CONCIERGE
           </Button>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-yellow-600 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-yellow-600 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border border-yellow-400 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
