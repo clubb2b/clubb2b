@@ -2,11 +2,23 @@
 import { Button } from "@/components/ui/button";
 
 const LuxuryInventory = () => {
-  const vehicle = {
-    image: "/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png",
-    name: "2024 Cadillac Escalade",
-    features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"]
-  };
+  const vehicles = [
+    {
+      image: "/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png",
+      name: "2024 Cadillac Escalade",
+      features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"]
+    },
+    {
+      image: "/lovable-uploads/fe0d3397-d164-45b0-a302-c07afb31b3c1.png",
+      name: "2024 Mercedes-AMG GLE 53",
+      features: ["AMG Performance", "Red & Black Interior", "Premium Sound System"]
+    },
+    {
+      image: "/lovable-uploads/c20aeb80-5c8c-4f37-9bb9-0f7583e27158.png",
+      name: "2024 Mercedes-AMG S580",
+      features: ["Executive Luxury", "Massaging Seats", "Advanced Driver Assistance"]
+    }
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-black to-gray-900">
@@ -22,35 +34,37 @@ const LuxuryInventory = () => {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
         </div>
 
-        {/* Featured Vehicle */}
-        <div className="max-w-2xl mx-auto mb-16">
-          <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group">
-            <div className="aspect-video overflow-hidden">
-              <img 
-                src={vehicle.image} 
-                alt={vehicle.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            
-            <div className="p-8">
-              <h3 className="text-2xl font-light text-white mb-6 tracking-wide text-center">
-                {vehicle.name}
-              </h3>
-              
-              <div className="space-y-3 mb-8">
-                {vehicle.features.map((feature, i) => (
-                  <p key={i} className="text-gray-300 text-center font-light">
-                    • {feature}
-                  </p>
-                ))}
+        {/* Vehicle Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {vehicles.map((vehicle, index) => (
+            <div key={index} className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={vehicle.image} 
+                  alt={vehicle.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               
-              <Button className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300">
-                INQUIRE
-              </Button>
+              <div className="p-6">
+                <h3 className="text-xl font-light text-white mb-4 tracking-wide text-center">
+                  {vehicle.name}
+                </h3>
+                
+                <div className="space-y-2 mb-6">
+                  {vehicle.features.map((feature, i) => (
+                    <p key={i} className="text-gray-300 text-center font-light text-sm">
+                      • {feature}
+                    </p>
+                  ))}
+                </div>
+                
+                <Button className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300">
+                  INQUIRE
+                </Button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Export Services Section */}
