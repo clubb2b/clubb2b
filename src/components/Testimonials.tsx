@@ -4,52 +4,55 @@ const Testimonials = () => {
     {
       name: "Marcus Johnson",
       location: "Toronto, Canada",
-      text: "Exceptional service importing my dream Porsche. The team handled everything professionally and delivered exactly what was promised.",
+      text: "Exceptional service and attention to detail. The team's professionalism and expertise made the entire export process seamless.",
       rating: 5
     },
     {
       name: "Sarah Mitchell",
       location: "Vancouver, Canada", 
-      text: "Their VIP club membership opened doors to exclusive vehicles I couldn't find anywhere else. Truly premium experience.",
+      text: "Outstanding quality and service. They delivered exactly what was promised with remarkable precision and care.",
       rating: 5
     },
     {
       name: "David Uwimana",
       location: "Kigali, Rwanda",
-      text: "Club B2B Performance brought luxury car access to our market. Professional, reliable, and trustworthy partners.",
+      text: "Club B2B Performance sets the standard for luxury vehicle export. Professional, reliable, and trustworthy partners.",
       rating: 5
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-800 tracking-wider">
             CLIENT TESTIMONIALS
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-400 mx-auto"></div>
+          <p className="text-xl text-gray-600 font-light mb-8">
+            What our clients say about our services
+          </p>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-lg border border-yellow-600/20 hover:border-yellow-600/50 transition-all duration-300"
+              className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
+                  <span key={i} className="text-gray-400 text-xl">★</span>
                 ))}
               </div>
               
-              <p className="text-gray-300 mb-6 italic leading-relaxed">
+              <p className="text-gray-600 mb-6 italic leading-relaxed">
                 "{testimonial.text}"
               </p>
               
-              <div className="border-t border-yellow-600/30 pt-4">
-                <div className="font-semibold text-yellow-500">{testimonial.name}</div>
-                <div className="text-gray-400 text-sm">{testimonial.location}</div>
+              <div className="border-t border-gray-200 pt-4">
+                <div className="font-medium text-gray-800">{testimonial.name}</div>
+                <div className="text-gray-500 text-sm">{testimonial.location}</div>
               </div>
             </div>
           ))}
