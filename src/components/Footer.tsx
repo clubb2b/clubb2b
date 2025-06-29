@@ -1,13 +1,13 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 border-t border-gray-700 py-12">
+    <footer className="bg-black border-t border-gray-700 py-12">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
           {/* Logo */}
           <div className="mb-6 flex justify-center">
             <div className="w-16 h-20 border-2 border-white bg-white flex items-center justify-center transform rotate-45 rounded-sm">
-              <span className="text-gray-800 font-bold text-xl transform -rotate-45">P</span>
+              <span className="text-black font-bold text-xl transform -rotate-45">P</span>
             </div>
           </div>
           

@@ -22,37 +22,37 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-light mb-6 text-gray-800 tracking-wider">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-white tracking-wider">
             CLIENT TESTIMONIALS
           </h2>
-          <p className="text-xl text-gray-600 font-light mb-8">
+          <p className="text-xl text-gray-300 font-light mb-8">
             What our clients say about our services
           </p>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto"></div>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-all duration-300"
+              className="bg-gray-900 p-8 rounded-lg border border-gray-700 hover:shadow-2xl transition-all duration-300"
             >
               <div className="flex mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-gray-400 text-xl">★</span>
+                  <span key={i} className="text-white text-xl">★</span>
                 ))}
               </div>
               
-              <p className="text-gray-600 mb-6 italic leading-relaxed">
+              <p className="text-gray-300 mb-6 italic leading-relaxed">
                 "{testimonial.text}"
               </p>
               
-              <div className="border-t border-gray-200 pt-4">
-                <div className="font-medium text-gray-800">{testimonial.name}</div>
-                <div className="text-gray-500 text-sm">{testimonial.location}</div>
+              <div className="border-t border-gray-700 pt-4">
+                <div className="font-medium text-white">{testimonial.name}</div>
+                <div className="text-gray-400 text-sm">{testimonial.location}</div>
               </div>
             </div>
           ))}
