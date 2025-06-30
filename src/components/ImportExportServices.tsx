@@ -8,38 +8,57 @@ const ImportExportServices = () => {
       icon: <Car className="w-8 h-8" />,
       title: "LUXURY VEHICLES",
       description: "Premium cars, trucks, motorcycles, and exotic vehicles worldwide",
-      items: ["Sports Cars", "Luxury SUVs", "Classic Cars", "Motorcycles"]
+      items: ["Sports Cars", "Luxury SUVs", "Classic Cars", "Motorcycles"],
+      image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80"
     },
     {
       icon: <Ship className="w-8 h-8" />,
       title: "MARINE VESSELS",
       description: "Boats, yachts, jet skis, and marine equipment shipping",
-      items: ["Luxury Yachts", "Speed Boats", "Jet Skis", "Marine Parts"]
+      items: ["Luxury Yachts", "Speed Boats", "Jet Skis", "Marine Parts"],
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80"
     },
     {
       icon: <Plane className="w-8 h-8" />,
       title: "AIRCRAFT",
       description: "Private jets, helicopters, and aviation equipment",
-      items: ["Private Jets", "Helicopters", "Aviation Parts", "Drones"]
+      items: ["Private Jets", "Helicopters", "Aviation Parts", "Drones"],
+      image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1200&q=80"
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: "ELECTRONICS",
       description: "High-end electronics and technology equipment",
-      items: ["Smartphones", "Gaming Systems", "Audio Equipment", "Smart Home"]
+      items: ["Smartphones", "Gaming Systems", "Audio Equipment", "Smart Home"],
+      image: "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1200&q=80"
     },
     {
       icon: <Sofa className="w-8 h-8" />,
       title: "LUXURY FURNITURE",
       description: "Designer furniture and home décor worldwide",
-      items: ["Designer Sofas", "Art Pieces", "Antiques", "Home Décor"]
+      items: ["Designer Sofas", "Art Pieces", "Antiques", "Home Décor"],
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80"
     },
     {
       icon: <Truck className="w-8 h-8" />,
       title: "COMMERCIAL EQUIPMENT",
       description: "Industrial machinery and commercial equipment",
-      items: ["Heavy Machinery", "Construction Equipment", "Industrial Tools", "Medical Equipment"]
+      items: ["Heavy Machinery", "Construction Equipment", "Industrial Tools", "Medical Equipment"],
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80"
     }
+  ];
+
+  const canadianLegalSteps = [
+    "Export Permit (if required)",
+    "Commercial Invoice",
+    "Bill of Lading/Airway Bill",
+    "Certificate of Origin",
+    "Export Declaration (B13A)",
+    "CITES Permit (if applicable)",
+    "Dangerous Goods Declaration",
+    "Marine Insurance Certificate",
+    "Export Control List Compliance",
+    "Customs Bond (if required)"
   ];
 
   const handleServiceInquiry = (service: string) => {
@@ -70,34 +89,44 @@ const ImportExportServices = () => {
           {shippingServices.map((service, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg p-8 hover:shadow-2xl hover:border-white transition-all duration-500 group"
+              className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl hover:border-white transition-all duration-500 group"
             >
-              <div className="text-white mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                {service.icon}
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
               
-              <h3 className="text-xl font-light text-white mb-4 text-center tracking-wide">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-300 text-center mb-6 font-light leading-relaxed">
-                {service.description}
-              </p>
-              
-              <div className="space-y-2 mb-6">
-                {service.items.map((item, i) => (
-                  <p key={i} className="text-gray-400 text-center text-sm">
-                    • {item}
-                  </p>
-                ))}
+              <div className="p-6">
+                <div className="text-white mb-4 flex justify-center">
+                  {service.icon}
+                </div>
+                
+                <h3 className="text-xl font-light text-white mb-4 text-center tracking-wide">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-300 text-center mb-6 font-light leading-relaxed">
+                  {service.description}
+                </p>
+                
+                <div className="space-y-2 mb-6">
+                  {service.items.map((item, i) => (
+                    <p key={i} className="text-gray-400 text-center text-sm">
+                      • {item}
+                    </p>
+                  ))}
+                </div>
+                
+                <Button 
+                  onClick={() => handleServiceInquiry(service.title)}
+                  className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300"
+                >
+                  GET QUOTE
+                </Button>
               </div>
-              
-              <Button 
-                onClick={() => handleServiceInquiry(service.title)}
-                className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300"
-              >
-                GET QUOTE
-              </Button>
             </div>
           ))}
         </div>
@@ -107,29 +136,48 @@ const ImportExportServices = () => {
             <h3 className="text-3xl font-light text-white mb-6 tracking-wider">
               Complete Logistics Solution
             </h3>
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  📋
+            
+            <div className="grid md:grid-cols-2 gap-12 mb-8">
+              <div>
+                <h4 className="text-xl font-light text-white mb-6 tracking-wide">Service Features</h4>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                      📋
+                    </div>
+                    <h5 className="text-white font-light mb-2">Documentation</h5>
+                    <p className="text-gray-300 text-sm">Complete customs and legal paperwork</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                      🛡️
+                    </div>
+                    <h5 className="text-white font-light mb-2">Insurance</h5>
+                    <p className="text-gray-300 text-sm">Full coverage protection worldwide</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                      🚚
+                    </div>
+                    <h5 className="text-white font-light mb-2">Door-to-Door</h5>
+                    <p className="text-gray-300 text-sm">Complete pickup and delivery service</p>
+                  </div>
                 </div>
-                <h4 className="text-white font-light mb-2">Documentation</h4>
-                <p className="text-gray-300 text-sm">Complete customs and legal paperwork</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  🛡️
+              
+              <div>
+                <h4 className="text-xl font-light text-white mb-6 tracking-wide">Canadian Export Requirements</h4>
+                <div className="grid grid-cols-1 gap-2 text-left">
+                  {canadianLegalSteps.map((step, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                      <p className="text-gray-300 text-sm font-light">{step}</p>
+                    </div>
+                  ))}
                 </div>
-                <h4 className="text-white font-light mb-2">Insurance</h4>
-                <p className="text-gray-300 text-sm">Full coverage protection worldwide</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  🚚
-                </div>
-                <h4 className="text-white font-light mb-2">Door-to-Door</h4>
-                <p className="text-gray-300 text-sm">Complete pickup and delivery service</p>
               </div>
             </div>
+            
             <Button 
               onClick={() => handleServiceInquiry('Complete Logistics Solution')}
               className="bg-white text-black hover:bg-gray-200 px-12 py-4 text-lg font-light tracking-wider transition-all duration-300"

@@ -8,7 +8,6 @@ const CarsForSale = () => {
     {
       image: "/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png",
       name: "2024 Cadillac Escalade",
-      price: "$95,000",
       features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"],
       status: "Available",
       location: "Canada"
@@ -16,7 +15,6 @@ const CarsForSale = () => {
     {
       image: "/lovable-uploads/e31fe280-a6c2-40c4-96cb-3d9f0d9032f8.png",
       name: "2024 McLaren 720S",
-      price: "$320,000",
       features: ["Twin-Turbo V8", "Butterfly Doors", "Carbon Fiber Monocoque"],
       status: "Available",
       location: "Canada"
@@ -24,7 +22,6 @@ const CarsForSale = () => {
     {
       image: "/lovable-uploads/fe0d3397-d164-45b0-a302-c07afb31b3c1.png",
       name: "2024 Mercedes-AMG GLE 53",
-      price: "$85,000",
       features: ["AMG Performance", "Red & Black Interior", "Premium Sound System"],
       status: "Available",
       location: "Canada"
@@ -32,12 +29,30 @@ const CarsForSale = () => {
     {
       image: "/lovable-uploads/c20aeb80-5c8c-4f37-9bb9-0f7583e27158.png",
       name: "2024 Mercedes-AMG S580",
-      price: "$130,000",
       features: ["Executive Luxury", "Massaging Seats", "Advanced Driver Assistance"],
+      status: "Available",
+      location: "Canada"
+    },
+    {
+      image: "/lovable-uploads/fff53762-3684-45b6-9d76-33e606d6d578.png",
+      name: "2025 Range Rover",
+      features: ["Luxury Interior", "Advanced Technology", "Premium Performance"],
       status: "Available",
       location: "Canada"
     }
   ];
+
+  const handleInquiry = (carName: string) => {
+    const message = `I'm interested in the ${carName}. Please provide more information.`;
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handlePurchase = (carName: string) => {
+    const message = `I would like to purchase the ${carName}. Please contact me with purchase details.`;
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -64,7 +79,7 @@ const CarsForSale = () => {
       {/* Cars Grid */}
       <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {carsForSale.map((car, index) => (
               <div key={index} className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl hover:border-white transition-all duration-500 group">
                 <div className="aspect-[16/10] overflow-hidden">
@@ -80,9 +95,6 @@ const CarsForSale = () => {
                     <h3 className="text-2xl font-light text-white tracking-wide">
                       {car.name}
                     </h3>
-                    <span className="text-2xl font-light text-white">
-                      {car.price}
-                    </span>
                   </div>
                   
                   <div className="flex justify-between items-center mb-6">
@@ -103,10 +115,16 @@ const CarsForSale = () => {
                   </div>
                   
                   <div className="flex space-x-4">
-                    <Button className="flex-1 bg-white text-black hover:bg-gray-200 font-light tracking-wider transition-all duration-300">
+                    <Button 
+                      onClick={() => handlePurchase(car.name)}
+                      className="flex-1 bg-white text-black hover:bg-gray-200 font-light tracking-wider transition-all duration-300"
+                    >
                       PURCHASE
                     </Button>
-                    <Button className="flex-1 bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300">
+                    <Button 
+                      onClick={() => handleInquiry(car.name)}
+                      className="flex-1 bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300"
+                    >
                       INQUIRE
                     </Button>
                   </div>

@@ -22,6 +22,11 @@ const LuxuryInventory = () => {
       image: "/lovable-uploads/c20aeb80-5c8c-4f37-9bb9-0f7583e27158.png",
       name: "2024 Mercedes-AMG S580",
       features: ["Executive Luxury", "Massaging Seats", "Advanced Driver Assistance"]
+    },
+    {
+      image: "/lovable-uploads/fff53762-3684-45b6-9d76-33e606d6d578.png",
+      name: "2025 Range Rover",
+      features: ["Luxury Interior", "Advanced Technology", "Premium Performance"]
     }
   ];
 
@@ -46,7 +51,7 @@ const LuxuryInventory = () => {
         </div>
 
         {/* Vehicle Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {vehicles.map((vehicle, index) => (
             <div key={index} className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl hover:border-white transition-all duration-500 group">
               <div className="aspect-[4/3] overflow-hidden">
