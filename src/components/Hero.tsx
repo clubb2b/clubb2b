@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -38,9 +39,11 @@ const Hero = () => {
 
         {/* Refined CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
-            VIEW CARS FOR SALE
-          </Button>
+          <Link to="/cars-for-sale">
+            <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
+              VIEW CARS FOR SALE
+            </Button>
+          </Link>
           <Button className="bg-transparent border-2 border-gray-400 text-gray-300 hover:bg-gray-400 hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
             BOOK A RENTAL
           </Button>

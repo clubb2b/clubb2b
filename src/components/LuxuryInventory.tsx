@@ -9,6 +9,11 @@ const LuxuryInventory = () => {
       features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"]
     },
     {
+      image: "/lovable-uploads/e31fe280-a6c2-40c4-96cb-3d9f0d9032f8.png",
+      name: "2024 McLaren 720S",
+      features: ["Twin-Turbo V8", "Butterfly Doors", "Carbon Fiber Monocoque"]
+    },
+    {
       image: "/lovable-uploads/fe0d3397-d164-45b0-a302-c07afb31b3c1.png",
       name: "2024 Mercedes-AMG GLE 53",
       features: ["AMG Performance", "Red & Black Interior", "Premium Sound System"]
@@ -26,7 +31,7 @@ const LuxuryInventory = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-light mb-6 text-white tracking-wider">
-            Premium Collection
+            Elite Collection
           </h2>
           <p className="text-xl text-gray-300 font-light mb-8">
             Exquisite automobiles curated for discerning clients
@@ -35,14 +40,14 @@ const LuxuryInventory = () => {
         </div>
 
         {/* Vehicle Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {vehicles.map((vehicle, index) => (
-            <div key={index} className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group">
-              <div className="aspect-video overflow-hidden">
+            <div key={index} className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl hover:border-white transition-all duration-500 group">
+              <div className="aspect-[4/3] overflow-hidden">
                 <img 
                   src={vehicle.image} 
                   alt={vehicle.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
               
@@ -90,7 +95,7 @@ const LuxuryInventory = () => {
           <div className="relative">
             <div className="aspect-video rounded-lg overflow-hidden border border-gray-700">
               <img 
-                src="/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png"
+                src="/lovable-uploads/e31fe280-a6c2-40c4-96cb-3d9f0d9032f8.png"
                 alt="Luxury vehicle export"
                 className="w-full h-full object-cover"
               />
