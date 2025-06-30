@@ -31,11 +31,14 @@ const MaritimeServices = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="relative">
-            <div className="aspect-video rounded-lg overflow-hidden border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-              <div className="text-center">
-                <Ship className="w-24 h-24 text-white mx-auto mb-4" />
-                <BrandLogo size="medium" className="mx-auto" />
-                <p className="text-gray-300 mt-4 font-light">Maritime Cargo Services</p>
+            <div className="aspect-video rounded-lg overflow-hidden border border-gray-700">
+              <img 
+                src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80"
+                alt="Maritime cargo vessel"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <BrandLogo size="medium" className="opacity-90" />
               </div>
             </div>
           </div>

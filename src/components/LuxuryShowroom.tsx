@@ -14,16 +14,22 @@ const LuxuryShowroom = () => {
         </div>
 
         <div className="relative">
-          <div className="aspect-[16/9] rounded-lg overflow-hidden border border-gray-700 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
-            <div className="text-center">
-              <Car className="w-32 h-32 text-white mx-auto mb-8 opacity-20" />
-              <BrandLogo size="large" className="mx-auto mb-8" />
-              <h3 className="text-3xl font-light text-white mb-4 tracking-wide">
-                Premium Automotive Experience
-              </h3>
-              <p className="text-gray-300 text-lg font-light max-w-2xl mx-auto">
-                Visit our exclusive showroom to experience luxury automotive excellence firsthand
-              </p>
+          <div className="aspect-[16/9] rounded-lg overflow-hidden border border-gray-700">
+            <img 
+              src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&w=1200&q=80"
+              alt="2025 Range Rover luxury showroom"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <div className="text-center">
+                <BrandLogo size="large" className="mx-auto mb-8 opacity-90" />
+                <h3 className="text-3xl font-light text-white mb-4 tracking-wide">
+                  2025 Range Rover Collection
+                </h3>
+                <p className="text-gray-300 text-lg font-light max-w-2xl mx-auto">
+                  Experience the pinnacle of luxury automotive engineering in our exclusive showroom
+                </p>
+              </div>
             </div>
           </div>
         </div>
