@@ -3,20 +3,28 @@ import Hero from "@/components/Hero";
 import LuxuryInventory from "@/components/LuxuryInventory";
 import Services from "@/components/Services";
 import ImportExportServices from "@/components/ImportExportServices";
+import MaritimeServices from "@/components/MaritimeServices";
+import AirFreightServices from "@/components/AirFreightServices";
 import VIPServices from "@/components/VIPServices";
+import LuxuryShowroom from "@/components/LuxuryShowroom";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import PremiumServices from "@/components/PremiumServices";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <LanguageSelector />
       <Hero />
       <LuxuryInventory />
       <ImportExportServices />
+      <MaritimeServices />
+      <AirFreightServices />
       <VIPServices />
+      <LuxuryShowroom />
       <Services />
       <About />
       <Testimonials />

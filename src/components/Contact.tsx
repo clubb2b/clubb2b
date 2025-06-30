@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Instagram } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,10 +25,39 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Here you would typically send the data to your backend
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -83,9 +116,13 @@ const Contact = () => {
               >
                 <option value="">Select Service Interest</option>
                 <option value="import">Import Luxury Cars</option>
+                <option value="export">Export Services</option>
+                <option value="maritime">Maritime Freight</option>
+                <option value="air">Air Freight</option>
                 <option value="local-sales">Local Car Sales</option>
                 <option value="vip-club">VIP Club Membership</option>
                 <option value="rentals">Luxury Car Rentals</option>
+                <option value="chauffeur">VIP Chauffeur Service</option>
                 <option value="other">Other</option>
               </select>
               
@@ -100,9 +137,10 @@ const Contact = () => {
               
               <Button 
                 type="submit"
-                className="w-full bg-white text-black hover:bg-gray-200 py-3 text-lg font-light tracking-wider transition-all duration-300"
+                disabled={isSubmitting}
+                className="w-full bg-white text-black hover:bg-gray-200 py-3 text-lg font-light tracking-wider transition-all duration-300 disabled:opacity-50"
               >
-                Send Message
+                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
               </Button>
             </form>
           </div>

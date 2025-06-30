@@ -26,7 +26,7 @@ const LuxuryInventory = () => {
   ];
 
   const handleInquiry = (vehicleName: string) => {
-    const message = `I'm interested in the ${vehicleName}. Please provide more details and pricing.`;
+    const message = `I'm interested in the ${vehicleName}. Please provide more details and availability.`;
     const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
