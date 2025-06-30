@@ -25,6 +25,12 @@ const LuxuryInventory = () => {
     }
   ];
 
+  const handleInquiry = (vehicleName: string) => {
+    const message = `I'm interested in the ${vehicleName}. Please provide more details and pricing.`;
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-6">
@@ -64,8 +70,11 @@ const LuxuryInventory = () => {
                   ))}
                 </div>
                 
-                <Button className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300">
-                  INQUIRE
+                <Button 
+                  onClick={() => handleInquiry(vehicle.name)}
+                  className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black font-light tracking-wider transition-all duration-300"
+                >
+                  INQUIRE NOW
                 </Button>
               </div>
             </div>
@@ -87,7 +96,14 @@ const LuxuryInventory = () => {
               CLUB B2B PERFORMANCE ensures seamless international delivery with full documentation and legal compliance.
             </p>
             
-            <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-light tracking-wider transition-all duration-300">
+            <Button 
+              onClick={() => {
+                const message = "I need a consultation for vehicle export services. Please contact me.";
+                const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+              }}
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 font-light tracking-wider transition-all duration-300"
+            >
               REQUEST CONSULTATION
             </Button>
           </div>

@@ -3,6 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const handleWhatsAppContact = () => {
+    const message = "Hello! I'm interested in your luxury services and would like more information.";
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleVIPConcierge = () => {
+    const message = "I would like to speak with your VIP Concierge about exclusive services.";
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
       {/* Background Image - Cadillac */}
@@ -31,10 +43,10 @@ const Hero = () => {
 
         {/* Luxury Tagline */}
         <p className="text-lg md:text-xl text-gray-300 mb-4 font-light tracking-wide">
-          Elite Cars | Global Import | VIP Rental Service
+          Elite Cars | Global Import & Export | VIP Services
         </p>
         <p className="text-lg md:text-xl text-gray-300 mb-12 font-light tracking-wide">
-          From Canada to Africa
+          Worldwide Luxury Shipping | From Canada to Africa
         </p>
 
         {/* Refined CTA Buttons */}
@@ -44,10 +56,16 @@ const Hero = () => {
               VIEW CARS FOR SALE
             </Button>
           </Link>
-          <Button className="bg-transparent border-2 border-gray-400 text-gray-300 hover:bg-gray-400 hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
-            BOOK A RENTAL
+          <Button 
+            onClick={handleWhatsAppContact}
+            className="bg-transparent border-2 border-gray-400 text-gray-300 hover:bg-gray-400 hover:text-black px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]"
+          >
+            BOOK VIP RENTAL
           </Button>
-          <Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]">
+          <Button 
+            onClick={handleVIPConcierge}
+            className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-sm font-light tracking-wider transition-all duration-300 min-w-[200px]"
+          >
             CONTACT VP CONCIERGE
           </Button>
         </div>
