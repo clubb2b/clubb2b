@@ -17,7 +17,19 @@ const translations = {
     'services.air.title': 'AIR FREIGHT',
     'services.air.desc': 'Expedition, Consolidation, Small package service, Delivery service',
     'contact.title': 'GET IN TOUCH',
-    'contact.subtitle': 'Ready to join the exclusive world of luxury automotive excellence?'
+    'contact.subtitle': 'Ready to join the exclusive world of luxury automotive excellence?',
+    'nav.home': 'Home',
+    'nav.inventory': 'Inventory',
+    'nav.services': 'Services',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+    'buttons.book_appointment': 'Book Appointment',
+    'buttons.calculate_price': 'Calculate Price',
+    'buttons.inspection_report': 'Inspection Report',
+    'buttons.financing': 'Financing Options',
+    'chat.welcome': 'Hello! How can I help you with our luxury automotive services today?',
+    'financing.title': 'Financing Available',
+    'financing.desc': 'Flexible payment options with competitive rates starting from 4.5% APR'
   },
   fr: {
     'hero.title': 'CLUB B2B PERFORMANCE',
@@ -28,7 +40,19 @@ const translations = {
     'services.air.title': 'FRET AÉRIEN',
     'services.air.desc': 'Expédition, Consolidation, Service de petits emballages, Service de livraison',
     'contact.title': 'CONTACTEZ-NOUS',
-    'contact.subtitle': 'Prêt à rejoindre le monde exclusif de l\'excellence automobile de luxe?'
+    'contact.subtitle': 'Prêt à rejoindre le monde exclusif de l\'excellence automobile de luxe?',
+    'nav.home': 'Accueil',
+    'nav.inventory': 'Inventaire',
+    'nav.services': 'Services',
+    'nav.about': 'À Propos',
+    'nav.contact': 'Contact',
+    'buttons.book_appointment': 'Prendre RDV',
+    'buttons.calculate_price': 'Calculer Prix',
+    'buttons.inspection_report': 'Rapport Inspection',
+    'buttons.financing': 'Options Financement',
+    'chat.welcome': 'Bonjour! Comment puis-je vous aider avec nos services automobiles de luxe?',
+    'financing.title': 'Financement Disponible',
+    'financing.desc': 'Options de paiement flexibles avec des taux compétitifs à partir de 4,5% TAP'
   },
   es: {
     'hero.title': 'CLUB B2B PERFORMANCE',
@@ -39,7 +63,19 @@ const translations = {
     'services.air.title': 'FLETE AÉREO',
     'services.air.desc': 'Expedición, Consolidación, Servicio de paquetes pequeños, Servicio de entrega',
     'contact.title': 'PÓNGASE EN CONTACTO',
-    'contact.subtitle': '¿Listo para unirse al mundo exclusivo de la excelencia automotriz de lujo?'
+    'contact.subtitle': '¿Listo para unirse al mundo exclusivo de la excelencia automotriz de lujo?',
+    'nav.home': 'Inicio',
+    'nav.inventory': 'Inventario',
+    'nav.services': 'Servicios',
+    'nav.about': 'Acerca de',
+    'nav.contact': 'Contacto',
+    'buttons.book_appointment': 'Reservar Cita',
+    'buttons.calculate_price': 'Calcular Precio',
+    'buttons.inspection_report': 'Reporte Inspección',
+    'buttons.financing': 'Opciones Financiamiento',
+    'chat.welcome': '¡Hola! ¿Cómo puedo ayudarte con nuestros servicios automotrices de lujo?',
+    'financing.title': 'Financiamiento Disponible',
+    'financing.desc': 'Opciones de pago flexibles con tasas competitivas desde 4.5% APR'
   }
 };
 
