@@ -5,14 +5,14 @@ import BrandLogo from "./BrandLogo";
 
 const AirFreightServices = () => {
   const services = [
-    "Expédition",
-    "Consolidation",
-    "Service de petits emballages",
-    "Service de livraison",
-    "Affrètement d'avions Cargos",
-    "Dédouanement",
-    "Suivi des colis",
-    "Soutien à l'étranger grâce à nos différents partenaires"
+    "Expedited Shipping",
+    "Consolidation Services", 
+    "Small Package Services",
+    "Delivery Services",
+    "Cargo Aircraft Charter",
+    "Customs Clearance",
+    "Package Tracking",
+    "International Support through our partners"
   ];
 
   const handleInquiry = () => {
@@ -26,7 +26,7 @@ const AirFreightServices = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-light mb-6 text-white tracking-wider">
-            FRET AÉRIEN
+            AIR FREIGHT
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
         </div>
@@ -55,13 +55,10 @@ const AirFreightServices = () => {
           <div className="relative">
             <div className="aspect-video rounded-lg overflow-hidden border border-gray-700">
               <img 
-                src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&w=1200&q=80"
-                alt="Air freight cargo plane"
+                src="/lovable-uploads/f1d37320-287c-470f-aa83-b83a5c16c8e5.png"
+                alt="Air freight logistics with plane and containers"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <BrandLogo size="medium" className="opacity-90" />
-              </div>
             </div>
           </div>
         </div>

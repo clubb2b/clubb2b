@@ -33,13 +33,10 @@ const MaritimeServices = () => {
           <div className="relative">
             <div className="aspect-video rounded-lg overflow-hidden border border-gray-700">
               <img 
-                src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80"
-                alt="Maritime cargo vessel"
+                src="/lovable-uploads/2aee0832-ae6b-4b1b-9533-f52597f3ccf5.png"
+                alt="Maritime freight containers at port"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <BrandLogo size="medium" className="opacity-90" />
-              </div>
             </div>
           </div>
           
