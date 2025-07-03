@@ -24,6 +24,579 @@ export type Database = {
         }
         Relationships: []
       }
+      customer_communications: {
+        Row: {
+          communication_type: string
+          content: string
+          created_at: string
+          created_by: string | null
+          customer_id: string
+          direction: string
+          follow_up_date: string | null
+          follow_up_required: boolean | null
+          id: string
+          status: string | null
+          subject: string | null
+        }
+        Insert: {
+          communication_type: string
+          content: string
+          created_at?: string
+          created_by?: string | null
+          customer_id: string
+          direction: string
+          follow_up_date?: string | null
+          follow_up_required?: boolean | null
+          id?: string
+          status?: string | null
+          subject?: string | null
+        }
+        Update: {
+          communication_type?: string
+          content?: string
+          created_at?: string
+          created_by?: string | null
+          customer_id?: string
+          direction?: string
+          follow_up_date?: string | null
+          follow_up_required?: boolean | null
+          id?: string
+          status?: string | null
+          subject?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customer_communications_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      customers: {
+        Row: {
+          address: string | null
+          company: string | null
+          country: string | null
+          created_at: string
+          customer_type: string | null
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          notes: string | null
+          phone: string | null
+          preferred_currency: string | null
+          status: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          address?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          customer_type?: string | null
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          notes?: string | null
+          phone?: string | null
+          preferred_currency?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          address?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          customer_type?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string | null
+          phone?: string | null
+          preferred_currency?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          created_at: string
+          customer_id: string | null
+          document_type: string
+          file_name: string
+          file_size: number | null
+          file_url: string
+          id: string
+          mime_type: string | null
+          notes: string | null
+          order_id: string | null
+          quote_id: string | null
+          signature_date: string | null
+          signature_required: boolean | null
+          status: string | null
+          updated_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_id?: string | null
+          document_type: string
+          file_name: string
+          file_size?: number | null
+          file_url: string
+          id?: string
+          mime_type?: string | null
+          notes?: string | null
+          order_id?: string | null
+          quote_id?: string | null
+          signature_date?: string | null
+          signature_required?: boolean | null
+          status?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_id?: string | null
+          document_type?: string
+          file_name?: string
+          file_size?: number | null
+          file_url?: string
+          id?: string
+          mime_type?: string | null
+          notes?: string | null
+          order_id?: string | null
+          quote_id?: string | null
+          signature_date?: string | null
+          signature_required?: boolean | null
+          status?: string | null
+          updated_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "documents_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "documents_quote_id_fkey"
+            columns: ["quote_id"]
+            isOneToOne: false
+            referencedRelation: "quotes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          assigned_to: string | null
+          budget_range: string | null
+          company: string | null
+          conversion_probability: number | null
+          country: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          interest_type: string | null
+          last_contact_date: string | null
+          last_name: string
+          next_follow_up: string | null
+          notes: string | null
+          phone: string | null
+          source: string | null
+          status: string | null
+          timeline: string | null
+          updated_at: string
+          vehicle_interest: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          budget_range?: string | null
+          company?: string | null
+          conversion_probability?: number | null
+          country?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          interest_type?: string | null
+          last_contact_date?: string | null
+          last_name: string
+          next_follow_up?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          timeline?: string | null
+          updated_at?: string
+          vehicle_interest?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          budget_range?: string | null
+          company?: string | null
+          conversion_probability?: number | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          interest_type?: string | null
+          last_contact_date?: string | null
+          last_name?: string
+          next_follow_up?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          timeline?: string | null
+          updated_at?: string
+          vehicle_interest?: string | null
+        }
+        Relationships: []
+      }
+      order_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string | null
+          id: string
+          notes: string | null
+          order_id: string
+          payment_date: string | null
+          payment_method: string
+          payment_type: string
+          status: string | null
+          transaction_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string | null
+          id?: string
+          notes?: string | null
+          order_id: string
+          payment_date?: string | null
+          payment_method: string
+          payment_type: string
+          status?: string | null
+          transaction_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string | null
+          id?: string
+          notes?: string | null
+          order_id?: string
+          payment_date?: string | null
+          payment_method?: string
+          payment_type?: string
+          status?: string | null
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_payments_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          currency: string | null
+          customer_id: string
+          estimated_delivery: string | null
+          id: string
+          notes: string | null
+          order_number: string
+          order_status: string | null
+          order_type: string
+          payment_method: string | null
+          payment_status: string | null
+          shipping_address: string | null
+          shipping_method: string | null
+          total_amount: number
+          updated_at: string
+          vehicle_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          currency?: string | null
+          customer_id: string
+          estimated_delivery?: string | null
+          id?: string
+          notes?: string | null
+          order_number: string
+          order_status?: string | null
+          order_type: string
+          payment_method?: string | null
+          payment_status?: string | null
+          shipping_address?: string | null
+          shipping_method?: string | null
+          total_amount: number
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          currency?: string | null
+          customer_id?: string
+          estimated_delivery?: string | null
+          id?: string
+          notes?: string | null
+          order_number?: string
+          order_status?: string | null
+          order_type?: string
+          payment_method?: string | null
+          payment_status?: string | null
+          shipping_address?: string | null
+          shipping_method?: string | null
+          total_amount?: number
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "orders_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotes: {
+        Row: {
+          created_at: string
+          currency: string | null
+          customer_email: string
+          customer_id: string | null
+          customer_name: string
+          customs_duties: number | null
+          documentation_fee: number | null
+          estimated_timeline: string | null
+          expedited_service: boolean | null
+          from_country: string | null
+          id: string
+          inspection_cost: number | null
+          insurance_cost: number | null
+          insurance_included: boolean | null
+          notes: string | null
+          quote_number: string
+          shipping_cost: number | null
+          shipping_method: string
+          status: string | null
+          to_country: string
+          total_cost: number
+          updated_at: string
+          valid_until: string | null
+          vehicle_type: string | null
+          vehicle_value: number | null
+        }
+        Insert: {
+          created_at?: string
+          currency?: string | null
+          customer_email: string
+          customer_id?: string | null
+          customer_name: string
+          customs_duties?: number | null
+          documentation_fee?: number | null
+          estimated_timeline?: string | null
+          expedited_service?: boolean | null
+          from_country?: string | null
+          id?: string
+          inspection_cost?: number | null
+          insurance_cost?: number | null
+          insurance_included?: boolean | null
+          notes?: string | null
+          quote_number: string
+          shipping_cost?: number | null
+          shipping_method: string
+          status?: string | null
+          to_country: string
+          total_cost: number
+          updated_at?: string
+          valid_until?: string | null
+          vehicle_type?: string | null
+          vehicle_value?: number | null
+        }
+        Update: {
+          created_at?: string
+          currency?: string | null
+          customer_email?: string
+          customer_id?: string | null
+          customer_name?: string
+          customs_duties?: number | null
+          documentation_fee?: number | null
+          estimated_timeline?: string | null
+          expedited_service?: boolean | null
+          from_country?: string | null
+          id?: string
+          inspection_cost?: number | null
+          insurance_cost?: number | null
+          insurance_included?: boolean | null
+          notes?: string | null
+          quote_number?: string
+          shipping_cost?: number | null
+          shipping_method?: string
+          status?: string | null
+          to_country?: string
+          total_cost?: number
+          updated_at?: string
+          valid_until?: string | null
+          vehicle_type?: string | null
+          vehicle_value?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotes_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vehicle_images: {
+        Row: {
+          caption: string | null
+          created_at: string
+          display_order: number | null
+          id: string
+          image_url: string
+          is_primary: boolean | null
+          vehicle_id: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_primary?: boolean | null
+          vehicle_id: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_primary?: boolean | null
+          vehicle_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_images_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vehicles: {
+        Row: {
+          condition: string | null
+          created_at: string
+          currency: string | null
+          description: string | null
+          engine_details: string | null
+          exterior_color: string | null
+          features: string[] | null
+          fuel_type: string | null
+          id: string
+          interior_color: string | null
+          location: string | null
+          make: string
+          mileage: number | null
+          model: string
+          price: number | null
+          status: string | null
+          transmission: string | null
+          updated_at: string
+          vin: string | null
+          year: number
+        }
+        Insert: {
+          condition?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          engine_details?: string | null
+          exterior_color?: string | null
+          features?: string[] | null
+          fuel_type?: string | null
+          id?: string
+          interior_color?: string | null
+          location?: string | null
+          make: string
+          mileage?: number | null
+          model: string
+          price?: number | null
+          status?: string | null
+          transmission?: string | null
+          updated_at?: string
+          vin?: string | null
+          year: number
+        }
+        Update: {
+          condition?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          engine_details?: string | null
+          exterior_color?: string | null
+          features?: string[] | null
+          fuel_type?: string | null
+          id?: string
+          interior_color?: string | null
+          location?: string | null
+          make?: string
+          mileage?: number | null
+          model?: string
+          price?: number | null
+          status?: string | null
+          transmission?: string | null
+          updated_at?: string
+          vin?: string | null
+          year?: number
+        }
+        Relationships: []
+      }
       "VIP ACCESS": {
         Row: {
           created_at: string
@@ -44,7 +617,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_order_number: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      generate_quote_number: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

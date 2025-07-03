@@ -1,308 +1,216 @@
+
 import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Calculator, Ship, Plane, Truck, X } from 'lucide-react';
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calculator, MapPin, DollarSign } from 'lucide-react';
 import PaymentButton from './PaymentButton';
 
-interface PriceCalculatorProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const PriceCalculator: React.FC<PriceCalculatorProps> = ({ isOpen, onClose }) => {
+const PriceCalculator = () => {
   const [formData, setFormData] = useState({
-    vehicleType: '',
     vehicleValue: '',
     fromCountry: 'canada',
     toCountry: '',
-    shippingMethod: 'maritime',
-    insurance: true,
-    expedited: false
+    shippingMethod: 'maritime'
   });
 
-  const [estimate, setEstimate] = useState<any>(null);
+  const [quote, setQuote] = useState<any>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-    });
-  };
-
-  const calculateEstimate = () => {
-    const baseRates = {
-      maritime: {
-        'africa': 2500,
-        'europe': 1800,
-        'asia': 3200,
-        'south-america': 2800,
-        'middle-east': 2200
-      },
-      air: {
-        'africa': 8500,
-        'europe': 6500,
-        'asia': 9500,
-        'south-america': 8000,
-        'middle-east': 7500
-      }
-    };
-
-    const vehicleMultipliers = {
-      'sedan': 1.0,
-      'suv': 1.3,
-      'luxury': 1.5,
-      'sports': 1.4,
-      'truck': 1.6
-    };
-
-    const baseRate = baseRates[formData.shippingMethod as keyof typeof baseRates][formData.toCountry as keyof typeof baseRates.maritime] || 2000;
-    const vehicleMultiplier = vehicleMultipliers[formData.vehicleType as keyof typeof vehicleMultipliers] || 1.0;
+  const calculateQuote = () => {
     const vehicleValue = parseFloat(formData.vehicleValue) || 0;
+    const baseShippingCost = formData.shippingMethod === 'air' ? 8000 : 3500;
+    const shippingCost = vehicleValue > 50000 ? baseShippingCost * 1.2 : baseShippingCost;
+    const customsDuties = vehicleValue * 0.065;
+    const insuranceCost = vehicleValue * 0.015;
+    const documentationFee = 850;
+    const inspectionCost = 450;
+    const totalCost = shippingCost + customsDuties + insuranceCost + documentationFee + inspectionCost;
 
-    let shippingCost = baseRate * vehicleMultiplier;
-    let customsDuties = vehicleValue * 0.12; // 12% average
-    let insurance = formData.insurance ? vehicleValue * 0.015 : 0; // 1.5%
-    let documentation = 850;
-    let inspectionCost = 450;
-
-    if (formData.expedited) {
-      shippingCost *= 1.4;
-    }
-
-    const total = shippingCost + customsDuties + insurance + documentation + inspectionCost;
-
-    setEstimate({
+    setQuote({
       shippingCost,
       customsDuties,
-      insurance,
-      documentation,
+      insuranceCost,
+      documentationFee,
       inspectionCost,
-      total,
-      timeline: formData.shippingMethod === 'maritime' ? 
-        (formData.expedited ? '14-21 days' : '21-35 days') : 
-        (formData.expedited ? '3-5 days' : '7-10 days')
+      totalCost,
+      timeline: formData.shippingMethod === 'air' ? '5-10 days' : '4-6 weeks'
     });
   };
 
-  if (!isOpen) return null;
+  const handleGetQuote = () => {
+    const message = `Hello! I'd like to get a detailed shipping quote:
+
+Vehicle Value: $${formData.vehicleValue}
+From: ${formData.fromCountry.toUpperCase()} 
+To: ${formData.toCountry.toUpperCase()}
+Shipping Method: ${formData.shippingMethod === 'air' ? 'Air Freight' : 'Maritime'}
+
+${quote ? `
+Estimated Costs:
+• Shipping: $${quote.shippingCost.toLocaleString()}
+• Customs/Duties: $${quote.customsDuties.toLocaleString()}
+• Insurance: $${quote.insuranceCost.toLocaleString()}
+• Documentation: $${quote.documentationFee.toLocaleString()}
+• Inspection: $${quote.inspectionCost.toLocaleString()}
+
+TOTAL: $${quote.totalCost.toLocaleString()}
+Timeline: ${quote.timeline}
+
+Please confirm this quote and provide any additional details.` : 'Please provide a detailed quote for these specifications.'}`;
+
+    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-3">
-              <Calculator className="w-6 h-6 text-black" />
-              <h2 className="text-2xl font-light text-black">Export Cost Calculator</h2>
-            </div>
-            <Button onClick={onClose} variant="ghost" className="text-black hover:bg-gray-100">
-              <X className="w-5 h-5" />
-            </Button>
-          </div>
+    <section id="price-calculator" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">Shipping Cost Calculator</h2>
+          <p className="text-xl text-gray-600">Get an instant estimate for your vehicle export</p>
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Calculator Form */}
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Vehicle Type</label>
-                <select
-                  name="vehicleType"
-                  value={formData.vehicleType}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:border-black focus:outline-none"
-                  required
-                >
-                  <option value="">Select Vehicle Type</option>
-                  <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="luxury">Luxury Car</option>
-                  <option value="sports">Sports Car</option>
-                  <option value="truck">Truck/Pickup</option>
-                </select>
-              </div>
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calculator className="w-6 h-6" />
+                Calculate Your Shipping Costs
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Label htmlFor="vehicleValue">Vehicle Value (USD)</Label>
+                  <Input
+                    id="vehicleValue"
+                    type="number"
+                    placeholder="50000"
+                    value={formData.vehicleValue}
+                    onChange={(e) => setFormData({ ...formData, vehicleValue: e.target.value })}
+                  />
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Vehicle Value (USD)</label>
-                <Input
-                  name="vehicleValue"
-                  type="number"
-                  placeholder="e.g., 50000"
-                  value={formData.vehicleValue}
-                  onChange={handleInputChange}
-                  className="border-gray-300"
-                  required
-                />
-              </div>
+                <div>
+                  <Label htmlFor="toCountry">Destination Country</Label>
+                  <Select value={formData.toCountry} onValueChange={(value) => setFormData({ ...formData, toCountry: value })}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select destination" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="nigeria">🇳🇬 Nigeria</SelectItem>
+                      <SelectItem value="ghana">🇬🇭 Ghana</SelectItem>
+                      <SelectItem value="senegal">🇸🇳 Senegal</SelectItem>
+                      <SelectItem value="cameroon">🇨🇲 Cameroon</SelectItem>
+                      <SelectItem value="ivory_coast">🇨🇮 Ivory Coast</SelectItem>
+                      <SelectItem value="benin">🇧🇯 Benin</SelectItem>
+                      <SelectItem value="usa">🇺🇸 United States</SelectItem>
+                      <SelectItem value="uk">🇬🇧 United Kingdom</SelectItem>
+                      <SelectItem value="other">🌍 Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Destination Country</label>
-                <select
-                  name="toCountry"
-                  value={formData.toCountry}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:border-black focus:outline-none"
-                  required
-                >
-                  <option value="">Select Destination</option>
-                  <option value="africa">Africa (Various Countries)</option>
-                  <option value="europe">Europe</option>
-                  <option value="asia">Asia</option>
-                  <option value="south-america">South America</option>
-                  <option value="middle-east">Middle East</option>
-                </select>
-              </div>
+                <div>
+                  <Label htmlFor="fromCountry">From Country</Label>
+                  <Select value={formData.fromCountry} onValueChange={(value) => setFormData({ ...formData, fromCountry: value })}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="canada">🇨🇦 Canada</SelectItem>
+                      <SelectItem value="usa">🇺🇸 United States</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Shipping Method</label>
-                <div className="grid grid-cols-2 gap-3">
-                  <label className="flex items-center space-x-2 cursor-pointer p-3 border rounded-lg hover:bg-gray-50">
-                    <input
-                      type="radio"
-                      name="shippingMethod"
-                      value="maritime"
-                      checked={formData.shippingMethod === 'maritime'}
-                      onChange={handleInputChange}
-                    />
-                    <Ship className="w-4 h-4" />
-                    <span className="text-sm">Maritime (Economical)</span>
-                  </label>
-                  <label className="flex items-center space-x-2 cursor-pointer p-3 border rounded-lg hover:bg-gray-50">
-                    <input
-                      type="radio"
-                      name="shippingMethod"
-                      value="air"
-                      checked={formData.shippingMethod === 'air'}
-                      onChange={handleInputChange}
-                    />
-                    <Plane className="w-4 h-4" />
-                    <span className="text-sm">Air Freight (Fast)</span>
-                  </label>
+                <div>
+                  <Label htmlFor="shippingMethod">Shipping Method</Label>
+                  <Select value={formData.shippingMethod} onValueChange={(value) => setFormData({ ...formData, shippingMethod: value })}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="maritime">🚢 Maritime (4-6 weeks)</SelectItem>
+                      <SelectItem value="air">✈️ Air Freight (5-10 days)</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="insurance"
-                    checked={formData.insurance}
-                    onChange={handleInputChange}
-                    className="text-black"
-                  />
-                  <span className="text-sm">Include Insurance (Recommended)</span>
-                </label>
-                <label className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="expedited"
-                    checked={formData.expedited}
-                    onChange={handleInputChange}
-                    className="text-black"
-                  />
-                  <span className="text-sm">Expedited Service (+40% faster)</span>
-                </label>
-              </div>
-
-              <Button
-                onClick={calculateEstimate}
-                className="w-full bg-black text-white hover:bg-gray-800 py-3"
-                disabled={!formData.vehicleType || !formData.vehicleValue || !formData.toCountry}
-              >
-                Calculate Estimate
+              <Button onClick={calculateQuote} className="w-full" size="lg">
+                <DollarSign className="w-4 h-4 mr-2" />
+                Calculate Shipping Cost
               </Button>
-            </div>
 
-            {/* Results */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              {estimate ? (
-                <div className="space-y-4">
-                  <h3 className="text-xl font-medium text-black mb-4">Cost Breakdown</h3>
-                  
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Shipping Cost</span>
-                      <span className="font-medium">${estimate.shippingCost.toLocaleString()}</span>
+              {quote && (
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardContent className="p-6 space-y-4">
+                    <h3 className="text-xl font-bold text-blue-800">Estimated Shipping Costs</h3>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <span>Shipping Cost:</span>
+                          <span className="font-semibold">${quote.shippingCost.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Customs & Duties:</span>
+                          <span className="font-semibold">${quote.customsDuties.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Insurance:</span>
+                          <span className="font-semibold">${quote.insuranceCost.toLocaleString()}</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <span>Documentation:</span>
+                          <span className="font-semibold">${quote.documentationFee.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Inspection:</span>
+                          <span className="font-semibold">${quote.inspectionCost.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Timeline:</span>
+                          <span className="font-semibold">{quote.timeline}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Customs Duties</span>
-                      <span className="font-medium">${estimate.customsDuties.toLocaleString()}</span>
+                    
+                    <div className="border-t pt-4">
+                      <div className="flex justify-between items-center text-xl font-bold">
+                        <span>Total Estimated Cost:</span>
+                        <span className="text-blue-600">${quote.totalCost.toLocaleString()}</span>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Insurance</span>
-                      <span className="font-medium">${estimate.insurance.toLocaleString()}</span>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button onClick={handleGetQuote} className="flex-1" size="lg">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Get Detailed Quote
+                      </Button>
+                      
+                      <PaymentButton
+                        amount={Math.round(quote.totalCost * 0.1)} // 10% deposit
+                        currency="USD"
+                        itemDescription="Shipping Service Deposit"
+                        className="flex-1"
+                      >
+                        Pay Deposit (10%)
+                      </PaymentButton>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Documentation</span>
-                      <span className="font-medium">${estimate.documentation.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                      <span className="text-gray-600">Inspection</span>
-                      <span className="font-medium">${estimate.inspectionCost.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 border-t-2 border-black">
-                      <span className="text-lg font-semibold">Total Estimate</span>
-                      <span className="text-lg font-bold">${estimate.total.toLocaleString()}</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Truck className="w-4 h-4" />
-                      <span className="font-medium">Estimated Timeline</span>
-                    </div>
-                    <p className="text-gray-600">{estimate.timeline}</p>
-                  </div>
-
-                  <div className="text-xs text-gray-500 mt-4">
-                    <p>* This is an estimate. Final costs may vary based on specific requirements, regulations, and current market conditions.</p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <Button 
-                      onClick={() => {
-                        const message = `I would like a detailed quote for vehicle export. Here are my requirements:
-
-Vehicle Type: ${formData.vehicleType}
-Vehicle Value: $${formData.vehicleValue}
-From: Canada
-To: ${formData.toCountry}
-Shipping Method: ${formData.shippingMethod}
-Insurance: ${formData.insurance ? 'Yes' : 'No'}
-Expedited: ${formData.expedited ? 'Yes' : 'No'}
-
-Estimated Total: $${estimate.total.toLocaleString()}
-
-Please provide a detailed quote with exact pricing and timeline.`;
-                        const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-                        window.open(whatsappUrl, '_blank');
-                      }}
-                      className="w-full bg-green-600 text-white hover:bg-green-700"
-                    >
-                      Get Detailed Quote via WhatsApp
-                    </Button>
-
-                    <PaymentButton
-                      amount={estimate.total}
-                      currency="USD"
-                      itemDescription={`Vehicle Export: ${formData.vehicleType} to ${formData.toCountry}`}
-                      className="w-full bg-blue-600 text-white hover:bg-blue-700"
-                    >
-                      Secure This Quote with Payment
-                    </PaymentButton>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-center text-gray-500 py-8">
-                  <Calculator className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                  <p>Fill in the details to calculate your export costs</p>
-                </div>
+                  </CardContent>
+                </Card>
               )}
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
