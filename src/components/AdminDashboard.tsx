@@ -11,7 +11,8 @@ import {
   BarChart3, 
   Settings,
   DollarSign,
-  TrendingUp
+  TrendingUp,
+  Camera
 } from 'lucide-react';
 import VehicleManagement from './VehicleManagement';
 import QuoteManagement from './QuoteManagement';
@@ -23,6 +24,7 @@ import EnhancedPriceCalculator from './EnhancedPriceCalculator';
 import DocumentManagement from './DocumentManagement';
 import CRMDashboard from './CRMDashboard';
 import RoleManagement from './RoleManagement';
+import AIPhotoStudio from './AIPhotoStudio';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -98,7 +100,7 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-9">
+          <TabsList className="grid w-full grid-cols-10">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               Overview
@@ -130,6 +132,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="users" className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               Users
+            </TabsTrigger>
+            <TabsTrigger value="ai-photo" className="flex items-center gap-2">
+              <Camera className="w-4 h-4" />
+              AI Photo
             </TabsTrigger>
             <TabsTrigger value="documents" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
@@ -239,6 +245,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="users">
             <RoleManagement />
+          </TabsContent>
+
+          <TabsContent value="ai-photo">
+            <AIPhotoStudio />
           </TabsContent>
 
           <TabsContent value="documents">
