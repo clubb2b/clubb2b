@@ -3,12 +3,10 @@ import Hero from "@/components/Hero";
 import LuxuryInventory from "@/components/LuxuryInventory";
 import Services from "@/components/Services";
 import ImportExportServices from "@/components/ImportExportServices";
-import MaritimeServices from "@/components/MaritimeServices";
-import AirFreightServices from "@/components/AirFreightServices";
+import CombinedFreightServices from "@/components/CombinedFreightServices";
 import VIPServices from "@/components/VIPServices";
 import LuxuryShowroom from "@/components/LuxuryShowroom";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -17,6 +15,7 @@ import AdvancedFeatures from "@/components/AdvancedFeatures";
 import ExportTimeline from "@/components/ExportTimeline";
 import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
+import ModernTechFeatures from "@/components/ModernTechFeatures";
 
 const Index = () => {
   return (
@@ -29,13 +28,12 @@ const Index = () => {
       <AdvancedFeatures />
       <ImportExportServices />
       <ExportTimeline />
-      <MaritimeServices />
-      <AirFreightServices />
+      <CombinedFreightServices />
+      <ModernTechFeatures />
       <VIPServices />
       <LuxuryShowroom />
       <Services />
       <About />
-      <Testimonials />
       <Contact />
       <Footer />
       <BackToTop />
