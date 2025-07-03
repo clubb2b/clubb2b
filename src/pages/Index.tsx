@@ -15,6 +15,7 @@ import ExportTimeline from "@/components/ExportTimeline";
 import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
 import ModernTechFeatures from "@/components/ModernTechFeatures";
+import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
 
 const Index = () => {
   return (
@@ -23,6 +24,9 @@ const Index = () => {
       <AIChatbot />
       <StickyNavigation />
       <Hero />
+      <div className="max-w-7xl mx-auto px-6">
+        <NativeFeaturesShowcase />
+      </div>
       <LuxuryInventory />
       <AdvancedFeatures />
       <ImportExportServices />
