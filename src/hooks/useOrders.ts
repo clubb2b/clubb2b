@@ -1,9 +1,10 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { Tables } from '@/integrations/supabase/types';
+import { Tables, TablesInsert } from '@/integrations/supabase/types';
 
 export type Order = Tables<'orders'>;
+export type OrderInsert = Omit<TablesInsert<'orders'>, 'order_number'>;
 
 export const useOrders = () => {
   return useQuery({
@@ -29,7 +30,7 @@ export const useAddOrder = () => {
   const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: async (order: Omit<Order, 'id' | 'order_number' | 'created_at' | 'updated_at'>) => {
+    mutationFn: async (order: OrderInsert) => {
       const { data, error } = await supabase
         .from('orders')
         .insert(order)

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Calendar, Calculator, FileText, CreditCard, MessageCircle, TrendingUp } from 'lucide-react';
 import AppointmentBooking from './AppointmentBooking';
-import PriceCalculator from './PriceCalculator';
 import VehicleInspectionReport from './VehicleInspectionReport';
 import FinancingOptions from './FinancingOptions';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -43,6 +42,13 @@ const AdvancedFeatures = () => {
     }
   ];
 
+  const scrollToCalculator = () => {
+    const calculatorElement = document.getElementById('price-calculator');
+    if (calculatorElement) {
+      calculatorElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
@@ -69,7 +75,13 @@ const AdvancedFeatures = () => {
                   <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
                   <p className="text-gray-400 text-sm mb-4">{feature.description}</p>
                   <Button
-                    onClick={() => setActiveModal(feature.id)}
+                    onClick={() => {
+                      if (feature.id === 'calculator') {
+                        scrollToCalculator();
+                      } else {
+                        setActiveModal(feature.id);
+                      }
+                    }}
                     className={`w-full ${feature.color} text-white font-light tracking-wider transition-all duration-300`}
                   >
                     Open {feature.title}
@@ -120,10 +132,6 @@ const AdvancedFeatures = () => {
       {/* Modals */}
       <AppointmentBooking 
         isOpen={activeModal === 'appointment'} 
-        onClose={() => setActiveModal(null)} 
-      />
-      <PriceCalculator 
-        isOpen={activeModal === 'calculator'} 
         onClose={() => setActiveModal(null)} 
       />
       <VehicleInspectionReport 

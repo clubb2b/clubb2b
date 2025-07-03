@@ -1,9 +1,10 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { Tables } from '@/integrations/supabase/types';
+import { Tables, TablesInsert } from '@/integrations/supabase/types';
 
 export type Quote = Tables<'quotes'>;
+export type QuoteInsert = Omit<TablesInsert<'quotes'>, 'quote_number'>;
 
 export const useQuotes = () => {
   return useQuery({
@@ -24,7 +25,7 @@ export const useAddQuote = () => {
   const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: async (quote: Omit<Quote, 'id' | 'quote_number' | 'created_at' | 'updated_at'>) => {
+    mutationFn: async (quote: QuoteInsert) => {
       const { data, error } = await supabase
         .from('quotes')
         .insert(quote)
