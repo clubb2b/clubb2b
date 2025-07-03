@@ -1,29 +1,49 @@
 
-import React from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useState } from 'react';
+import { Globe } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const LanguageSelector = () => {
-  const { language, setLanguage } = useLanguage();
+  const [currentLanguage, setCurrentLanguage] = useState('EN');
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'EN', name: 'English', flag: '🇺🇸' },
+    { code: 'FR', name: 'Français', flag: '🇫🇷' },
+    { code: 'ES', name: 'Español', flag: '🇪🇸' }
   ];
 
   return (
-    <div className="fixed top-4 right-4 z-50">
-      <select
-        value={language}
-        onChange={(e) => setLanguage(e.target.value)}
-        className="bg-black border border-white text-white px-3 py-2 rounded-md text-sm font-light tracking-wider focus:outline-none focus:border-gray-400"
-      >
-        {languages.map((lang) => (
-          <option key={lang.code} value={lang.code}>
-            {lang.flag} {lang.name}
-          </option>
-        ))}
-      </select>
+    <div className="fixed top-4 left-4 z-50">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="bg-black/80 border-gray-600 text-white hover:bg-gray-800"
+          >
+            <Globe className="w-4 h-4 mr-2" />
+            {currentLanguage}
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="bg-black border-gray-600">
+          {languages.map((lang) => (
+            <DropdownMenuItem
+              key={lang.code}
+              onClick={() => setCurrentLanguage(lang.code)}
+              className="text-white hover:bg-gray-800 cursor-pointer"
+            >
+              <span className="mr-2">{lang.flag}</span>
+              {lang.name}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };
