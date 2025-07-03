@@ -22,6 +22,7 @@ const VehicleManagement = () => {
     make: '',
     model: '',
     year: 2024,
+    vin: '',
     price: 0,
     mileage: 0,
     exterior_color: '',
@@ -33,7 +34,8 @@ const VehicleManagement = () => {
     condition: 'excellent',
     status: 'available',
     location: 'Canada',
-    currency: 'USD'
+    currency: 'USD',
+    features: [] as string[]
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -55,6 +57,7 @@ const VehicleManagement = () => {
         make: '',
         model: '',
         year: 2024,
+        vin: '',
         price: 0,
         mileage: 0,
         exterior_color: '',
@@ -66,7 +69,8 @@ const VehicleManagement = () => {
         condition: 'excellent',
         status: 'available',
         location: 'Canada',
-        currency: 'USD'
+        currency: 'USD',
+        features: []
       });
     } catch (error) {
       toast({ 
@@ -82,6 +86,7 @@ const VehicleManagement = () => {
       make: vehicle.make,
       model: vehicle.model,
       year: vehicle.year,
+      vin: vehicle.vin || '',
       price: vehicle.price || 0,
       mileage: vehicle.mileage || 0,
       exterior_color: vehicle.exterior_color || '',
@@ -93,7 +98,8 @@ const VehicleManagement = () => {
       condition: vehicle.condition || 'excellent',
       status: vehicle.status || 'available',
       location: vehicle.location || 'Canada',
-      currency: vehicle.currency || 'USD'
+      currency: vehicle.currency || 'USD',
+      features: vehicle.features || []
     });
     setEditingVehicle(vehicle.id);
     setIsAddingVehicle(true);
@@ -148,6 +154,15 @@ const VehicleManagement = () => {
                   value={formData.year}
                   onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
                   required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="vin">VIN</Label>
+                <Input
+                  id="vin"
+                  value={formData.vin}
+                  onChange={(e) => setFormData({ ...formData, vin: e.target.value })}
                 />
               </div>
               
@@ -279,6 +294,7 @@ const VehicleManagement = () => {
                 <p><strong>Mileage:</strong> {vehicle.mileage?.toLocaleString()} km</p>
                 <p><strong>Color:</strong> {vehicle.exterior_color}</p>
                 <p><strong>Transmission:</strong> {vehicle.transmission}</p>
+                <p><strong>VIN:</strong> {vehicle.vin || 'Not specified'}</p>
                 <p><strong>Status:</strong> 
                   <span className={`ml-2 px-2 py-1 rounded text-sm ${
                     vehicle.status === 'available' ? 'bg-green-100 text-green-800' :
