@@ -12,6 +12,7 @@ import AdvancedFeatures from "@/components/AdvancedFeatures";
 import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
 import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
+import MobileAppPromo from "@/components/MobileAppPromo";
 import AuthButton from "@/components/AuthButton";
 import PriceCalculator from "@/components/PriceCalculator";
 import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
@@ -34,6 +35,7 @@ const Index = () => {
       <LuxuryInventory />
       <AdvancedFeatures />
       <QuickAccessButtons />
+      <MobileAppPromo />
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
       <CarbonOffsetCalculator />
       <LuxuryShowroom />
