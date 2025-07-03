@@ -17,6 +17,8 @@ import VehicleManagement from './VehicleManagement';
 import QuoteManagement from './QuoteManagement';
 import LeadManagement from './LeadManagement';
 import OrderTracking from './OrderTracking';
+import AdvancedPayments from './AdvancedPayments';
+import NativeFeaturesDemo from './NativeFeaturesDemo';
 import EnhancedPriceCalculator from './EnhancedPriceCalculator';
 import DocumentManagement from './DocumentManagement';
 import CRMDashboard from './CRMDashboard';
@@ -95,7 +97,7 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-8">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               Overview
@@ -116,13 +118,17 @@ const AdminDashboard = () => {
               <Package className="w-4 h-4" />
               Orders
             </TabsTrigger>
+            <TabsTrigger value="payments" className="flex items-center gap-2">
+              <DollarSign className="w-4 h-4" />
+              Payments
+            </TabsTrigger>
+            <TabsTrigger value="mobile" className="flex items-center gap-2">
+              <Settings className="w-4 h-4" />
+              Mobile
+            </TabsTrigger>
             <TabsTrigger value="documents" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
               Documents
-            </TabsTrigger>
-            <TabsTrigger value="calculator" className="flex items-center gap-2">
-              <Settings className="w-4 h-4" />
-              Calculator
             </TabsTrigger>
           </TabsList>
 
@@ -218,12 +224,16 @@ const AdminDashboard = () => {
             <OrderTracking />
           </TabsContent>
 
-          <TabsContent value="documents">
-            <DocumentManagement />
+          <TabsContent value="payments">
+            <AdvancedPayments />
           </TabsContent>
 
-          <TabsContent value="calculator">
-            <EnhancedPriceCalculator />
+          <TabsContent value="mobile">
+            <NativeFeaturesDemo />
+          </TabsContent>
+
+          <TabsContent value="documents">
+            <DocumentManagement />
           </TabsContent>
         </Tabs>
       </div>

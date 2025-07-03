@@ -72,11 +72,37 @@ export const useNativeFeatures = () => {
     }
   };
 
+  const takePhoto = async (): Promise<string | null> => {
+    return takePicture();
+  };
+
+  const sendNotification = async (title: string, body: string, data?: any): Promise<void> => {
+    await requestNotificationPermission();
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification(title, { body, data });
+    }
+  };
+
+  const downloadFile = async (url: string, filename: string): Promise<void> => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const isOnline = navigator.onLine;
+
   return {
     isNative,
     takePicture,
+    takePhoto,
     getCurrentLocation,
     shareContent,
-    requestNotificationPermission
+    requestNotificationPermission,
+    sendNotification,
+    downloadFile,
+    isOnline
   };
 };
