@@ -31,9 +31,16 @@ const AdvancedFeatures = () => {
   ];
 
   const handleFeatureAction = (title: string) => {
-    const message = `I'm interested in ${title}. Please provide more information.`;
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    if (title === "Price Calculator") {
+      const element = document.getElementById('price-calculator');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      const message = `I'm interested in ${title}. Please provide more information.`;
+      const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
   };
 
   return (

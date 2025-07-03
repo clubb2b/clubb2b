@@ -17,6 +17,8 @@ import StickyNavigation from "@/components/StickyNavigation";
 import ModernTechFeatures from "@/components/ModernTechFeatures";
 import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
 import AuthButton from "@/components/AuthButton";
+import PriceCalculator from "@/components/PriceCalculator";
+import VIPServices from "@/components/VIPServices";
 
 const Index = () => {
   return (
@@ -39,6 +41,8 @@ const Index = () => {
       <ModernTechFeatures />
       <LuxuryShowroom />
       <Services />
+      <VIPServices />
+      <PriceCalculator />
       <About />
       <Contact />
       <Footer />

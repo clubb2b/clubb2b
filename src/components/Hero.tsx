@@ -11,7 +11,10 @@ const Hero = () => {
   };
 
   const handleImportExport = () => {
-    scrollToSection('import-export');
+    const element = document.getElementById('import-export');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleViewCars = () => {

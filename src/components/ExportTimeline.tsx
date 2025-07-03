@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { CheckCircle, Clock, Ship, FileText, Truck, Plane } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const ExportTimeline = () => {
   const timelineSteps = [
@@ -180,6 +181,18 @@ const ExportTimeline = () => {
         {/* Additional Information */}
         <div className="mt-16 bg-black text-white p-8 rounded-lg">
           <h3 className="text-2xl font-light mb-6 text-center">Key Success Factors</h3>
+          <div className="text-center mb-6">
+            <Button 
+              onClick={() => {
+                const message = "I would like to start the export process for my vehicle. Please provide more information about the timeline and next steps.";
+                const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+              }}
+              className="bg-white text-black hover:bg-gray-200 px-8 py-3 font-light tracking-wider transition-all duration-300"
+            >
+              START EXPORT PROCESS
+            </Button>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h4 className="font-semibold mb-3">Legal Compliance</h4>
