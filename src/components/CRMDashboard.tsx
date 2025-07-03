@@ -84,11 +84,18 @@ const CRMDashboard = () => {
         last_name: newLead.last_name,
         email: newLead.email,
         phone: newLead.phone || null,
+        company: null,
         country: newLead.country || null,
         interest_type: newLead.interest_type || null,
         vehicle_interest: newLead.vehicle_interest || null,
         budget_range: newLead.budget_range || null,
+        timeline: null,
         source: newLead.source || 'website',
+        status: 'new',
+        assigned_to: null,
+        conversion_probability: 0,
+        last_contact_date: null,
+        next_follow_up: null,
         notes: newLead.notes || null
       });
       
