@@ -10,7 +10,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin = false }) => {
-  const { user, loading } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
 
   if (loading) {
     return (
@@ -31,10 +31,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin 
     return <Navigate to="/auth" replace />;
   }
 
-  // For now, we'll implement basic admin check
-  // Later we can enhance this with proper role-based access control
   if (requireAdmin) {
-    const isAdmin = user.email?.includes('admin') || false;
     if (!isAdmin) {
       return (
         <div className="min-h-screen bg-black flex items-center justify-center">
