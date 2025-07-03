@@ -36,9 +36,9 @@ const CombinedFreightServices = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section className="py-16 bg-gradient-to-b from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-light mb-6 text-white tracking-wider">
             GLOBAL FREIGHT SOLUTIONS
           </h2>
@@ -48,10 +48,10 @@ const CombinedFreightServices = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Maritime Freight */}
           <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg border border-gray-700 overflow-hidden hover:border-white transition-all duration-300">
-            <div className="aspect-video overflow-hidden">
+            <div className="aspect-[4/3] overflow-hidden">
               <img 
                 src="/lovable-uploads/2aee0832-ae6b-4b1b-9533-f52597f3ccf5.png"
                 alt="Maritime freight containers at port"
@@ -59,21 +59,21 @@ const CombinedFreightServices = () => {
               />
             </div>
             
-            <div className="p-8">
-              <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <Ship className="w-8 h-8 text-black" />
+            <div className="p-6">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                  <Ship className="w-6 h-6 text-black" />
                 </div>
               </div>
               
-              <h3 className="text-3xl font-light text-white mb-6 tracking-wide text-center">
+              <h3 className="text-2xl font-light text-white mb-4 tracking-wide text-center">
                 MARITIME FREIGHT
               </h3>
               
-              <div className="grid grid-cols-1 gap-3 mb-8">
+              <div className="grid grid-cols-1 gap-2 mb-6">
                 {maritimeServices.map((service, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"></div>
                     <p className="text-gray-300 font-light text-sm">{service}</p>
                   </div>
                 ))}
@@ -81,7 +81,7 @@ const CombinedFreightServices = () => {
               
               <Button 
                 onClick={handleMaritimeInquiry}
-                className="w-full bg-white text-black hover:bg-gray-200 px-8 py-3 font-light tracking-wider transition-all duration-300"
+                className="w-full bg-white text-black hover:bg-gray-200 px-6 py-2 font-light tracking-wider transition-all duration-300"
               >
                 GET MARITIME QUOTE
               </Button>
@@ -90,7 +90,7 @@ const CombinedFreightServices = () => {
 
           {/* Air Freight */}
           <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg border border-gray-700 overflow-hidden hover:border-white transition-all duration-300">
-            <div className="aspect-video overflow-hidden">
+            <div className="aspect-[4/3] overflow-hidden">
               <img 
                 src="/lovable-uploads/f1d37320-287c-470f-aa83-b83a5c16c8e5.png"
                 alt="Air freight logistics with plane and containers"
@@ -98,21 +98,21 @@ const CombinedFreightServices = () => {
               />
             </div>
             
-            <div className="p-8">
-              <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <Plane className="w-8 h-8 text-black" />
+            <div className="p-6">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                  <Plane className="w-6 h-6 text-black" />
                 </div>
               </div>
               
-              <h3 className="text-3xl font-light text-white mb-6 tracking-wide text-center">
+              <h3 className="text-2xl font-light text-white mb-4 tracking-wide text-center">
                 AIR FREIGHT
               </h3>
               
-              <div className="grid grid-cols-1 gap-3 mb-8">
+              <div className="grid grid-cols-1 gap-2 mb-6">
                 {airServices.map((service, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"></div>
                     <p className="text-gray-300 font-light text-sm">{service}</p>
                   </div>
                 ))}
@@ -120,7 +120,7 @@ const CombinedFreightServices = () => {
               
               <Button 
                 onClick={handleAirInquiry}
-                className="w-full bg-white text-black hover:bg-gray-200 px-8 py-3 font-light tracking-wider transition-all duration-300"
+                className="w-full bg-white text-black hover:bg-gray-200 px-6 py-2 font-light tracking-wider transition-all duration-300"
               >
                 GET AIR FREIGHT QUOTE
               </Button>
