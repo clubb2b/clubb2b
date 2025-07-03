@@ -22,6 +22,7 @@ import NativeFeaturesDemo from './NativeFeaturesDemo';
 import EnhancedPriceCalculator from './EnhancedPriceCalculator';
 import DocumentManagement from './DocumentManagement';
 import CRMDashboard from './CRMDashboard';
+import RoleManagement from './RoleManagement';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -97,7 +98,7 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               Overview
@@ -125,6 +126,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="mobile" className="flex items-center gap-2">
               <Settings className="w-4 h-4" />
               Mobile
+            </TabsTrigger>
+            <TabsTrigger value="users" className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              Users
             </TabsTrigger>
             <TabsTrigger value="documents" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
@@ -230,6 +235,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="mobile">
             <NativeFeaturesDemo />
+          </TabsContent>
+
+          <TabsContent value="users">
+            <RoleManagement />
           </TabsContent>
 
           <TabsContent value="documents">
