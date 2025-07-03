@@ -38,16 +38,21 @@ const Index = () => {
       <div className="max-w-7xl mx-auto px-6">
         <NativeFeaturesShowcase />
       </div>
+      <VIPMembershipPlans />
       <LuxuryInventory />
       <AdvancedFeatures />
+      <LiveVideoInspection />
       <ImportExportServices />
       <ExportTimeline />
       <CombinedFreightServices />
       <ModernTechFeatures />
+      <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
+      <CarbonOffsetCalculator />
       <LuxuryShowroom />
       <Services />
       <VIPServices />
       <PriceCalculator />
+      <AnalyticsDashboard />
       <About />
       <Contact />
       <Footer />
