@@ -7,16 +7,26 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, MapPin, DollarSign } from 'lucide-react';
 import PaymentButton from './PaymentButton';
+import { useAddQuote } from '@/hooks/useQuotes';
+import { useAddLead } from '@/hooks/useLeads';
+import { toast } from 'sonner';
 
 const PriceCalculator = () => {
+  const addQuote = useAddQuote();
+  const addLead = useAddLead();
+  
   const [formData, setFormData] = useState({
     vehicleValue: '',
     fromCountry: 'canada',
     toCountry: '',
-    shippingMethod: 'maritime'
+    shippingMethod: 'maritime',
+    customerName: '',
+    customerEmail: '',
+    vehicleType: ''
   });
 
   const [quote, setQuote] = useState<any>(null);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   const calculateQuote = () => {
     const vehicleValue = parseFloat(formData.vehicleValue) || 0;
@@ -40,28 +50,83 @@ const PriceCalculator = () => {
   };
 
   const handleGetQuote = () => {
-    const message = `Hello! I'd like to get a detailed shipping quote:
+    if (!formData.customerName || !formData.customerEmail) {
+      setShowContactForm(true);
+      return;
+    }
+    saveQuoteAndLead();
+  };
 
-Vehicle Value: $${formData.vehicleValue}
-From: ${formData.fromCountry.toUpperCase()} 
-To: ${formData.toCountry.toUpperCase()}
-Shipping Method: ${formData.shippingMethod === 'air' ? 'Air Freight' : 'Maritime'}
+  const saveQuoteAndLead = async () => {
+    if (!quote || !formData.customerName || !formData.customerEmail) return;
 
-${quote ? `
-Estimated Costs:
-• Shipping: $${quote.shippingCost.toLocaleString()}
-• Customs/Duties: $${quote.customsDuties.toLocaleString()}
-• Insurance: $${quote.insuranceCost.toLocaleString()}
-• Documentation: $${quote.documentationFee.toLocaleString()}
-• Inspection: $${quote.inspectionCost.toLocaleString()}
+    try {
+      // Save quote to database
+      await addQuote.mutateAsync({
+        customer_name: formData.customerName,
+        customer_email: formData.customerEmail,
+        vehicle_type: formData.vehicleType,
+        vehicle_value: parseFloat(formData.vehicleValue) || 0,
+        from_country: formData.fromCountry,
+        to_country: formData.toCountry,
+        shipping_method: formData.shippingMethod,
+        shipping_cost: quote.shippingCost,
+        customs_duties: quote.customsDuties,
+        insurance_cost: quote.insuranceCost,
+        documentation_fee: quote.documentationFee,
+        inspection_cost: quote.inspectionCost,
+        total_cost: quote.totalCost,
+        estimated_timeline: quote.timeline,
+        currency: 'USD'
+      });
 
-TOTAL: $${quote.totalCost.toLocaleString()}
+      // Save lead to database
+      const nameParts = formData.customerName.split(' ');
+      await addLead.mutateAsync({
+        first_name: nameParts[0] || '',
+        last_name: nameParts.slice(1).join(' ') || '',
+        email: formData.customerEmail,
+        phone: null,
+        company: null,
+        country: null,
+        vehicle_interest: formData.vehicleType,
+        budget_range: parseFloat(formData.vehicleValue) > 100000 ? '100k_plus' : 
+                     parseFloat(formData.vehicleValue) > 50000 ? '50k_100k' : 'under_50k',
+        timeline: formData.shippingMethod === 'air' ? '1_month' : '3_months',
+        source: 'website',
+        notes: `Quote request: ${formData.shippingMethod} shipping from ${formData.fromCountry} to ${formData.toCountry}`,
+        status: 'new',
+        assigned_to: null,
+        conversion_probability: null,
+        interest_type: 'quote_request',
+        last_contact_date: null,
+        next_follow_up: null
+      });
+
+      toast.success('Quote saved successfully! We will contact you soon.');
+      
+      // Also send WhatsApp message
+      const message = `Hello! I've submitted a quote request:
+
+Customer: ${formData.customerName}
+Email: ${formData.customerEmail}
+Vehicle: ${formData.vehicleType}
+Value: $${formData.vehicleValue}
+Route: ${formData.fromCountry.toUpperCase()} → ${formData.toCountry.toUpperCase()}
+Method: ${formData.shippingMethod === 'air' ? 'Air Freight' : 'Maritime'}
+
+Estimated Total: $${quote.totalCost.toLocaleString()}
 Timeline: ${quote.timeline}
 
-Please confirm this quote and provide any additional details.` : 'Please provide a detailed quote for these specifications.'}`;
+Please confirm this quote and provide next steps.`;
 
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+      const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+
+    } catch (error) {
+      console.error('Error saving quote:', error);
+      toast.error('Failed to save quote. Please try again.');
+    }
   };
 
   return (
@@ -90,6 +155,16 @@ Please confirm this quote and provide any additional details.` : 'Please provide
                     placeholder="50000"
                     value={formData.vehicleValue}
                     onChange={(e) => setFormData({ ...formData, vehicleValue: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="vehicleType">Vehicle Type</Label>
+                  <Input
+                    id="vehicleType"
+                    placeholder="e.g., BMW X7, Mercedes S-Class"
+                    value={formData.vehicleType}
+                    onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
                   />
                 </div>
 
@@ -188,21 +263,65 @@ Please confirm this quote and provide any additional details.` : 'Please provide
                       </div>
                     </div>
                     
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Button onClick={handleGetQuote} className="flex-1" size="lg">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        Get Detailed Quote
-                      </Button>
-                      
-                      <PaymentButton
-                        amount={Math.round(quote.totalCost * 0.1)} // 10% deposit
-                        currency="USD"
-                        itemDescription="Shipping Service Deposit"
-                        className="flex-1"
-                      >
-                        Pay Deposit (10%)
-                      </PaymentButton>
-                    </div>
+                    {!showContactForm ? (
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <Button onClick={handleGetQuote} className="flex-1" size="lg">
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get Detailed Quote
+                        </Button>
+                        
+                        <PaymentButton
+                          amount={Math.round(quote.totalCost * 0.1)} // 10% deposit
+                          currency="USD"
+                          itemDescription="Shipping Service Deposit"
+                          className="flex-1"
+                        >
+                          Pay Deposit (10%)
+                        </PaymentButton>
+                      </div>
+                    ) : (
+                      <div className="space-y-4 border-t pt-4">
+                        <h4 className="font-semibold">Contact Information Required</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="customerName">Full Name *</Label>
+                            <Input
+                              id="customerName"
+                              placeholder="Your full name"
+                              value={formData.customerName}
+                              onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
+                              required
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="customerEmail">Email *</Label>
+                            <Input
+                              id="customerEmail"
+                              type="email"
+                              placeholder="your@email.com"
+                              value={formData.customerEmail}
+                              onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div className="flex gap-4">
+                          <Button 
+                            onClick={saveQuoteAndLead} 
+                            disabled={!formData.customerName || !formData.customerEmail || addQuote.isPending}
+                            className="flex-1"
+                          >
+                            {addQuote.isPending ? 'Saving...' : 'Save Quote & Contact Me'}
+                          </Button>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => setShowContactForm(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               )}

@@ -14,6 +14,8 @@ import {
   TrendingUp
 } from 'lucide-react';
 import VehicleManagement from './VehicleManagement';
+import QuoteManagement from './QuoteManagement';
+import LeadManagement from './LeadManagement';
 import OrderTracking from './OrderTracking';
 import EnhancedPriceCalculator from './EnhancedPriceCalculator';
 import DocumentManagement from './DocumentManagement';
@@ -93,7 +95,7 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               Overview
@@ -102,13 +104,17 @@ const AdminDashboard = () => {
               <Car className="w-4 h-4" />
               Vehicles
             </TabsTrigger>
+            <TabsTrigger value="quotes" className="flex items-center gap-2">
+              <DollarSign className="w-4 h-4" />
+              Quotes
+            </TabsTrigger>
+            <TabsTrigger value="leads" className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" />
+              Leads
+            </TabsTrigger>
             <TabsTrigger value="orders" className="flex items-center gap-2">
               <Package className="w-4 h-4" />
               Orders
-            </TabsTrigger>
-            <TabsTrigger value="crm" className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              CRM
             </TabsTrigger>
             <TabsTrigger value="documents" className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
@@ -179,8 +185,8 @@ const AdminDashboard = () => {
                     <Car className="w-4 h-4 mr-2" />
                     Add New Vehicle
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" onClick={() => setActiveTab('crm')}>
-                    <Users className="w-4 h-4 mr-2" />
+                  <Button className="w-full justify-start" variant="outline" onClick={() => setActiveTab('leads')}>
+                    <TrendingUp className="w-4 h-4 mr-2" />
                     Add New Lead
                   </Button>
                   <Button className="w-full justify-start" variant="outline" onClick={() => setActiveTab('documents')}>
@@ -200,12 +206,16 @@ const AdminDashboard = () => {
             <VehicleManagement />
           </TabsContent>
 
-          <TabsContent value="orders">
-            <OrderTracking />
+          <TabsContent value="quotes">
+            <QuoteManagement />
           </TabsContent>
 
-          <TabsContent value="crm">
-            <CRMDashboard />
+          <TabsContent value="leads">
+            <LeadManagement />
+          </TabsContent>
+
+          <TabsContent value="orders">
+            <OrderTracking />
           </TabsContent>
 
           <TabsContent value="documents">
