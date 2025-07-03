@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Calculator, Ship, Plane, Shield, FileText, Search } from 'lucide-react';
 import { useAddQuote } from '@/hooks/useQuotes';
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from '@/integrations/supabase/client';
 
 const EnhancedPriceCalculator = () => {
   const addQuote = useAddQuote();
@@ -64,7 +65,35 @@ const EnhancedPriceCalculator = () => {
     if (!quote) return;
     
     try {
+      // Save quote to database
       await addQuote.mutateAsync(quote);
+      
+      // Also create a lead record for follow-up
+      const leadData = {
+        first_name: formData.customer_name.split(' ')[0] || '',
+        last_name: formData.customer_name.split(' ').slice(1).join(' ') || '',
+        email: formData.customer_email,
+        vehicle_interest: formData.vehicle_type,
+        budget_range: `$${formData.vehicle_value.toLocaleString()}`,
+        interest_type: 'Vehicle Export',
+        source: 'Price Calculator',
+        status: 'new',
+        notes: `Interested in shipping ${formData.vehicle_type} from ${formData.from_country} to ${formData.to_country}. Vehicle value: $${formData.vehicle_value.toLocaleString()}`,
+      };
+      
+      // Save lead (don't wait for it to block the user experience)
+      try {
+        const { data: leadInsert, error: leadError } = await supabase
+          .from('leads')
+          .insert([leadData]);
+        
+        if (leadError) {
+          console.error('Error saving lead:', leadError);
+        }
+      } catch (leadErr) {
+        console.error('Lead save error:', leadErr);
+      }
+      
       toast({ title: "Quote saved successfully!" });
       
       // Send WhatsApp message with quote

@@ -30,11 +30,40 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      // Send contact email
       const { error } = await supabase.functions.invoke('send-contact-email', {
         body: formData
       });
 
       if (error) throw error;
+
+      // Also create a lead record for follow-up
+      const [firstName, ...lastNameParts] = formData.name.split(' ');
+      const lastName = lastNameParts.join(' ');
+      
+      const leadData = {
+        first_name: firstName || '',
+        last_name: lastName || '',
+        email: formData.email,
+        phone: formData.phone || null,
+        interest_type: formData.service,
+        source: 'Contact Form',
+        status: 'new',
+        notes: formData.message,
+      };
+      
+      // Save lead (don't wait for it to block the user experience)
+      try {
+        const { error: leadError } = await supabase
+          .from('leads')
+          .insert([leadData]);
+        
+        if (leadError) {
+          console.error('Error saving lead:', leadError);
+        }
+      } catch (leadErr) {
+        console.error('Lead save error:', leadErr);
+      }
 
       toast({
         title: "Message Sent!",

@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import VehicleManagement from './VehicleManagement';
 import QuoteManagement from './QuoteManagement';
-import LeadManagement from './LeadManagement';
+import LeadsDashboard from './LeadsDashboard';
 import OrderTracking from './OrderTracking';
 import AdvancedPayments from './AdvancedPayments';
 import NativeFeaturesDemo from './NativeFeaturesDemo';
@@ -217,7 +217,7 @@ const AdminDashboard = () => {
           </TabsContent>
 
           <TabsContent value="leads">
-            <LeadManagement />
+            <LeadsDashboard />
           </TabsContent>
 
           <TabsContent value="orders">
