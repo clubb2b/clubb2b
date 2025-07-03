@@ -4,7 +4,7 @@ import ExportSection from "./ExportSection";
 
 const LuxuryInventory = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="inventory" className="py-20 bg-gradient-to-b from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
