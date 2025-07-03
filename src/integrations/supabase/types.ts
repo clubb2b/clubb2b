@@ -9,18 +9,21 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "CLUB B2B PERFORMANCE": {
+      club_b2b_performance: {
         Row: {
           created_at: string
           id: number
+          user_id: string | null
         }
         Insert: {
           created_at?: string
           id?: number
+          user_id?: string | null
         }
         Update: {
           created_at?: string
           id?: number
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -597,18 +600,21 @@ export type Database = {
         }
         Relationships: []
       }
-      "VIP ACCESS": {
+      vip_access: {
         Row: {
           created_at: string
           id: number
+          user_id: string | null
         }
         Insert: {
           created_at?: string
           id?: number
+          user_id?: string | null
         }
         Update: {
           created_at?: string
           id?: number
+          user_id?: string | null
         }
         Relationships: []
       }

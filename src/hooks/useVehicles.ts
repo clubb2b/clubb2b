@@ -16,7 +16,6 @@ export const useVehicles = () => {
           *,
           vehicle_images (*)
         `)
-        .eq('status', 'available')
         .order('created_at', { ascending: false });
       
       if (error) throw error;
