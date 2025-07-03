@@ -1,8 +1,4 @@
 
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { Geolocation } from '@capacitor/geolocation';
-import { Share } from '@capacitor/share';
-import { PushNotifications } from '@capacitor/push-notifications';
 import { Capacitor } from '@capacitor/core';
 
 export const useNativeFeatures = () => {
@@ -12,6 +8,7 @@ export const useNativeFeatures = () => {
     if (!isNative) return null;
     
     try {
+      const { Camera, CameraResultType, CameraSource } = await import('@capacitor/camera');
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: true,
@@ -29,6 +26,7 @@ export const useNativeFeatures = () => {
     if (!isNative) return null;
     
     try {
+      const { Geolocation } = await import('@capacitor/geolocation');
       const coordinates = await Geolocation.getCurrentPosition();
       return {
         latitude: coordinates.coords.latitude,
@@ -50,6 +48,7 @@ export const useNativeFeatures = () => {
     }
     
     try {
+      const { Share } = await import('@capacitor/share');
       await Share.share({
         title,
         text,
@@ -64,6 +63,7 @@ export const useNativeFeatures = () => {
     if (!isNative) return false;
     
     try {
+      const { PushNotifications } = await import('@capacitor/push-notifications');
       const permission = await PushNotifications.requestPermissions();
       return permission.receive === 'granted';
     } catch (error) {
