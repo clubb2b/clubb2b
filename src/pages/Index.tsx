@@ -4,7 +4,6 @@ import LuxuryInventory from "@/components/LuxuryInventory";
 import Services from "@/components/Services";
 import ImportExportServices from "@/components/ImportExportServices";
 import CombinedFreightServices from "@/components/CombinedFreightServices";
-import VIPServices from "@/components/VIPServices";
 import LuxuryShowroom from "@/components/LuxuryShowroom";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -30,7 +29,6 @@ const Index = () => {
       <ExportTimeline />
       <CombinedFreightServices />
       <ModernTechFeatures />
-      <VIPServices />
       <LuxuryShowroom />
       <Services />
       <About />

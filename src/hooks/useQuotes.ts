@@ -26,9 +26,10 @@ export const useAddQuote = () => {
   
   return useMutation({
     mutationFn: async (quote: QuoteInsert) => {
+      // Cast the quote to match the expected type, allowing the database trigger to set quote_number
       const { data, error } = await supabase
         .from('quotes')
-        .insert(quote)
+        .insert(quote as any)
         .select()
         .single();
       

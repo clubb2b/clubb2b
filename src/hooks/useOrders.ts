@@ -31,9 +31,10 @@ export const useAddOrder = () => {
   
   return useMutation({
     mutationFn: async (order: OrderInsert) => {
+      // Cast the order to match the expected type, allowing the database trigger to set order_number
       const { data, error } = await supabase
         .from('orders')
-        .insert(order)
+        .insert(order as any)
         .select()
         .single();
       
