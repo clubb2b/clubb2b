@@ -16,10 +16,14 @@ import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
 import ModernTechFeatures from "@/components/ModernTechFeatures";
 import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
+import AuthButton from "@/components/AuthButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <div className="fixed top-4 right-4 z-50">
+        <AuthButton />
+      </div>
       <LanguageSelector />
       <AIChatbot />
       <StickyNavigation />

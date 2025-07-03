@@ -1,4 +1,8 @@
 
-import AdminDashboard from "@/components/AdminDashboard";
+import AdminDashboard from '@/components/AdminDashboard';
 
-export default AdminDashboard;
+const AdminDashboardPage = () => {
+  return <AdminDashboard />;
+};
+
+export default AdminDashboardPage;
