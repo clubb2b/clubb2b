@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Tables, TablesInsert } from '@/integrations/supabase/types';
 
 export type Quote = Tables<'quotes'>;
-export type QuoteInsert = Omit<TablesInsert<'quotes'>, 'quote_number'>;
+export type QuoteInsert = Omit<TablesInsert<'quotes'>, 'id' | 'created_at' | 'updated_at' | 'quote_number'>;
 
 export const useQuotes = () => {
   return useQuery({

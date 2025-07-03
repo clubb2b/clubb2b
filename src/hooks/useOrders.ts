@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Tables, TablesInsert } from '@/integrations/supabase/types';
 
 export type Order = Tables<'orders'>;
-export type OrderInsert = Omit<TablesInsert<'orders'>, 'order_number'>;
+export type OrderInsert = Omit<TablesInsert<'orders'>, 'id' | 'created_at' | 'updated_at' | 'order_number'>;
 
 export const useOrders = () => {
   return useQuery({
