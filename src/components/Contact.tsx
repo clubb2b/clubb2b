@@ -1,11 +1,11 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Instagram } from "lucide-react";
+import { Instagram, CreditCard, Globe } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import PaymentButton from "./PaymentButton";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -159,6 +159,47 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Payment Options Info */}
+            <div className="bg-gradient-to-b from-blue-800 to-blue-900 p-8 rounded-lg border border-blue-700">
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                  <CreditCard className="w-6 h-6 text-black" />
+                </div>
+                <div>
+                  <h4 className="text-white font-light">Payment Options</h4>
+                  <p className="text-blue-200">Secure International Payments</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3 text-sm text-blue-200 mb-6">
+                <div className="flex items-center space-x-2">
+                  <span>💳</span>
+                  <span>PayPal, Apple Pay, Google Pay</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span>🏦</span>
+                  <span>Wire Transfer, Western Union</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span>₿</span>
+                  <span>Cryptocurrency (BTC, ETH, USDC)</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Globe className="w-4 h-4" />
+                  <span>135+ currencies supported</span>
+                </div>
+              </div>
+
+              <PaymentButton
+                amount={1000}
+                currency="USD"
+                itemDescription="Service Deposit / Vehicle Payment"
+                className="w-full bg-white text-black hover:bg-gray-200"
+              >
+                MAKE A PAYMENT
+              </PaymentButton>
             </div>
           </div>
         </div>

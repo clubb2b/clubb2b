@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calculator, Ship, Plane, Truck, X } from 'lucide-react';
+import PaymentButton from './PaymentButton';
 
 interface PriceCalculatorProps {
   isOpen: boolean;
@@ -258,9 +258,10 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ isOpen, onClose }) =>
                     <p>* This is an estimate. Final costs may vary based on specific requirements, regulations, and current market conditions.</p>
                   </div>
 
-                  <Button 
-                    onClick={() => {
-                      const message = `I would like a detailed quote for vehicle export. Here are my requirements:
+                  <div className="space-y-3">
+                    <Button 
+                      onClick={() => {
+                        const message = `I would like a detailed quote for vehicle export. Here are my requirements:
 
 Vehicle Type: ${formData.vehicleType}
 Vehicle Value: $${formData.vehicleValue}
@@ -273,13 +274,23 @@ Expedited: ${formData.expedited ? 'Yes' : 'No'}
 Estimated Total: $${estimate.total.toLocaleString()}
 
 Please provide a detailed quote with exact pricing and timeline.`;
-                      const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-                      window.open(whatsappUrl, '_blank');
-                    }}
-                    className="w-full bg-green-600 text-white hover:bg-green-700"
-                  >
-                    Get Detailed Quote via WhatsApp
-                  </Button>
+                        const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+                        window.open(whatsappUrl, '_blank');
+                      }}
+                      className="w-full bg-green-600 text-white hover:bg-green-700"
+                    >
+                      Get Detailed Quote via WhatsApp
+                    </Button>
+
+                    <PaymentButton
+                      amount={estimate.total}
+                      currency="USD"
+                      itemDescription={`Vehicle Export: ${formData.vehicleType} to ${formData.toCountry}`}
+                      className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                    >
+                      Secure This Quote with Payment
+                    </PaymentButton>
+                  </div>
                 </div>
               ) : (
                 <div className="text-center text-gray-500 py-8">

@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import PaymentButton from "./PaymentButton";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -83,6 +84,15 @@ const Hero = () => {
           >
             IMPORT EXPORT SERVICES
           </Button>
+
+          <PaymentButton
+            amount={5000}
+            currency="USD"
+            itemDescription="Vehicle Deposit / Service Payment"
+            className="bg-green-600 text-white hover:bg-green-700 px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 shadow-lg"
+          >
+            MAKE PAYMENT
+          </PaymentButton>
         </div>
 
         {/* Modern scroll indicator */}
