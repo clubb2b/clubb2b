@@ -78,7 +78,7 @@ const Hero = () => {
             onClick={handleBookVIP}
             className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 backdrop-blur-sm"
           >
-            BOOK VIP RENTAL
+            BOOK RENTAL
           </Button>
           
           <Button 
@@ -88,14 +88,12 @@ const Hero = () => {
             IMPORT EXPORT SERVICES
           </Button>
 
-          <PaymentButton
-            amount={5000}
-            currency="USD"
-            itemDescription="Vehicle Deposit / Service Payment"
-            className="bg-green-600 text-white hover:bg-green-700 px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 shadow-lg"
+          <Button 
+            onClick={() => window.location.href = '/vip-membership'}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            MAKE PAYMENT
-          </PaymentButton>
+            VIP MEMBERSHIP
+          </Button>
         </div>
 
         {/* Modern scroll indicator */}

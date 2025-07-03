@@ -8,6 +8,11 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import CarsForSale from "./pages/CarsForSale";
+import VIPMembership from "./pages/VIPMembership";
+import VideoInspection from "./pages/VideoInspection";
+import ImportExportServicesPage from "./pages/ImportExportServices";
+import TechFeatures from "./pages/TechFeatures";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -22,6 +27,12 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/cars-for-sale" element={<CarsForSale />} />
+            <Route path="/vip-membership" element={<VIPMembership />} />
+            <Route path="/video-inspection" element={<VideoInspection />} />
+            <Route path="/import-export" element={<ImportExportServicesPage />} />
+            <Route path="/tech-features" element={<TechFeatures />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route 
               path="/admin" 
               element={
@@ -30,7 +41,6 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-            <Route path="/cars-for-sale" element={<CarsForSale />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
