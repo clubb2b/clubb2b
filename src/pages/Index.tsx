@@ -19,6 +19,11 @@ import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
 import AuthButton from "@/components/AuthButton";
 import PriceCalculator from "@/components/PriceCalculator";
 import VIPServices from "@/components/VIPServices";
+import VIPMembershipPlans from "@/components/VIPMembershipPlans";
+import AnalyticsDashboard from "@/components/AnalyticsDashboard";
+import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
+import LiveVideoInspection from "@/components/LiveVideoInspection";
+import CarbonOffsetCalculator from "@/components/CarbonOffsetCalculator";
 
 const Index = () => {
   return (

@@ -9,6 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string | null
+          event_category: string
+          event_data: Json | null
+          event_type: string
+          id: string
+          ip_address: unknown | null
+          page_url: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          event_category: string
+          event_data?: Json | null
+          event_type: string
+          id?: string
+          ip_address?: unknown | null
+          page_url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          event_category?: string
+          event_data?: Json | null
+          event_type?: string
+          id?: string
+          ip_address?: unknown | null
+          page_url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       club_b2b_performance: {
         Row: {
           created_at: string
@@ -210,6 +246,75 @@ export type Database = {
           },
         ]
       }
+      enhanced_payments: {
+        Row: {
+          amount: number
+          created_at: string | null
+          crypto_address: string | null
+          crypto_currency: string | null
+          currency: string
+          id: string
+          membership_id: string | null
+          metadata: Json | null
+          order_id: string | null
+          payment_method: string
+          status: string | null
+          stripe_payment_intent_id: string | null
+          transaction_hash: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          crypto_address?: string | null
+          crypto_currency?: string | null
+          currency?: string
+          id?: string
+          membership_id?: string | null
+          metadata?: Json | null
+          order_id?: string | null
+          payment_method: string
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          transaction_hash?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          crypto_address?: string | null
+          crypto_currency?: string | null
+          currency?: string
+          id?: string
+          membership_id?: string | null
+          metadata?: Json | null
+          order_id?: string | null
+          payment_method?: string
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          transaction_hash?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enhanced_payments_membership_id_fkey"
+            columns: ["membership_id"]
+            isOneToOne: false
+            referencedRelation: "vip_memberships"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "enhanced_payments_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           assigned_to: string | null
@@ -276,6 +381,33 @@ export type Database = {
           timeline?: string | null
           updated_at?: string
           vehicle_interest?: string | null
+        }
+        Relationships: []
+      }
+      membership_benefits: {
+        Row: {
+          benefit_description: string | null
+          benefit_name: string
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          tier: Database["public"]["Enums"]["membership_tier"]
+        }
+        Insert: {
+          benefit_description?: string | null
+          benefit_name: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          tier: Database["public"]["Enums"]["membership_tier"]
+        }
+        Update: {
+          benefit_description?: string | null
+          benefit_name?: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          tier?: Database["public"]["Enums"]["membership_tier"]
         }
         Relationships: []
       }
@@ -493,6 +625,39 @@ export type Database = {
           },
         ]
       }
+      transaction_fees: {
+        Row: {
+          created_at: string | null
+          currency: string | null
+          fee_percentage: number
+          id: string
+          max_fee: number | null
+          membership_tier: Database["public"]["Enums"]["membership_tier"]
+          min_fee: number | null
+          service_type: string
+        }
+        Insert: {
+          created_at?: string | null
+          currency?: string | null
+          fee_percentage: number
+          id?: string
+          max_fee?: number | null
+          membership_tier: Database["public"]["Enums"]["membership_tier"]
+          min_fee?: number | null
+          service_type: string
+        }
+        Update: {
+          created_at?: string | null
+          currency?: string | null
+          fee_percentage?: number
+          id?: string
+          max_fee?: number | null
+          membership_tier?: Database["public"]["Enums"]["membership_tier"]
+          min_fee?: number | null
+          service_type?: string
+        }
+        Relationships: []
+      }
       vehicle_images: {
         Row: {
           caption: string | null
@@ -618,6 +783,48 @@ export type Database = {
         }
         Relationships: []
       }
+      vip_memberships: {
+        Row: {
+          auto_renew: boolean | null
+          created_at: string | null
+          end_date: string | null
+          id: string
+          monthly_price: number
+          payment_frequency: Database["public"]["Enums"]["payment_frequency"]
+          start_date: string
+          status: Database["public"]["Enums"]["subscription_status"]
+          tier: Database["public"]["Enums"]["membership_tier"]
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          auto_renew?: boolean | null
+          created_at?: string | null
+          end_date?: string | null
+          id?: string
+          monthly_price: number
+          payment_frequency?: Database["public"]["Enums"]["payment_frequency"]
+          start_date?: string
+          status?: Database["public"]["Enums"]["subscription_status"]
+          tier?: Database["public"]["Enums"]["membership_tier"]
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          auto_renew?: boolean | null
+          created_at?: string | null
+          end_date?: string | null
+          id?: string
+          monthly_price?: number
+          payment_frequency?: Database["public"]["Enums"]["payment_frequency"]
+          start_date?: string
+          status?: Database["public"]["Enums"]["subscription_status"]
+          tier?: Database["public"]["Enums"]["membership_tier"]
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -633,7 +840,9 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      membership_tier: "basic" | "premium" | "vip" | "ultra_vip" | "platinum"
+      payment_frequency: "monthly" | "quarterly" | "yearly"
+      subscription_status: "active" | "cancelled" | "expired" | "pending"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -748,6 +957,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      membership_tier: ["basic", "premium", "vip", "ultra_vip", "platinum"],
+      payment_frequency: ["monthly", "quarterly", "yearly"],
+      subscription_status: ["active", "cancelled", "expired", "pending"],
+    },
   },
 } as const
