@@ -2,7 +2,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.1d3558bb04fa47c1bea047a6c24584d6',
+  appId: 'com.clubb2b.app',
   appName: 'clubb2b',
   webDir: 'dist',
   server: {
