@@ -8,6 +8,8 @@ import AirFreightServices from "@/components/AirFreightServices";
 import VIPServices from "@/components/VIPServices";
 import LuxuryShowroom from "@/components/LuxuryShowroom";
 import About from "@/components/About";
+import Testimonials from "@/components/Testimonials";
+import PremiumServices from "@/components/PremiumServices";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -31,6 +33,8 @@ const Index = () => {
       <LuxuryShowroom />
       <Services />
       <About />
+      <Testimonials />
+      <PremiumServices />
       <Contact />
       <Footer />
     </div>
