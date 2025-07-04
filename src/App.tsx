@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import CarsForSale from "./pages/CarsForSale";
+import CarsCollection from "./pages/CarsCollection";
+import ShippingProcess from "./pages/ShippingProcess";
 import VIPMembership from "./pages/VIPMembership";
 import VideoInspection from "./pages/VideoInspection";
 import ImportExportServicesPage from "./pages/ImportExportServices";
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/cars-for-sale" element={<CarsForSale />} />
+            <Route path="/cars-collection" element={<CarsCollection />} />
+            <Route path="/shipping-process" element={<ShippingProcess />} />
             <Route path="/vip-membership" element={<VIPMembership />} />
             <Route path="/video-inspection" element={<VideoInspection />} />
             <Route path="/import-export" element={<ImportExportServicesPage />} />

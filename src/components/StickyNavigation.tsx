@@ -23,12 +23,22 @@ const StickyNavigation = () => {
     }
   };
 
+  const handleNavClick = (item: any) => {
+    if (item.action) {
+      item.action();
+    } else {
+      scrollToSection(item.id);
+    }
+  };
+
   const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'inventory', label: 'Inventory' },
-    { id: 'services', label: 'Services' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'hero', label: 'Home', action: () => scrollToSection('hero') },
+    { id: 'inventory', label: 'Cars', action: () => window.location.href = '/cars-collection' },
+    { id: 'import-export', label: 'Import/Export', action: () => window.location.href = '/import-export' },
+    { id: 'shipping', label: 'Shipping', action: () => window.location.href = '/shipping-process' },
+    { id: 'services', label: 'Services', action: () => scrollToSection('services') },
+    { id: 'about', label: 'About', action: () => scrollToSection('about') },
+    { id: 'contact', label: 'Contact', action: () => scrollToSection('contact') }
   ];
 
   if (!isVisible) return null;
@@ -44,7 +54,7 @@ const StickyNavigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item)}
                 className="text-gray-300 hover:text-white transition-colors font-light tracking-wide"
               >
                 {item.label}
@@ -68,7 +78,7 @@ const StickyNavigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleNavClick(item)}
                   className="text-gray-300 hover:text-white transition-colors font-light tracking-wide text-left"
                 >
                   {item.label}

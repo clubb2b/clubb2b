@@ -11,14 +11,11 @@ const Hero = () => {
   };
 
   const handleImportExport = () => {
-    const element = document.getElementById('import-export');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.location.href = '/import-export';
   };
 
   const handleViewCars = () => {
-    scrollToSection('inventory');
+    window.location.href = '/cars-collection';
   };
 
   const handleBookVIP = () => {
