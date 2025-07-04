@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Ship, Plane } from "lucide-react";
 
@@ -25,13 +24,13 @@ const CombinedFreightServices = () => {
 
   const handleMaritimeInquiry = () => {
     const message = "I'm interested in your Maritime Freight services. Please provide more information.";
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/14389257679?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleAirInquiry = () => {
     const message = "I'm interested in your Air Freight services. Please provide more information.";
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/14389257679?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

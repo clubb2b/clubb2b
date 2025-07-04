@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import CombinedFreightServices from "@/components/CombinedFreightServices";
 
 const ShippingProcess = () => {
   const [selectedMethod, setSelectedMethod] = useState('maritime');
@@ -137,48 +138,8 @@ const ShippingProcess = () => {
         </div>
       </section>
 
-      {/* Shipping Methods Overview */}
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-light mb-4 tracking-wider">SHIPPING METHODS</h2>
-            <p className="text-gray-300">Choose the best shipping solution for your needs</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {shippingMethods.map((method) => (
-              <Card 
-                key={method.id}
-                className={`bg-gradient-to-b from-gray-800 to-black border cursor-pointer transition-all duration-300 hover:shadow-2xl ${
-                  selectedMethod === method.id ? 'border-white' : 'border-gray-700 hover:border-gray-500'
-                }`}
-                onClick={() => setSelectedMethod(method.id)}
-              >
-                <CardHeader className="text-center">
-                  <method.icon className="w-12 h-12 mx-auto mb-4 text-white" />
-                  <CardTitle className="text-xl font-light tracking-wider">{method.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="mb-4">
-                    <Badge className="bg-white text-black mb-2">{method.duration}</Badge>
-                    <p className="text-gray-300 text-sm">{method.cost}</p>
-                  </div>
-                  <p className="text-gray-400 mb-4">{method.description}</p>
-                  <Button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleGetQuote(method.name);
-                    }}
-                    className="w-full bg-transparent border border-white text-white hover:bg-white hover:text-black"
-                  >
-                    Get Quote
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Combined Freight Services */}
+      <CombinedFreightServices />
 
       {/* Detailed Process */}
       {selectedMethodData && (

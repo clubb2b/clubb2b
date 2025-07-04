@@ -49,7 +49,7 @@ const CarsCollection = () => {
       location: 'Toronto, Canada',
       condition: 'Excellent',
       features: ['xDrive AWD', 'M Sport Package', 'Panoramic Sky Lounge', 'Harman Kardon Audio', 'Adaptive LED Headlights', 'Gesture Control', 'Wireless Charging', '4-Zone Climate Control'],
-      images: ['/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png'],
+      images: ['/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png'],
       description: 'Luxury 7-seater SUV with 3.0L turbocharged inline-6 engine producing 375hp. Features BMW Live Cockpit Professional with 12.3" display.',
       status: 'available'
     },
@@ -68,7 +68,7 @@ const CarsCollection = () => {
       location: 'Vancouver, Canada',
       condition: 'Like New',
       features: ['AIRMATIC Suspension', 'Energizing Massage', 'Burmester 3D Audio', 'Head-Up Display', 'Ambient Lighting 64 Colors', 'Executive Rear Seating', 'Magic Body Control', 'Night Vision Assist'],
-      images: ['/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png'],
+      images: ['/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png'],
       description: 'Flagship luxury sedan with 4.0L V8 biturbo engine delivering 496hp. Ultimate in comfort and technology with MBUX Hyperscreen.',
       status: 'available'
     },
