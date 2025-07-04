@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import globalShippingImage from "@/assets/global-shipping-process.jpg";
 import { 
   Ship, 
   Plane, 
@@ -100,7 +101,7 @@ const ShippingProcess = () => {
 
   const handleGetQuote = (method: string) => {
     const message = `I'm interested in ${method} shipping services. Please provide a detailed quote.`;
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/14389257679?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -115,9 +116,17 @@ const ShippingProcess = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
+      {/* Hero Section with Shipping Process Image */}
       <section className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src={globalShippingImage} 
+            alt="Global Shipping Process"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-wider">
             GLOBAL SHIPPING PROCESS
           </h1>
@@ -337,7 +346,12 @@ const ShippingProcess = () => {
               Get Custom Quote
             </Button>
             <Button 
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => {
+                const subject = "Expert Shipping Consultation Request";
+                const body = "Hello,\n\nI would like to schedule a consultation with a shipping expert to discuss my vehicle transportation needs.\n\nPlease contact me to arrange a meeting.\n\nThank you!";
+                const mailtoUrl = `mailto:info@clubb2bperformance.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoUrl;
+              }}
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg"
             >

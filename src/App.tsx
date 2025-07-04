@@ -18,6 +18,10 @@ import Dashboard from "./pages/Dashboard";
 import MobileFeatures from "./pages/MobileFeatures";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PremiumSalesService from "./pages/PremiumSalesService";
+import GlobalExportService from "./pages/GlobalExportService";
+import QualityAssuranceService from "./pages/QualityAssuranceService";
+import VIPService from "./pages/VIPService";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +43,10 @@ const App = () => (
             <Route path="/tech-features" element={<TechFeatures />} />
             <Route path="/mobile-features" element={<MobileFeatures />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/premium-sales" element={<PremiumSalesService />} />
+            <Route path="/global-export" element={<GlobalExportService />} />
+            <Route path="/quality-assurance" element={<QualityAssuranceService />} />
+            <Route path="/vip-service" element={<VIPService />} />
             <Route 
               path="/admin" 
               element={

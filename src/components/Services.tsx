@@ -8,43 +8,25 @@ const Services = () => {
       icon: <Car className="w-8 h-8" />,
       title: "Premium Sales",
       description: "Curated luxury vehicles",
-      action: () => {
-        const element = document.getElementById('inventory');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+      action: () => window.location.href = '/premium-sales'
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Export",
       description: "Worldwide shipping solutions",
-      action: () => {
-        const element = document.getElementById('import-export');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+      action: () => window.location.href = '/global-export'
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Quality Assured",
       description: "Comprehensive inspections",
-      action: () => {
-        const message = "I'm interested in your Quality Assurance and vehicle inspection services. Please provide more information.";
-        const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-      }
+      action: () => window.location.href = '/quality-assurance'
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "VIP Service",
       description: "Personalized experience",
-      action: () => {
-        const message = "I'm interested in your VIP services. Please provide more information about your premium offerings.";
-        const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-      }
+      action: () => window.location.href = '/vip-service'
     }
   ];
 

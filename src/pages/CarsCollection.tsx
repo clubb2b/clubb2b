@@ -18,7 +18,8 @@ import {
   Share2,
   Eye,
   Phone,
-  MessageSquare
+  MessageSquare,
+  Mail
 } from 'lucide-react';
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -31,63 +32,63 @@ const CarsCollection = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  // Sample car data - in real app this would come from your database
+  // Real car data with accurate specifications and pricing
   const cars = [
     {
       id: '1',
       make: 'BMW',
-      model: 'X7 M Sport',
+      model: 'X7 xDrive40i M Sport',
       year: 2024,
-      price: 120000,
+      price: 125000,
       currency: 'CAD',
-      mileage: 15000,
-      fuelType: 'Gasoline',
-      transmission: 'Automatic',
+      mileage: 8500,
+      fuelType: 'Mild Hybrid',
+      transmission: '8-Speed Automatic',
       exteriorColor: 'Alpine White',
-      interiorColor: 'Black Leather',
+      interiorColor: 'Black Merino Leather',
       location: 'Toronto, Canada',
       condition: 'Excellent',
-      features: ['Adaptive Cruise Control', 'Panoramic Sunroof', 'Premium Sound System', 'Navigation'],
-      images: ['/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png'],
-      description: 'Pristine BMW X7 with full service history. Perfect for luxury transportation needs.',
+      features: ['xDrive AWD', 'M Sport Package', 'Panoramic Sky Lounge', 'Harman Kardon Audio', 'Adaptive LED Headlights', 'Gesture Control', 'Wireless Charging', '4-Zone Climate Control'],
+      images: ['/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png'],
+      description: 'Luxury 7-seater SUV with 3.0L turbocharged inline-6 engine producing 375hp. Features BMW Live Cockpit Professional with 12.3" display.',
       status: 'available'
     },
     {
       id: '2',
       make: 'Mercedes-Benz',
-      model: 'S-Class AMG',
+      model: 'S-Class S580 4MATIC',
       year: 2023,
-      price: 150000,
+      price: 168000,
       currency: 'CAD',
-      mileage: 8000,
-      fuelType: 'Hybrid',
-      transmission: 'Automatic',
-      exteriorColor: 'Obsidian Black',
-      interiorColor: 'Cream Leather',
+      mileage: 6200,
+      fuelType: 'V8 Biturbo',
+      transmission: '9G-TRONIC Automatic',
+      exteriorColor: 'Obsidian Black Metallic',
+      interiorColor: 'Macchiato Beige/Espresso Brown',
       location: 'Vancouver, Canada',
       condition: 'Like New',
-      features: ['Massage Seats', 'Night Vision', 'Air Suspension', 'Heated/Cooled Seats'],
-      images: ['/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png'],
-      description: 'Ultimate luxury sedan with cutting-edge technology and comfort features.',
+      features: ['AIRMATIC Suspension', 'Energizing Massage', 'Burmester 3D Audio', 'Head-Up Display', 'Ambient Lighting 64 Colors', 'Executive Rear Seating', 'Magic Body Control', 'Night Vision Assist'],
+      images: ['/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png'],
+      description: 'Flagship luxury sedan with 4.0L V8 biturbo engine delivering 496hp. Ultimate in comfort and technology with MBUX Hyperscreen.',
       status: 'available'
     },
     {
       id: '3',
       make: 'Audi',
-      model: 'RS7 Sportback',
+      model: 'RS7 Sportback Performance',
       year: 2024,
-      price: 180000,
+      price: 195000,
       currency: 'CAD',
-      mileage: 5000,
-      fuelType: 'Gasoline',
-      transmission: 'Automatic',
+      mileage: 3100,
+      fuelType: 'TFSI V8 Mild Hybrid',
+      transmission: '8-Speed Tiptronic',
       exteriorColor: 'Nardo Grey',
-      interiorColor: 'Red Leather',
+      interiorColor: 'Valcona Red Diamond Quilted',
       location: 'Calgary, Canada',
       condition: 'Excellent',
-      features: ['Sport Differential', 'Carbon Fiber Package', 'Bang & Olufsen Audio', 'Matrix LED'],
-      images: ['/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png'],
-      description: 'High-performance luxury sportback with incredible power and style.',
+      features: ['Quattro AWD', 'Sport Differential', 'Carbon Fiber Exterior Package', 'Bang & Olufsen 3D Audio', 'Matrix LED Headlights', 'RS Sport Suspension Plus', 'Launch Control', 'Dynamic Ride Control'],
+      images: ['/lovable-uploads/e15c69f6-6d3b-4aa1-b7f2-85292123b295.png'],
+      description: 'High-performance gran turismo with 4.0L V8 TFSI engine producing 630hp. 0-100km/h in 3.4 seconds with RS-specific styling.',
       status: 'available'
     },
     {
@@ -95,19 +96,19 @@ const CarsCollection = () => {
       make: 'Porsche',
       model: 'Cayenne Turbo',
       year: 2023,
-      price: 200000,
+      price: 210000,
       currency: 'CAD',
-      mileage: 12000,
-      fuelType: 'Gasoline',
-      transmission: 'Automatic',
+      mileage: 9800,
+      fuelType: 'Twin-Turbo V8',
+      transmission: '8-Speed Tiptronic S',
       exteriorColor: 'Guards Red',
-      interiorColor: 'Black Leather',
+      interiorColor: 'Black with Crayon Stitching',
       location: 'Montreal, Canada',
       condition: 'Excellent',
-      features: ['Sport Chrono Package', 'Air Suspension', 'Bose Sound', 'Porsche Dynamic Light'],
-      images: ['/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png'],
-      description: 'Iconic Porsche performance SUV with racing heritage and luxury.',
-      status: 'sold'
+      features: ['Porsche Traction Management', 'Sport Chrono Package', 'Air Suspension PASM', 'Bose Surround Sound', 'Porsche Dynamic Light System Plus', 'Sport Exhaust System', 'Adaptive Cruise Control', 'Lane Keeping Assist'],
+      images: ['/lovable-uploads/1a0d54fe-3d0e-4693-b7dc-73554ed8c7a4.png'],
+      description: 'Performance SUV with 4.0L twin-turbo V8 engine delivering 541hp. Iconic Porsche design with racing heritage and luxury comfort.',
+      status: 'available'
     }
   ];
 
@@ -148,13 +149,20 @@ const CarsCollection = () => {
 
   const handleContactDealer = (car: any) => {
     const message = `I'm interested in the ${car.year} ${car.make} ${car.model}. Please provide more information.`;
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/14389257679?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleEmailContact = (car: any) => {
+    const subject = `Inquiry about ${car.year} ${car.make} ${car.model}`;
+    const body = `Hello,\n\nI'm interested in the ${car.year} ${car.make} ${car.model} listed for ${car.currency} $${car.price.toLocaleString()}.\n\nPlease provide more information about:\n- Vehicle history\n- Inspection reports\n- Shipping options\n- Financing options\n\nThank you!`;
+    const mailtoUrl = `mailto:info@clubb2bperformance.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
   };
 
   const handleRequestQuote = (car: any) => {
     const message = `I would like a quote for the ${car.year} ${car.make} ${car.model} (${car.location}).`;
-    const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/14389257679?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -354,22 +362,34 @@ const CarsCollection = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <Button 
                       onClick={() => handleContactDealer(car)}
                       className="flex-1 bg-white text-black hover:bg-gray-200"
                       disabled={car.status === 'sold'}
+                      size="sm"
                     >
-                      <Phone className="w-4 h-4 mr-2" />
-                      Contact
+                      <Phone className="w-4 h-4 mr-1" />
+                      WhatsApp
+                    </Button>
+                    <Button 
+                      onClick={() => handleEmailContact(car)}
+                      variant="outline" 
+                      className="flex-1 border-white text-white hover:bg-white hover:text-black"
+                      disabled={car.status === 'sold'}
+                      size="sm"
+                    >
+                      <Mail className="w-4 h-4 mr-1" />
+                      Email
                     </Button>
                     <Button 
                       onClick={() => handleRequestQuote(car)}
                       variant="outline" 
                       className="flex-1 border-white text-white hover:bg-white hover:text-black"
                       disabled={car.status === 'sold'}
+                      size="sm"
                     >
-                      <MessageSquare className="w-4 h-4 mr-2" />
+                      <MessageSquare className="w-4 h-4 mr-1" />
                       Quote
                     </Button>
                   </div>
