@@ -36,78 +36,182 @@ const CarsCollection = () => {
   const cars = [
     {
       id: '1',
-      make: 'BMW',
-      model: 'X7 xDrive40i M Sport',
-      year: 2024,
-      price: 125000,
+      make: 'Land Rover',
+      model: 'Range Rover Sport P530 HSE',
+      year: 2025,
+      price: 145000,
       currency: 'CAD',
-      mileage: 8500,
-      fuelType: 'Mild Hybrid',
+      mileage: 0,
+      fuelType: '4.4L V8 Twin-Turbo',
       transmission: '8-Speed Automatic',
-      exteriorColor: 'Alpine White',
-      interiorColor: 'Black Merino Leather',
+      exteriorColor: 'Santorini Black',
+      interiorColor: 'Ebony/Pimento',
       location: 'Toronto, Canada',
-      condition: 'Excellent',
-      features: ['xDrive AWD', 'M Sport Package', 'Panoramic Sky Lounge', 'Harman Kardon Audio', 'Adaptive LED Headlights', 'Gesture Control', 'Wireless Charging', '4-Zone Climate Control'],
-      images: ['/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png'],
-      description: 'Luxury 7-seater SUV with 3.0L turbocharged inline-6 engine producing 375hp. Features BMW Live Cockpit Professional with 12.3" display.',
+      condition: 'New',
+      features: ['Terrain Response 2', 'Air Suspension', 'Meridian Signature Sound', 'Pivi Pro Infotainment', 'Adaptive LED Headlights', 'Configurable Ambient Lighting', 'Heated/Cooled Seats', 'Panoramic Roof'],
+      description: 'New 2025 Range Rover Sport with 4.4L V8 producing 530hp. Ultimate luxury SUV with advanced off-road capabilities.',
       status: 'available'
     },
     {
       id: '2',
-      make: 'Mercedes-Benz',
-      model: 'S-Class S580 4MATIC',
-      year: 2023,
-      price: 168000,
+      make: 'Cadillac',
+      model: 'Escalade Premium Luxury',
+      year: 2024,
+      price: 125000,
       currency: 'CAD',
-      mileage: 6200,
-      fuelType: 'V8 Biturbo',
-      transmission: '9G-TRONIC Automatic',
-      exteriorColor: 'Obsidian Black Metallic',
-      interiorColor: 'Macchiato Beige/Espresso Brown',
+      mileage: 5000,
+      fuelType: '6.2L V8',
+      transmission: '10-Speed Automatic',
+      exteriorColor: 'Shadow Metallic',
+      interiorColor: 'Whisper Beige',
       location: 'Vancouver, Canada',
-      condition: 'Like New',
-      features: ['AIRMATIC Suspension', 'Energizing Massage', 'Burmester 3D Audio', 'Head-Up Display', 'Ambient Lighting 64 Colors', 'Executive Rear Seating', 'Magic Body Control', 'Night Vision Assist'],
-      images: ['/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png'],
-      description: 'Flagship luxury sedan with 4.0L V8 biturbo engine delivering 496hp. Ultimate in comfort and technology with MBUX Hyperscreen.',
+      condition: 'Excellent',
+      features: ['Magnetic Ride Control', 'Super Cruise', 'AKG Studio Audio', '38" Curved OLED Display', 'Night Vision', 'Head-Up Display', 'Wireless Charging', 'Hands-Free Liftgate'],
+      description: 'Full-size luxury SUV with 6.2L V8 engine producing 420hp. Features cutting-edge technology and premium materials.',
       status: 'available'
     },
     {
       id: '3',
-      make: 'Audi',
-      model: 'RS7 Sportback Performance',
+      make: 'BMW',
+      model: 'M8 Competition Coupe',
       year: 2024,
       price: 195000,
       currency: 'CAD',
-      mileage: 3100,
-      fuelType: 'TFSI V8 Mild Hybrid',
-      transmission: '8-Speed Tiptronic',
-      exteriorColor: 'Nardo Grey',
-      interiorColor: 'Valcona Red Diamond Quilted',
+      mileage: 2500,
+      fuelType: '4.4L V8 Twin-Turbo',
+      transmission: '8-Speed M Steptronic',
+      exteriorColor: 'Frozen Dark Grey',
+      interiorColor: 'Silverstone/Black',
       location: 'Calgary, Canada',
-      condition: 'Excellent',
-      features: ['Quattro AWD', 'Sport Differential', 'Carbon Fiber Exterior Package', 'Bang & Olufsen 3D Audio', 'Matrix LED Headlights', 'RS Sport Suspension Plus', 'Launch Control', 'Dynamic Ride Control'],
-      images: ['/lovable-uploads/e15c69f6-6d3b-4aa1-b7f2-85292123b295.png'],
-      description: 'High-performance gran turismo with 4.0L V8 TFSI engine producing 630hp. 0-100km/h in 3.4 seconds with RS-specific styling.',
+      condition: 'Like New',
+      features: ['M xDrive AWD', 'Carbon Fiber Roof', 'M Carbon Ceramic Brakes', 'Harman Kardon Audio', 'M Seats with Heating', 'Laser Headlights', 'M Competition Package', 'Track Mode'],
+      description: 'High-performance coupe with 4.4L twin-turbo V8 producing 617hp. 0-100km/h in 3.2 seconds with M-specific enhancements.',
       status: 'available'
     },
     {
       id: '4',
-      make: 'Porsche',
-      model: 'Cayenne Turbo',
-      year: 2023,
+      make: 'Mercedes-Benz',
+      model: 'AMG GT 63 S 4MATIC+',
+      year: 2024,
       price: 210000,
       currency: 'CAD',
-      mileage: 9800,
-      fuelType: 'Twin-Turbo V8',
-      transmission: '8-Speed Tiptronic S',
-      exteriorColor: 'Guards Red',
-      interiorColor: 'Black with Crayon Stitching',
+      mileage: 1800,
+      fuelType: '4.0L V8 Biturbo',
+      transmission: '9G-DCT AMG SPEEDSHIFT',
+      exteriorColor: 'AMG Solarbeam Yellow',
+      interiorColor: 'Black Nappa Leather',
       location: 'Montreal, Canada',
       condition: 'Excellent',
-      features: ['Porsche Traction Management', 'Sport Chrono Package', 'Air Suspension PASM', 'Bose Surround Sound', 'Porsche Dynamic Light System Plus', 'Sport Exhaust System', 'Adaptive Cruise Control', 'Lane Keeping Assist'],
-      images: ['/lovable-uploads/1a0d54fe-3d0e-4693-b7dc-73554ed8c7a4.png'],
-      description: 'Performance SUV with 4.0L twin-turbo V8 engine delivering 541hp. Iconic Porsche design with racing heritage and luxury comfort.',
+      features: ['AMG Performance 4MATIC+', 'AMG Ride Control+', 'Burmester 3D Audio', 'AMG Track Pace', 'Dynamic Select', 'Carbon Fiber Trim', 'Performance Exhaust', 'Race Mode'],
+      description: 'Ultimate performance 4-door coupe with 4.0L V8 biturbo producing 630hp. Racing DNA with everyday usability.',
+      status: 'available'
+    },
+    {
+      id: '5',
+      make: 'Audi',
+      model: 'Q8 55 TFSI Prestige',
+      year: 2024,
+      price: 98000,
+      currency: 'CAD',
+      mileage: 8500,
+      fuelType: '3.0L TFSI V6',
+      transmission: '8-Speed Tiptronic',
+      exteriorColor: 'Glacier White',
+      interiorColor: 'Black Valcona Leather',
+      location: 'Ottawa, Canada',
+      condition: 'Very Good',
+      features: ['Quattro AWD', 'Adaptive Air Suspension', 'Bang & Olufsen 3D Audio', 'Virtual Cockpit Plus', 'Matrix LED Headlights', 'Massage Seats', 'Panoramic Sunroof', 'Driver Assistance Package'],
+      description: 'Luxury SUV coupe with 3.0L TFSI V6 producing 335hp. Combines sportiness with sophisticated luxury.',
+      status: 'available'
+    },
+    {
+      id: '6',
+      make: 'Porsche',
+      model: 'Macan GTS',
+      year: 2024,
+      price: 115000,
+      currency: 'CAD',
+      mileage: 6200,
+      fuelType: '2.9L V6 Twin-Turbo',
+      transmission: '7-Speed PDK',
+      exteriorColor: 'Carmine Red',
+      interiorColor: 'Black Leather with Alcantara',
+      location: 'Toronto, Canada',
+      condition: 'Excellent',
+      features: ['Porsche Traction Management', 'PASM Suspension', 'Sport Chrono Package', 'Bose Audio', 'LED Matrix Headlights', 'Sport Exhaust', 'Heated Seats', 'Apple CarPlay'],
+      description: 'Compact luxury SUV with 2.9L twin-turbo V6 producing 380hp. Perfect blend of performance and practicality.',
+      status: 'available'
+    },
+    {
+      id: '7',
+      make: 'Lexus',
+      model: 'LX 600 Ultra Luxury',
+      year: 2024,
+      price: 140000,
+      currency: 'CAD',
+      mileage: 4200,
+      fuelType: '3.5L V6 Twin-Turbo',
+      transmission: '10-Speed Automatic',
+      exteriorColor: 'Obsidian',
+      interiorColor: 'Parchment Semi-Aniline',
+      location: 'Vancouver, Canada',
+      condition: 'Like New',
+      features: ['Multi-Terrain Select', 'Adaptive Variable Suspension', 'Mark Levinson Audio', 'Climate Concierge', 'Rear Entertainment', 'Power Running Boards', 'Triple LED Headlights', 'Wireless Charging'],
+      description: 'Full-size luxury SUV with 3.5L twin-turbo V6 producing 409hp. Ultimate in luxury and off-road capability.',
+      status: 'available'
+    },
+    {
+      id: '8',
+      make: 'Genesis',
+      model: 'GV80 3.5T Prestige',
+      year: 2024,
+      price: 85000,
+      currency: 'CAD',
+      mileage: 12000,
+      fuelType: '3.5L V6 Twin-Turbo',
+      transmission: '8-Speed Automatic',
+      exteriorColor: 'Mallorca Blue',
+      interiorColor: 'Nappa Leather Bourbon',
+      location: 'Calgary, Canada',
+      condition: 'Very Good',
+      features: ['Genesis Adaptive Control Suspension', 'Lexicon Premium Audio', 'Genesis Connected Services', 'Remote Smart Parking Assist', 'Highway Driving Assist', 'Smart Cruise Control', 'Heated Steering Wheel', 'Ventilated Seats'],
+      description: 'Luxury SUV with 3.5L twin-turbo V6 producing 375hp. Korean luxury with exceptional value and features.',
+      status: 'available'
+    },
+    {
+      id: '9',
+      make: 'Chevrolet',
+      model: 'Corvette Stingray 3LT',
+      year: 2024,
+      price: 95000,
+      currency: 'CAD',
+      mileage: 3500,
+      fuelType: '6.2L V8',
+      transmission: '8-Speed Dual-Clutch',
+      exteriorColor: 'Torch Red',
+      interiorColor: 'Jet Black GT2 Seats',
+      location: 'Montreal, Canada',
+      condition: 'Excellent',
+      features: ['Magnetic Ride Control', 'Performance Exhaust', 'Bose Premium Audio', 'Performance Data Recorder', 'Head-Up Display', 'Wireless Charging', 'Carbon Flash Mirrors', 'Z51 Performance Package'],
+      description: 'Mid-engine sports car with 6.2L V8 producing 495hp. American supercar performance at an accessible price.',
+      status: 'available'
+    },
+    {
+      id: '10',
+      make: 'Toyota',
+      model: 'Camry XSE V6',
+      year: 2024,
+      price: 42000,
+      currency: 'CAD',
+      mileage: 15000,
+      fuelType: '3.5L V6',
+      transmission: '8-Speed Automatic',
+      exteriorColor: 'Wind Chill Pearl',
+      interiorColor: 'Black SofTex',
+      location: 'Toronto, Canada',
+      condition: 'Good',
+      features: ['Sport-Tuned Suspension', 'JBL Premium Audio', 'Toyota Safety Sense 2.0', 'Wireless Apple CarPlay', 'Qi Wireless Charging', 'Dual-Zone Climate Control', 'LED Headlights', 'Smart Key System'],
+      description: 'Reliable midsize sedan with 3.5L V6 producing 301hp. Perfect balance of performance, comfort, and value.',
       status: 'available'
     }
   ];
@@ -274,43 +378,43 @@ const CarsCollection = () => {
           <div className={`grid gap-8 ${viewMode === 'grid' ? 'md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
             {filteredCars.map((car) => (
               <Card key={car.id} className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 overflow-hidden hover:shadow-2xl transition-all duration-500 group">
-                <div className="relative">
-                  <img 
-                    src={car.images[0]}
-                    alt={`${car.year} ${car.make} ${car.model}`}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  
-                  {car.status === 'sold' && (
-                    <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center">
-                      <span className="text-white text-2xl font-bold tracking-wider">SOLD</span>
-                    </div>
-                  )}
-                  
-                  <div className="absolute top-4 right-4 flex gap-2">
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      onClick={() => toggleFavorite(car.id)}
-                      className="bg-black/70 hover:bg-black/90"
-                    >
-                      <Heart className={`w-4 h-4 ${favorites.includes(car.id) ? 'fill-red-500 text-red-500' : ''}`} />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      onClick={() => handleShare(car)}
-                      className="bg-black/70 hover:bg-black/90"
-                    >
-                      <Share2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-
-                  <div className="absolute bottom-4 left-4">
+                <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 p-6 rounded-t-lg">
+                  <div className="flex items-center justify-between mb-4">
                     <Badge className="bg-white text-black">
                       {car.condition}
                     </Badge>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        onClick={() => toggleFavorite(car.id)}
+                        className="bg-black/70 hover:bg-black/90"
+                      >
+                        <Heart className={`w-4 h-4 ${favorites.includes(car.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        onClick={() => handleShare(car)}
+                        className="bg-black/70 hover:bg-black/90"
+                      >
+                        <Share2 className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
+                  
+                  <div className="text-center">
+                    <Car className="w-16 h-16 mx-auto mb-4 text-white" />
+                    <h3 className="text-2xl font-light text-white mb-2">
+                      {car.year} {car.make} {car.model}
+                    </h3>
+                  </div>
+                  
+                  {car.status === 'sold' && (
+                    <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center rounded-t-lg">
+                      <span className="text-white text-2xl font-bold tracking-wider">SOLD</span>
+                    </div>
+                  )}
                 </div>
 
                 <CardContent className="p-6">
