@@ -164,33 +164,8 @@ const Contact = () => {
             </form>
           </div>
 
-          {/* Contact Info */}
+          {/* Payment Options Info */}
           <div className="space-y-8">
-            <div className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-lg border border-gray-700">
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <Instagram className="w-6 h-6 text-black" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-light">Follow Us</h4>
-                    <p className="text-gray-300">@CLUB_B2B</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black">
-                    📱
-                  </div>
-                  <div>
-                    <h4 className="text-white font-light">WhatsApp</h4>
-                    <p className="text-gray-300">+1 518-507-7243</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Payment Options Info */}
             <div className="bg-gradient-to-b from-blue-800 to-blue-900 p-8 rounded-lg border border-blue-700">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
