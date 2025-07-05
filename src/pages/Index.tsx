@@ -18,6 +18,7 @@ import PriceCalculator from "@/components/PriceCalculator";
 import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
 import CarbonOffsetCalculator from "@/components/CarbonOffsetCalculator";
 import QuickAccessButtons from "@/components/QuickAccessButtons";
+import FinancingServices from "@/components/FinancingServices";
 
 const Index = () => {
   return (
@@ -39,6 +40,7 @@ const Index = () => {
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
       <CarbonOffsetCalculator />
       <LuxuryShowroom />
+      <FinancingServices />
       <Services />
       <PriceCalculator />
       <About />

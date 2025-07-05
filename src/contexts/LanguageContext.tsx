@@ -29,7 +29,16 @@ const translations = {
     'buttons.financing': 'Financing Options',
     'chat.welcome': 'Hello! How can I help you with our luxury automotive services today?',
     'financing.title': 'Financing Available',
-    'financing.desc': 'Flexible payment options with competitive rates starting from 4.5% APR'
+    'financing.desc': 'Flexible payment options with competitive rates starting from 4.5% APR',
+    'collection.title': 'LUXURY CAR COLLECTION',
+    'collection.subtitle': 'Premium vehicles from around the world',
+    'freight.title': 'GLOBAL FREIGHT SOLUTIONS',
+    'freight.subtitle': 'Comprehensive shipping solutions by sea and air',
+    'footer.follow': 'Follow Us',
+    'footer.whatsapp': 'WhatsApp',
+    'footer.email': 'Email',
+    'footer.phone': 'Phone',
+    'footer.domain': 'Website'
   },
   fr: {
     'hero.title': 'CLUB B2B PERFORMANCE',
@@ -52,7 +61,16 @@ const translations = {
     'buttons.financing': 'Options Financement',
     'chat.welcome': 'Bonjour! Comment puis-je vous aider avec nos services automobiles de luxe?',
     'financing.title': 'Financement Disponible',
-    'financing.desc': 'Options de paiement flexibles avec des taux compétitifs à partir de 4,5% TAP'
+    'financing.desc': 'Options de paiement flexibles avec des taux compétitifs à partir de 4,5% TAP',
+    'collection.title': 'COLLECTION DE VOITURES DE LUXE',
+    'collection.subtitle': 'Véhicules premium du monde entier',
+    'freight.title': 'SOLUTIONS DE FRET MONDIAL',
+    'freight.subtitle': 'Solutions d\'expédition complètes par mer et par air',
+    'footer.follow': 'Suivez-nous',
+    'footer.whatsapp': 'WhatsApp',
+    'footer.email': 'Courriel',
+    'footer.phone': 'Téléphone',
+    'footer.domain': 'Site Web'
   },
   es: {
     'hero.title': 'CLUB B2B PERFORMANCE',

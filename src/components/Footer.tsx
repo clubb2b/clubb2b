@@ -21,9 +21,24 @@ const Footer = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="text-center space-y-2 mb-8">
-          <p className="text-gray-400 text-sm">Professional Vehicle Export Services</p>
-          <p className="text-gray-400 text-sm">Global Delivery • Quality Assurance • Complete Documentation</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center mb-8">
+          <div>
+            <h4 className="text-white font-medium mb-3">Follow Us</h4>
+            <p className="text-gray-300">📸 @CLUB_B2B</p>
+          </div>
+          <div>
+            <h4 className="text-white font-medium mb-3">WhatsApp</h4>
+            <p className="text-gray-300">📱 +1 518-507-7243</p>
+          </div>
+          <div>
+            <h4 className="text-white font-medium mb-3">Contact</h4>
+            <p className="text-gray-300">📧 CLUB2B2@GMAIL.COM</p>
+            <p className="text-gray-300">📞 +1 438-925-7679</p>
+          </div>
+          <div>
+            <h4 className="text-white font-medium mb-3">Website</h4>
+            <p className="text-gray-300">🌐 CLUBB2B.ORG</p>
+          </div>
         </div>
 
         {/* Divider */}
