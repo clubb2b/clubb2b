@@ -300,33 +300,44 @@ const AIPhotoStudio = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Camera className="w-6 h-6" />
-            AI Photography Studio
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="remove-bg" className="flex items-center gap-2">
-                <Scissors className="w-4 h-4" />
-                Remove Background
-              </TabsTrigger>
-              <TabsTrigger value="enhance" className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                Enhance Photo
-              </TabsTrigger>
-              <TabsTrigger value="optimize" className="flex items-center gap-2">
-                <Wand2 className="w-4 h-4" />
-                Optimize
-              </TabsTrigger>
-            </TabsList>
+    <div className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <div className="max-w-6xl mx-auto p-6 space-y-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-white tracking-wider">
+            AI PHOTOGRAPHY STUDIO
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Professional vehicle photography enhancement for maximum sales impact
+          </p>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+        </div>
+        
+        <Card className="bg-gradient-to-b from-gray-800 to-gray-900 border-gray-700">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <Camera className="w-6 h-6" />
+              AI Photography Studio
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="bg-gray-800">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+              <TabsList className="grid w-full grid-cols-3 bg-gray-700">
+                <TabsTrigger value="remove-bg" className="flex items-center gap-2 text-white data-[state=active]:bg-white data-[state=active]:text-black">
+                  <Scissors className="w-4 h-4" />
+                  Remove Background
+                </TabsTrigger>
+                <TabsTrigger value="enhance" className="flex items-center gap-2 text-white data-[state=active]:bg-white data-[state=active]:text-black">
+                  <Sparkles className="w-4 h-4" />
+                  Enhance Photo
+                </TabsTrigger>
+                <TabsTrigger value="optimize" className="flex items-center gap-2 text-white data-[state=active]:bg-white data-[state=active]:text-black">
+                  <Wand2 className="w-4 h-4" />
+                  Optimize
+                </TabsTrigger>
+              </TabsList>
 
             {/* File Upload Section */}
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center bg-gray-800">
               <input
                 type="file"
                 accept="image/*"
@@ -340,11 +351,12 @@ const AIPhotoStudio = () => {
                   <img 
                     src={selectedImage} 
                     alt="Selected" 
-                    className="max-w-full max-h-64 mx-auto rounded-lg shadow-lg"
+                    className="max-w-full max-h-64 mx-auto rounded-lg shadow-lg border border-gray-600"
                   />
                   <Button
                     variant="outline"
                     onClick={() => fileInputRef.current?.click()}
+                    className="border-white text-white hover:bg-white hover:text-black"
                   >
                     <Upload className="w-4 h-4 mr-2" />
                     Change Image
@@ -354,12 +366,15 @@ const AIPhotoStudio = () => {
                 <div className="space-y-4">
                   <ImageIcon className="w-12 h-12 mx-auto text-gray-400" />
                   <div>
-                    <h3 className="text-lg font-semibold">Upload Vehicle Photo</h3>
-                    <p className="text-gray-600">
-                      Drag and drop or click to upload your vehicle image
+                    <h3 className="text-lg font-semibold text-white">Upload Vehicle Photo</h3>
+                    <p className="text-gray-400">
+                      Drag and drop or click to upload your vehicle image for professional enhancement
                     </p>
                   </div>
-                  <Button onClick={() => fileInputRef.current?.click()}>
+                  <Button 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="bg-white text-black hover:bg-gray-200"
+                  >
                     <Upload className="w-4 h-4 mr-2" />
                     Select Image
                   </Button>
@@ -457,23 +472,23 @@ const AIPhotoStudio = () => {
 
             {/* Result Section */}
             {processedImage && (
-              <div className="border rounded-lg p-4 bg-gray-50">
-                <h3 className="text-lg font-semibold mb-4">Processed Result</h3>
+              <div className="border rounded-lg p-4 bg-gray-700">
+                <h3 className="text-lg font-semibold mb-4 text-white">Processed Result</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="text-sm font-medium mb-2">Original</h4>
+                    <h4 className="text-sm font-medium mb-2 text-white">Original</h4>
                     <img 
                       src={selectedImage} 
                       alt="Original" 
-                      className="w-full rounded-lg shadow"
+                      className="w-full rounded-lg shadow border border-gray-600"
                     />
                   </div>
                   <div>
-                    <h4 className="text-sm font-medium mb-2">Processed</h4>
+                    <h4 className="text-sm font-medium mb-2 text-white">Processed</h4>
                     <img 
                       src={processedImage} 
                       alt="Processed" 
-                      className="w-full rounded-lg shadow"
+                      className="w-full rounded-lg shadow border border-gray-600"
                     />
                   </div>
                 </div>
@@ -483,6 +498,7 @@ const AIPhotoStudio = () => {
         </CardContent>
       </Card>
     </div>
+  </div>
   );
 };
 

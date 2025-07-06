@@ -19,6 +19,7 @@ import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
 import CarbonOffsetCalculator from "@/components/CarbonOffsetCalculator";
 import QuickAccessButtons from "@/components/QuickAccessButtons";
 import FinancingServices from "@/components/FinancingServices";
+import AIPhotoStudio from "@/components/AIPhotoStudio";
 
 const Index = () => {
   return (
@@ -35,6 +36,7 @@ const Index = () => {
       </div>
       <LuxuryInventory />
       <AdvancedFeatures />
+      <AIPhotoStudio />
       <QuickAccessButtons />
       <MobileAppPromo />
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />

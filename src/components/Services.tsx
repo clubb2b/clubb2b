@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Car, Globe, Shield, Users } from "lucide-react";
+import { Car, Globe, Shield, Users, Camera } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -27,6 +27,12 @@ const Services = () => {
       title: "VIP Service",
       description: "Personalized experience",
       action: () => window.location.href = '/vip-service'
+    },
+    {
+      icon: <Camera className="w-8 h-8" />,
+      title: "AI Photography",
+      description: "Professional photo optimization",
+      action: () => window.location.href = '/ai-photo-studio'
     }
   ];
 
@@ -40,7 +46,7 @@ const Services = () => {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {services.map((service, index) => (
             <div 
               key={index} 
