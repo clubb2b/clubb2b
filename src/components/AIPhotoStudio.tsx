@@ -18,10 +18,12 @@ import {
   Palette,
   Monitor,
   Smartphone,
-  Tablet
+  Tablet,
+  Car
 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { pipeline, env } from '@huggingface/transformers';
+import AIShowroom from './AIShowroom';
 
 // Configure transformers.js
 env.allowLocalModels = false;
@@ -321,7 +323,7 @@ const AIPhotoStudio = () => {
           </CardHeader>
           <CardContent className="bg-gray-800">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-              <TabsList className="grid w-full grid-cols-3 bg-gray-700">
+              <TabsList className="grid w-full grid-cols-4 bg-gray-700">
                 <TabsTrigger value="remove-bg" className="flex items-center gap-2 text-white data-[state=active]:bg-white data-[state=active]:text-black">
                   <Scissors className="w-4 h-4" />
                   Remove Background
@@ -334,10 +336,15 @@ const AIPhotoStudio = () => {
                   <Wand2 className="w-4 h-4" />
                   Optimize
                 </TabsTrigger>
+                <TabsTrigger value="ai-showroom" className="flex items-center gap-2 text-white data-[state=active]:bg-white data-[state=active]:text-black">
+                  <Car className="w-4 h-4" />
+                  AI Showroom
+                </TabsTrigger>
               </TabsList>
 
-            {/* File Upload Section */}
-            <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center bg-gray-800">
+{/* File Upload Section */}
+            {activeTab !== 'ai-showroom' && (
+              <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center bg-gray-800">
               <input
                 type="file"
                 accept="image/*"
@@ -381,6 +388,12 @@ const AIPhotoStudio = () => {
                 </div>
               )}
             </div>
+            )}
+
+            {/* AI Showroom Tab Content */}
+            <TabsContent value="ai-showroom" className="space-y-6">
+              <AIShowroom />
+            </TabsContent>
 
             {/* Tab-specific options */}
             <TabsContent value="remove-bg" className="space-y-4">
@@ -437,8 +450,8 @@ const AIPhotoStudio = () => {
               </div>
             </TabsContent>
 
-            {/* Processing Section */}
-            {isProcessing && (
+{/* Processing Section */}
+            {isProcessing && activeTab !== 'ai-showroom' && (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Processing...</span>
@@ -449,29 +462,31 @@ const AIPhotoStudio = () => {
             )}
 
             {/* Action Buttons */}
-            <div className="flex justify-center gap-4">
-              <Button 
-                onClick={processImage}
-                disabled={!selectedImage || isProcessing}
-                size="lg"
-              >
-                {isProcessing ? "Processing..." : "Process Image"}
-              </Button>
-              
-              {processedImage && (
+            {activeTab !== 'ai-showroom' && (
+              <div className="flex justify-center gap-4">
                 <Button 
-                  variant="outline" 
-                  onClick={downloadImage}
+                  onClick={processImage}
+                  disabled={!selectedImage || isProcessing}
                   size="lg"
                 >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download
+                  {isProcessing ? "Processing..." : "Process Image"}
                 </Button>
-              )}
-            </div>
+                
+                {processedImage && (
+                  <Button 
+                    variant="outline" 
+                    onClick={downloadImage}
+                    size="lg"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Download
+                  </Button>
+                )}
+              </div>
+            )}
 
             {/* Result Section */}
-            {processedImage && (
+            {processedImage && activeTab !== 'ai-showroom' && (
               <div className="border rounded-lg p-4 bg-gray-700">
                 <h3 className="text-lg font-semibold mb-4 text-white">Processed Result</h3>
                 <div className="grid md:grid-cols-2 gap-4">
