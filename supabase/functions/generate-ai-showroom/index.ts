@@ -33,26 +33,59 @@ serve(async (req) => {
 
     console.log('Starting AI Showroom generation for style:', style)
 
-    // 1. Remove Background with RunwayML API
-    console.log('Removing background with RunwayML...')
-    const runwayResponse = await fetch("https://api.runwayml.com/v1/remove-bg", {
+    // 1. Remove Background using Replicate API
+    console.log('Removing background with Replicate...')
+    const bgRemovalResponse = await fetch("https://api.replicate.com/v1/predictions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${runwayApiKey}`,
+        "Authorization": `Token ${replicateApiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        image_url: image,
-        return_type: "transparent"
+        version: "fb8af171cfa1616ddcf1242c093f9c46bcada5ad4cf6f2fbe8b81b330ec5c003",
+        input: {
+          image: image
+        }
       })
     })
 
-    if (!runwayResponse.ok) {
-      throw new Error(`RunwayML API error: ${runwayResponse.status}`)
+    if (!bgRemovalResponse.ok) {
+      throw new Error(`Background removal API error: ${bgRemovalResponse.status}`)
     }
 
-    const runwayData = await runwayResponse.json()
-    const carWithoutBg = runwayData.image_url
+    const bgRemovalData = await bgRemovalResponse.json()
+    console.log('Background removal prediction started:', bgRemovalData.id)
+
+    // Poll for background removal completion
+    let carWithoutBg = null
+    let attempts = 0
+    const maxAttempts = 30
+
+    while (attempts < maxAttempts) {
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${bgRemovalData.id}`, {
+        headers: {
+          "Authorization": `Token ${replicateApiKey}`,
+        }
+      })
+
+      const statusData = await statusResponse.json()
+      
+      if (statusData.status === 'succeeded') {
+        carWithoutBg = statusData.output
+        break
+      } else if (statusData.status === 'failed') {
+        throw new Error('Background removal failed')
+      }
+      
+      attempts++
+    }
+
+    if (!carWithoutBg) {
+      throw new Error('Background removal timed out')
+    }
+
     console.log('Background removed successfully')
 
     // 2. Choose Showroom Background based on style
