@@ -72,24 +72,24 @@ const VehicleSearch = ({ filters, onFiltersChange, onReset }: VehicleSearchProps
       {/* Quick Filters & Advanced Toggle */}
       <div className="flex flex-wrap gap-3 items-center justify-between">
         <div className="flex flex-wrap gap-2">
-          <Select value={filters.make} onValueChange={(value) => updateFilter('make', value)}>
+          <Select value={filters.make} onValueChange={(value) => updateFilter('make', value === 'all' ? '' : value)}>
             <SelectTrigger className="w-40">
               <SelectValue placeholder="Make" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Makes</SelectItem>
+              <SelectItem value="all">All Makes</SelectItem>
               {makeOptions.map((make) => (
                 <SelectItem key={make} value={make}>{make}</SelectItem>
               ))}
             </SelectContent>
           </Select>
 
-          <Select value={filters.condition} onValueChange={(value) => updateFilter('condition', value)}>
+          <Select value={filters.condition} onValueChange={(value) => updateFilter('condition', value === 'all' ? '' : value)}>
             <SelectTrigger className="w-36">
               <SelectValue placeholder="Condition" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Conditions</SelectItem>
+              <SelectItem value="all">All Conditions</SelectItem>
               {conditionOptions.map((condition) => (
                 <SelectItem key={condition} value={condition.toLowerCase()}>{condition}</SelectItem>
               ))}
@@ -174,12 +174,12 @@ const VehicleSearch = ({ filters, onFiltersChange, onReset }: VehicleSearchProps
                 {/* Transmission */}
                 <div className="space-y-2">
                   <Label>Transmission</Label>
-                  <Select value={filters.transmission} onValueChange={(value) => updateFilter('transmission', value)}>
+                  <Select value={filters.transmission} onValueChange={(value) => updateFilter('transmission', value === 'all' ? '' : value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Any transmission" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Any Transmission</SelectItem>
+                      <SelectItem value="all">Any Transmission</SelectItem>
                       {transmissionOptions.map((transmission) => (
                         <SelectItem key={transmission} value={transmission.toLowerCase()}>{transmission}</SelectItem>
                       ))}
@@ -190,12 +190,12 @@ const VehicleSearch = ({ filters, onFiltersChange, onReset }: VehicleSearchProps
                 {/* Fuel Type */}
                 <div className="space-y-2">
                   <Label>Fuel Type</Label>
-                  <Select value={filters.fuelType} onValueChange={(value) => updateFilter('fuelType', value)}>
+                  <Select value={filters.fuelType} onValueChange={(value) => updateFilter('fuelType', value === 'all' ? '' : value)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Any fuel type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Any Fuel Type</SelectItem>
+                      <SelectItem value="all">Any Fuel Type</SelectItem>
                       {fuelTypeOptions.map((fuelType) => (
                         <SelectItem key={fuelType} value={fuelType.toLowerCase()}>{fuelType}</SelectItem>
                       ))}
