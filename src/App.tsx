@@ -23,6 +23,7 @@ import GlobalExportService from "./pages/GlobalExportService";
 import QualityAssuranceService from "./pages/QualityAssuranceService";
 import VIPService from "./pages/VIPService";
 import AIPhotoStudioPage from "./pages/AIPhotoStudio";
+import UserProfile from "./pages/UserProfile";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,22 @@ const App = () => (
             <Route path="/quality-assurance" element={<QualityAssuranceService />} />
             <Route path="/vip-service" element={<VIPService />} />
             <Route path="/ai-photo-studio" element={<AIPhotoStudioPage />} />
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/settings" 
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              } 
+            />
             <Route 
               path="/admin" 
               element={

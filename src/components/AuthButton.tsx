@@ -51,9 +51,9 @@ const AuthButton = () => {
               Admin Dashboard
             </DropdownMenuItem>
           )}
-          <DropdownMenuItem onClick={() => navigate('/settings')}>
+          <DropdownMenuItem onClick={() => navigate('/profile')}>
             <Settings className="w-4 h-4 mr-2" />
-            Settings
+            Profile Settings
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={signOut} className="text-red-600">
