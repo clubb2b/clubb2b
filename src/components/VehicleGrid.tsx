@@ -5,11 +5,18 @@ const VehicleGrid = () => {
   const vehicles = [
     {
       id: "1",
-      vehicle_images: [{ image_url: "/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png" }],
+      vehicle_images: [
+        { image_url: "/lovable-uploads/843e7d21-d92c-497e-9d7b-b937f8f7ae71.png" },
+        { image_url: "/lovable-uploads/8494dfd3-ce77-4317-b73c-f64c23c29e35.png" },
+        { image_url: "/lovable-uploads/9dff55e6-5c4d-4775-aca9-b93b94fdb5fc.png" },
+        { image_url: "/lovable-uploads/4019de92-8eb1-45df-ba0f-d9de0cd9542b.png" },
+        { image_url: "/lovable-uploads/ddfe0135-a32f-4ff5-93a4-1120c8db8d11.png" },
+        { image_url: "/lovable-uploads/ed4a45ef-45ff-487c-8a72-484e05697180.png" }
+      ],
       make: "Cadillac",
       model: "Escalade",
       year: 2024,
-      features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"],
+      features: ["Premium Platinum Package", "Magnetic Ride Control", "Super Cruise Technology", "OLED Displays", "Premium Leather Seating", "Heated & Ventilated Seats", "Panoramic Sunroof", "Premium Audio System"],
       status: "available",
       location: "Canada",
       price: null,
@@ -20,7 +27,7 @@ const VehicleGrid = () => {
       exterior_color: "black",
       interior_color: "black",
       mileage: 0,
-      description: "Luxury SUV with premium features"
+      description: "The epitome of luxury in an SUV. This 2024 Cadillac Escalade features a stunning black exterior with premium black leather interior, showcasing Cadillac's finest craftsmanship and cutting-edge technology in a commanding presence."
     },
     {
       id: "2", 
@@ -43,11 +50,16 @@ const VehicleGrid = () => {
     },
     {
       id: "3",
-      vehicle_images: [{ image_url: "/lovable-uploads/fe0d3397-d164-45b0-a302-c07afb31b3c1.png" }],
+      vehicle_images: [
+        { image_url: "/lovable-uploads/cae80353-f35f-4217-becc-94520067743e.png" },
+        { image_url: "/lovable-uploads/cf0a5fd5-f1f6-41aa-bbd2-ae3e8b45e312.png" },
+        { image_url: "/lovable-uploads/f1d37320-287c-470f-aa83-b83a5c16c8e5.png" },
+        { image_url: "/lovable-uploads/fff53762-3684-45b6-9d76-33e606d6d578.png" }
+      ],
       make: "Mercedes-AMG",
       model: "GLE 53",
       year: 2024, 
-      features: ["AMG Performance", "Red & Black Interior", "Premium Sound System"],
+      features: ["AMG Panamericana Grille", "53 AMG 3.0L Turbo Engine", "AMG Performance Exhaust", "Red & Black Nappa Leather Interior", "AMG Performance Seats", "MBUX Infotainment", "Air Suspension", "21-inch AMG Wheels"],
       status: "available",
       location: "Canada",
       price: null,
@@ -55,10 +67,10 @@ const VehicleGrid = () => {
       condition: "excellent",
       transmission: "automatic",
       fuel_type: "gasoline",
-      exterior_color: "red",
-      interior_color: "black",
+      exterior_color: "black",
+      interior_color: "red",
       mileage: 0,
-      description: "AMG performance SUV"
+      description: "A perfect blend of luxury and performance. This Mercedes-AMG GLE 53 features a striking black exterior with an exquisite red and black interior combination, delivering AMG's signature performance in a refined luxury SUV package."
     },
     {
       id: "4",
