@@ -10,8 +10,7 @@ const VehicleGrid = () => {
         { image_url: "/lovable-uploads/8494dfd3-ce77-4317-b73c-f64c23c29e35.png" },
         { image_url: "/lovable-uploads/9dff55e6-5c4d-4775-aca9-b93b94fdb5fc.png" },
         { image_url: "/lovable-uploads/4019de92-8eb1-45df-ba0f-d9de0cd9542b.png" },
-        { image_url: "/lovable-uploads/ddfe0135-a32f-4ff5-93a4-1120c8db8d11.png" },
-        { image_url: "/lovable-uploads/ed4a45ef-45ff-487c-8a72-484e05697180.png" }
+        { image_url: "/lovable-uploads/ddfe0135-a32f-4ff5-93a4-1120c8db8d11.png" }
       ],
       make: "Cadillac",
       model: "Escalade",
