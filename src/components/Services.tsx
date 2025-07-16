@@ -37,7 +37,28 @@ const Services = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {services.map((service, index) => {})}
+          {services.map((service, index) => (
+            <div key={index} className="group relative overflow-hidden bg-gradient-to-b from-gray-900/50 to-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-white/20 transition-all duration-300">
+              <div className="flex flex-col items-center text-center space-y-4">
+                <div className="text-white group-hover:text-blue-400 transition-colors duration-300">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-light text-white tracking-wide">
+                  {service.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+                <Button
+                  onClick={service.action}
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  Learn More
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>;
