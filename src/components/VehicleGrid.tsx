@@ -53,7 +53,8 @@ const VehicleGrid = () => {
         { image_url: "/lovable-uploads/cae80353-f35f-4217-becc-94520067743e.png" },
         { image_url: "/lovable-uploads/cf0a5fd5-f1f6-41aa-bbd2-ae3e8b45e312.png" },
         { image_url: "/lovable-uploads/f1d37320-287c-470f-aa83-b83a5c16c8e5.png" },
-        { image_url: "/lovable-uploads/fff53762-3684-45b6-9d76-33e606d6d578.png" }
+        { image_url: "/lovable-uploads/fff53762-3684-45b6-9d76-33e606d6d578.png" },
+        { image_url: "/lovable-uploads/ed4a45ef-45ff-487c-8a72-484e05697180.png" }
       ],
       make: "Mercedes-AMG",
       model: "GLE 53",
