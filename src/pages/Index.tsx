@@ -46,24 +46,6 @@ const Index = () => {
       <Services />
       <PriceCalculator />
       
-      {/* AI Photography Promo Banner */}
-      <div className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            🚗 TRANSFORM YOUR VEHICLE PHOTOS WITH AI
-          </h3>
-          <p className="text-xl text-white mb-6">
-            Professional photography enhancement for maximum sales impact
-          </p>
-          <button 
-            onClick={() => window.location.href = '/ai-photo-studio'}
-            className="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-          >
-            DISCOVER AI PHOTOGRAPHY STUDIO
-          </button>
-        </div>
-      </div>
-      
       <About />
       <Contact />
       <Footer />
