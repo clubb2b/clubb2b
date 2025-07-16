@@ -43,6 +43,90 @@ const AIPhotoStudio = () => {
     link.href = processedImage;
     link.click();
   };
-  return;
+  return (
+    <div className="py-20 bg-gradient-to-br from-background via-background/50 to-primary/10">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            AI Photo Studio
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Transform your vehicle photos with AI-powered editing tools
+          </p>
+        </div>
+
+        <Card className="max-w-4xl mx-auto">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Camera className="h-5 w-5" />
+              Professional Vehicle Photography
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="remove-bg" className="flex items-center gap-2">
+                  <Scissors className="h-4 w-4" />
+                  Remove Background
+                </TabsTrigger>
+                <TabsTrigger value="enhance" className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" />
+                  Enhance Image
+                </TabsTrigger>
+                <TabsTrigger value="optimize" className="flex items-center gap-2">
+                  <Wand2 className="h-4 w-4" />
+                  Optimize
+                </TabsTrigger>
+              </TabsList>
+
+              <div className="mt-6">
+                <FileUpload
+                  onFileUpload={handleFileUpload}
+                  fileInputRef={fileInputRef}
+                />
+
+                {selectedImage && (
+                  <div className="mt-6">
+                    <TabsContent value="remove-bg">
+                      <TabOptions
+                        activeTab={activeTab}
+                        selectedBackground={selectedBackground}
+                        onBackgroundChange={setSelectedBackground}
+                      />
+                    </TabsContent>
+                    <TabsContent value="enhance">
+                      <p className="text-muted-foreground">
+                        Enhance image quality, contrast, and colors automatically.
+                      </p>
+                    </TabsContent>
+                    <TabsContent value="optimize">
+                      <p className="text-muted-foreground">
+                        Optimize image size and quality for different devices.
+                      </p>
+                    </TabsContent>
+
+                    <ProcessingControls
+                      isProcessing={isProcessing}
+                      progress={progress}
+                      onProcess={handleProcessImage}
+                      onDownload={downloadImage}
+                      hasProcessedImage={!!processedImage}
+                    />
+
+                    <ImageResult
+                      selectedImage={selectedImage}
+                      processedImage={processedImage}
+                    />
+                  </div>
+                )}
+              </div>
+            </Tabs>
+          </CardContent>
+        </Card>
+
+        <AIShowroom />
+      </div>
+    </div>
+  );
 };
 export default AIPhotoStudio;

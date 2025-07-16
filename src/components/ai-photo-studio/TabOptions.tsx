@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Palette, Sparkles, Smartphone, Tablet, Monitor } from 'lucide-react';
 
 interface TabOptionsProps {
+  activeTab: string;
   selectedBackground: string;
   onBackgroundChange: (value: string) => void;
 }
@@ -20,6 +21,7 @@ const backgroundOptions = [
 ];
 
 const TabOptions: React.FC<TabOptionsProps> = ({
+  activeTab,
   selectedBackground,
   onBackgroundChange
 }) => {

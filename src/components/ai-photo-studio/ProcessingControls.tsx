@@ -5,18 +5,16 @@ import { Download } from 'lucide-react';
 interface ProcessingControlsProps {
   isProcessing: boolean;
   progress: number;
-  selectedImage: string | null;
-  processedImage: string | null;
-  onProcessImage: () => void;
-  onDownloadImage: () => void;
+  onProcess: () => Promise<void>;
+  onDownload: () => void;
+  hasProcessedImage: boolean;
 }
 const ProcessingControls: React.FC<ProcessingControlsProps> = ({
   isProcessing,
   progress,
-  selectedImage,
-  processedImage,
-  onProcessImage,
-  onDownloadImage
+  onProcess,
+  onDownload,
+  hasProcessedImage
 }) => {
   return <div className="space-y-4">
       {/* Processing Progress */}
@@ -30,12 +28,15 @@ const ProcessingControls: React.FC<ProcessingControlsProps> = ({
 
       {/* Action Buttons */}
       <div className="flex justify-center gap-4">
-        
-        
-        {processedImage && <Button variant="outline" onClick={onDownloadImage} size="lg">
+        <Button onClick={onProcess} disabled={isProcessing} size="lg">
+          {isProcessing ? 'Processing...' : 'Process Image'}
+        </Button>
+        {hasProcessedImage && (
+          <Button variant="outline" onClick={onDownload} size="lg">
             <Download className="w-4 h-4 mr-2" />
             Download
-          </Button>}
+          </Button>
+        )}
       </div>
     </div>;
 };
