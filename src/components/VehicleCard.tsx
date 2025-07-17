@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
-import { MapPin, Calendar, Gauge, Fuel, Settings, Palette } from "lucide-react";
+import { MapPin, Calendar, Gauge, Fuel, Settings, Palette, Video } from "lucide-react";
+import { VideoPlayer } from "@/components/ui/video-player";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface VehicleImage {
   id: string;
@@ -16,18 +18,19 @@ interface Vehicle {
   make: string;
   model: string;
   year: number;
-  price: number | null;
-  condition: string | null;
-  transmission: string | null;
-  fuel_type: string | null;
-  exterior_color: string | null;
-  interior_color: string | null;
-  mileage: number | null;
-  description: string | null;
-  features: string[] | null;
-  status: string | null;
-  location: string | null;
-  currency: string | null;
+  price?: number | null;
+  condition?: string | null;
+  transmission?: string | null;
+  fuel_type?: string | null;
+  exterior_color?: string | null;
+  interior_color?: string | null;
+  mileage?: number | null;
+  description?: string | null;
+  features?: string[] | null;
+  status?: string | null;
+  location?: string | null;
+  currency?: string | null;
+  videoUrl?: string | null;
   images?: VehicleImage[];
 }
 
@@ -84,11 +87,32 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
   return (
     <div className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 rounded-lg overflow-hidden hover:shadow-2xl hover:border-white transition-all duration-500 group">
       <div className="aspect-[4/3] overflow-hidden relative">
-        <img 
-          src={images[currentImageIndex]} 
-          alt={vehicleName}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
+        {vehicle.videoUrl ? (
+          <Dialog>
+            <DialogTrigger asChild>
+              <div className="cursor-pointer relative">
+                <img 
+                  src={images[currentImageIndex]} 
+                  alt={vehicleName}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Video size={48} className="text-white" />
+                  <span className="ml-2 text-white font-medium">Watch Video</span>
+                </div>
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl p-1 bg-black border-gray-800">
+              <VideoPlayer src={vehicle.videoUrl} title={vehicleName} />
+            </DialogContent>
+          </Dialog>
+        ) : (
+          <img 
+            src={images[currentImageIndex]} 
+            alt={vehicleName}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+        )}
         
         {images.length > 1 && (
           <>
@@ -114,6 +138,13 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
         {vehicle.condition && (
           <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground">
             {vehicle.condition.charAt(0).toUpperCase() + vehicle.condition.slice(1)}
+          </Badge>
+        )}
+
+        {/* Video Badge */}
+        {vehicle.videoUrl && (
+          <Badge className="absolute top-2 left-[85px] bg-red-600 text-white hover:bg-red-700">
+            Video Available
           </Badge>
         )}
 
