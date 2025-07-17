@@ -36,12 +36,12 @@ const Index = () => {
       </div>
       <LuxuryInventory />
       <AdvancedFeatures />
-      <AIPhotoStudio />
+      
       <QuickAccessButtons />
       <MobileAppPromo />
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
-      <CarbonOffsetCalculator />
-      <LuxuryShowroom />
+      
+      
       <FinancingServices />
       <Services />
       <PriceCalculator />
