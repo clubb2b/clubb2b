@@ -141,12 +141,6 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
           </Badge>
         )}
 
-        {/* Video Badge */}
-        {vehicle.videoUrl && (
-          <Badge className="absolute top-2 left-[85px] bg-red-600 text-white hover:bg-red-700">
-            Video Available
-          </Badge>
-        )}
 
         {/* Price Badge */}
         <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-3 py-1 rounded-full text-sm font-semibold">
