@@ -35,15 +35,11 @@ const Index = () => {
         <NativeFeaturesShowcase />
       </div>
       <LuxuryInventory />
-      <AdvancedFeatures />
-      
+      <Services />
       <QuickAccessButtons />
       <MobileAppPromo />
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
-      
-      
       <FinancingServices />
-      <Services />
       <PriceCalculator />
       
       <About />
