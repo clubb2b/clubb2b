@@ -95,11 +95,14 @@ const VehicleGrid = () => {
     {
       id: "6",
       images: [
-        { id: "24", image_url: "/lovable-uploads/f901eb9b-d0f8-47c2-bd92-82e39cbbb3b2.png", caption: null, is_primary: true, display_order: 1 },
-        { id: "25", image_url: "/lovable-uploads/fb5b4401-9790-4c9b-a13e-6b7861649cdd.png", caption: null, is_primary: false, display_order: 2 },
-        { id: "26", image_url: "/lovable-uploads/05105e45-f845-4b0c-9ecc-038198730dd6.png", caption: null, is_primary: false, display_order: 3 },
-        { id: "27", image_url: "/lovable-uploads/9789d1ca-4816-4541-a17d-df2d08aeee74.png", caption: null, is_primary: false, display_order: 4 },
-        { id: "28", image_url: "/lovable-uploads/b9105ab2-5cea-4296-8450-c36bd1785d39.png", caption: null, is_primary: false, display_order: 5 }
+        { id: "24", image_url: "/lovable-uploads/65e689ae-1df4-49a9-a317-bb8251b3da02.png", caption: null, is_primary: true, display_order: 1 },
+        { id: "25", image_url: "/lovable-uploads/a6a7948c-8536-4a96-a73c-31af4cc2938e.png", caption: null, is_primary: false, display_order: 2 },
+        { id: "26", image_url: "/lovable-uploads/c00631e6-b2ff-4eb2-80a0-4ef009b23f74.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "27", image_url: "/lovable-uploads/f901eb9b-d0f8-47c2-bd92-82e39cbbb3b2.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "28", image_url: "/lovable-uploads/fb5b4401-9790-4c9b-a13e-6b7861649cdd.png", caption: null, is_primary: false, display_order: 5 },
+        { id: "29", image_url: "/lovable-uploads/05105e45-f845-4b0c-9ecc-038198730dd6.png", caption: null, is_primary: false, display_order: 6 },
+        { id: "30", image_url: "/lovable-uploads/9789d1ca-4816-4541-a17d-df2d08aeee74.png", caption: null, is_primary: false, display_order: 7 },
+        { id: "31", image_url: "/lovable-uploads/b9105ab2-5cea-4296-8450-c36bd1785d39.png", caption: null, is_primary: false, display_order: 8 }
       ],
       make: "Audi",
       model: "RS Q8 TFSI Quattro",
