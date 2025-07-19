@@ -11,7 +11,7 @@ const translations = {
   en: {
     'hero.title': 'CLUB B2B PERFORMANCE',
     'hero.subtitle': 'Elite Cars | Global Import & Export | VIP Services',
-    'hero.tagline': 'Worldwide Luxury Shipping | From Canada to Africa',
+    'hero.tagline': 'Worldwide Luxury Shipping',
     'services.maritime.title': 'MARITIME FREIGHT',
     'services.maritime.desc': 'Complete container loading, Partial container loading, Special equipment',
     'services.air.title': 'AIR FREIGHT',

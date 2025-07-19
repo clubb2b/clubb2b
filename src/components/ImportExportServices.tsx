@@ -80,8 +80,8 @@ const ImportExportServices = () => {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
           <p className="text-gray-300 text-lg font-light leading-relaxed max-w-3xl mx-auto">
             CLUB B2B PERFORMANCE offers comprehensive import and export services worldwide. 
-            From Canada to Africa and beyond, we handle all your luxury shipping needs with 
-            complete documentation, insurance, and white-glove service.
+            We handle all your luxury shipping needs with complete documentation, insurance, 
+            and white-glove service to any destination globally.
           </p>
         </div>
 

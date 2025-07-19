@@ -58,7 +58,7 @@ const Hero = () => {
             Elite Cars | Global Import & Export | VIP Services
           </p>
           <p className="text-lg md:text-xl font-light text-gray-300 tracking-wide">
-            Worldwide Luxury Shipping | From Canada to Africa
+            Worldwide Luxury Shipping
           </p>
         </div>
 
