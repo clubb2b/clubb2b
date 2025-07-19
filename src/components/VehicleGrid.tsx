@@ -22,7 +22,7 @@ const VehicleGrid = () => {
     },
     {
       id: "2", 
-      images: [{ id: "7", image_url: "/lovable-uploads/ce65b3ce-1420-4e71-b62d-a69b21f316fb.png", caption: null, is_primary: true, display_order: 1 }],
+      images: [{ id: "7", image_url: "/lovable-uploads/3f9f257c-a8ae-4e1c-9470-c6694ae3e9c3.png", caption: null, is_primary: true, display_order: 1 }],
       make: "McLaren",
       model: "720S", 
       year: 2024,
