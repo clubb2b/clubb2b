@@ -22,7 +22,7 @@ const VehicleGrid = () => {
     },
     {
       id: "2", 
-      images: [{ id: "7", image_url: "/lovable-uploads/e31fe280-a6c2-40c4-96cb-3d9f0d9032f8.png", caption: null, is_primary: true, display_order: 1 }],
+      images: [{ id: "7", image_url: "/lovable-uploads/ce65b3ce-1420-4e71-b62d-a69b21f316fb.png", caption: null, is_primary: true, display_order: 1 }],
       make: "McLaren",
       model: "720S", 
       year: 2024,
@@ -40,6 +40,8 @@ const VehicleGrid = () => {
         { id: "8", image_url: "/lovable-uploads/dfef9aa3-0fc4-4c1f-b418-b63015bdbe2a.png", caption: null, is_primary: true, display_order: 1 },
         { id: "9", image_url: "/lovable-uploads/57907b7c-a0e8-4f8f-918a-c6729e9e0894.png", caption: null, is_primary: false, display_order: 2 },
         { id: "10", image_url: "/lovable-uploads/a388b99d-efa8-418d-b71d-77581b323df9.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "11", image_url: "/lovable-uploads/a151fa8d-8073-4a61-b3a9-633e5deeac7d.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "12", image_url: "/lovable-uploads/4364b345-baff-48a8-900e-462967541b24.png", caption: null, is_primary: false, display_order: 5 }
       ],
       make: "Mercedes-AMG",
       model: "GLE 53",
