@@ -35,6 +35,7 @@ const StickyNavigation = () => {
     { id: 'hero', label: 'Home', action: () => scrollToSection('hero') },
     { id: 'inventory', label: 'Cars', action: () => window.location.href = '/cars-collection' },
     { id: 'import-export', label: 'Import/Export', action: () => window.location.href = '/import-export' },
+    { id: 'leads', label: 'Lead Management', action: () => window.location.href = '/leads' },
     { id: 'shipping', label: 'Shipping', action: () => window.location.href = '/shipping-process' },
     { id: 'services', label: 'Services', action: () => scrollToSection('services') },
     { id: 'about', label: 'About', action: () => scrollToSection('about') },

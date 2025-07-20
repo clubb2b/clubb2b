@@ -55,10 +55,10 @@ const Hero = () => {
         {/* Enhanced subtitle */}
         <div className="mb-8 space-y-4">
           <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-200 tracking-wider">
-            Elite Cars | Global Import & Export | VIP Services
+            Global Import Export Solutions
           </p>
           <p className="text-lg md:text-xl font-light text-gray-300 tracking-wide">
-            Worldwide Luxury Shipping
+            Premium vehicle import/export services, luxury car sales & rentals, and VIP concierge solutions for international business clients
           </p>
         </div>
 

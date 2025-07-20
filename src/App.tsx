@@ -24,6 +24,7 @@ import QualityAssuranceService from "./pages/QualityAssuranceService";
 import VIPService from "./pages/VIPService";
 import AIPhotoStudioPage from "./pages/AIPhotoStudio";
 import UserProfile from "./pages/UserProfile";
+import LeadManagementPage from "./pages/LeadManagement";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,14 @@ const App = () => (
               element={
                 <ProtectedRoute requireAdmin>
                   <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/leads" 
+              element={
+                <ProtectedRoute>
+                  <LeadManagementPage />
                 </ProtectedRoute>
               } 
             />
