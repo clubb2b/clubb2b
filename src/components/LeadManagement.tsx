@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLeads, useAddLead, Lead } from "@/hooks/useLeads";
+import { useLeads, useAddLead, useUpdateLead, useDeleteLead, Lead } from "@/hooks/useLeads";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,13 +7,22 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Phone, Mail, Building, MapPin, DollarSign, Clock, Star } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Calendar, Phone, Mail, Building, MapPin, DollarSign, Clock, Star, Users, MessageSquare, Edit, Trash2, Plus } from "lucide-react";
 import { toast } from "sonner";
+import { format } from "date-fns";
 
 const LeadManagement = () => {
   const { data: leads, isLoading } = useLeads();
   const addLead = useAddLead();
+  const updateLead = useUpdateLead();
+  const deleteLead = useDeleteLead();
   const [isAddingLead, setIsAddingLead] = useState(false);
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [editingLead, setEditingLead] = useState<Lead | null>(null);
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [sourceFilter, setSourceFilter] = useState<string>('all');
+  const [newNote, setNewNote] = useState('');
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -77,6 +86,85 @@ const LeadManagement = () => {
     if (probability >= 50) return "text-yellow-600";
     if (probability >= 20) return "text-orange-600";
     return "text-red-600";
+  };
+
+  const updateLeadStatus = async (leadId: string, newStatus: string) => {
+    try {
+      await updateLead.mutateAsync({
+        id: leadId,
+        updates: {
+          status: newStatus,
+          last_contact_date: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+      });
+      toast.success('Lead status updated successfully');
+    } catch (error) {
+      toast.error('Failed to update lead status');
+    }
+  };
+
+  const addNote = async (leadId: string) => {
+    if (!newNote.trim()) return;
+    
+    try {
+      const lead = leads?.find(l => l.id === leadId);
+      const existingNotes = lead?.notes || '';
+      const updatedNotes = existingNotes 
+        ? `${existingNotes}\n\n[${format(new Date(), 'MMM dd, yyyy HH:mm')}] ${newNote}`
+        : `[${format(new Date(), 'MMM dd, yyyy HH:mm')}] ${newNote}`;
+        
+      await updateLead.mutateAsync({
+        id: leadId,
+        updates: {
+          notes: updatedNotes,
+          last_contact_date: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+      });
+      
+      toast.success('Note added successfully');
+      setNewNote('');
+    } catch (error) {
+      toast.error('Failed to add note');
+    }
+  };
+
+  const updateConversionProbability = async (leadId: string, probability: number) => {
+    try {
+      await updateLead.mutateAsync({
+        id: leadId,
+        updates: { conversion_probability: probability }
+      });
+      toast.success('Conversion probability updated');
+    } catch (error) {
+      toast.error('Failed to update probability');
+    }
+  };
+
+  const handleDeleteLead = async (leadId: string) => {
+    if (!confirm('Are you sure you want to delete this lead?')) return;
+    
+    try {
+      await deleteLead.mutateAsync(leadId);
+      toast.success('Lead deleted successfully');
+      setSelectedLead(null);
+    } catch (error) {
+      toast.error('Failed to delete lead');
+    }
+  };
+
+  const filteredLeads = leads?.filter(lead => {
+    const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
+    const matchesSource = sourceFilter === 'all' || lead.source === sourceFilter;
+    return matchesStatus && matchesSource;
+  }) || [];
+
+  const leadStats = {
+    total: leads?.length || 0,
+    new: leads?.filter(l => l.status === 'new').length || 0,
+    qualified: leads?.filter(l => l.status === 'qualified').length || 0,
+    converted: leads?.filter(l => l.status === 'converted').length || 0,
   };
 
   if (isAddingLead) {
@@ -276,8 +364,89 @@ const LeadManagement = () => {
           <p className="text-muted-foreground">Manage and track your import/export business leads</p>
         </div>
         <Button onClick={() => setIsAddingLead(true)}>
+          <Plus className="h-4 w-4 mr-2" />
           Add New Lead
         </Button>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2">
+              <Users className="w-5 h-5 text-blue-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">Total Leads</p>
+                <p className="text-2xl font-bold">{leadStats.total}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2">
+              <Clock className="w-5 h-5 text-yellow-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">New Leads</p>
+                <p className="text-2xl font-bold">{leadStats.new}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-green-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">Qualified</p>
+                <p className="text-2xl font-bold">{leadStats.qualified}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center gap-2">
+              <DollarSign className="w-5 h-5 text-emerald-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">Converted</p>
+                <p className="text-2xl font-bold">{leadStats.converted}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filters */}
+      <div className="flex gap-4 mb-6">
+        <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder="Filter by status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Status</SelectItem>
+            <SelectItem value="new">New</SelectItem>
+            <SelectItem value="contacted">Contacted</SelectItem>
+            <SelectItem value="qualified">Qualified</SelectItem>
+            <SelectItem value="converted">Converted</SelectItem>
+            <SelectItem value="lost">Lost</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select value={sourceFilter} onValueChange={setSourceFilter}>
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder="Filter by source" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Sources</SelectItem>
+            <SelectItem value="website">Website</SelectItem>
+            <SelectItem value="referral">Referral</SelectItem>
+            <SelectItem value="social_media">Social Media</SelectItem>
+            <SelectItem value="trade_show">Trade Show</SelectItem>
+            <SelectItem value="phone_inquiry">Phone Inquiry</SelectItem>
+            <SelectItem value="email">Email</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {isLoading ? (
@@ -293,105 +462,197 @@ const LeadManagement = () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-6">
-          {leads.map((lead: Lead) => (
+        <div className="space-y-4">
+          {filteredLeads.map((lead: Lead) => (
             <Card key={lead.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="flex items-center gap-2">
-                      {lead.first_name} {lead.last_name}
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h3 className="text-xl font-semibold">{lead.first_name} {lead.last_name}</h3>
                       <Badge className={getStatusColor(lead.status || "new")}>
-                        {lead.status || "new"}
+                        {(lead.status || "new").replace('_', ' ').toUpperCase()}
                       </Badge>
-                    </CardTitle>
-                    <CardDescription className="flex items-center gap-4 mt-2">
-                      {lead.company && (
-                        <span className="flex items-center gap-1">
-                          <Building className="h-4 w-4" />
-                          {lead.company}
-                        </span>
+                      {lead.source && (
+                        <Badge variant="outline">{lead.source}</Badge>
                       )}
-                      {lead.country && (
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          {lead.country}
-                        </span>
-                      )}
-                    </CardDescription>
-                  </div>
-                  <div className="text-right">
-                    <div className={`flex items-center gap-1 ${getPriorityColor(lead.conversion_probability || 0)}`}>
-                      <Star className="h-4 w-4" />
-                      {lead.conversion_probability || 0}% probability
+                      <div className={`flex items-center gap-1 ${getPriorityColor(lead.conversion_probability || 0)}`}>
+                        <Star className="h-4 w-4" />
+                        {lead.conversion_probability || 0}%
+                      </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      {new Date(lead.created_at).toLocaleDateString()}
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-4">
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-muted-foreground" />
+                        <span>{lead.email}</span>
+                      </div>
+                      {lead.phone && (
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-muted-foreground" />
+                          <span>{lead.phone}</span>
+                        </div>
+                      )}
+                      {lead.company && (
+                        <div className="flex items-center gap-2">
+                          <Building className="w-4 h-4 text-muted-foreground" />
+                          <span>{lead.company}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {(lead.interest_type || lead.budget_range || lead.timeline) && (
+                      <div className="flex gap-2 flex-wrap mb-3">
+                        {lead.interest_type && (
+                          <Badge variant="secondary">{lead.interest_type.replace(/_/g, ' ')}</Badge>
+                        )}
+                        {lead.budget_range && (
+                          <Badge variant="outline">Budget: {lead.budget_range.replace(/_/g, ' ')}</Badge>
+                        )}
+                        {lead.timeline && (
+                          <Badge variant="outline">Timeline: {lead.timeline.replace(/_/g, ' ')}</Badge>
+                        )}
+                      </div>
+                    )}
+
+                    <p className="text-xs text-muted-foreground">
+                      Created: {format(new Date(lead.created_at), 'MMM dd, yyyy')}
+                      {lead.last_contact_date && (
+                        <span className="ml-4">
+                          Last Contact: {format(new Date(lead.last_contact_date), 'MMM dd, yyyy')}
+                        </span>
+                      )}
                     </p>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">{lead.email}</span>
-                  </div>
-                  {lead.phone && (
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{lead.phone}</span>
-                    </div>
-                  )}
-                  {lead.budget_range && (
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{lead.budget_range.replace(/_/g, ' ')}</span>
-                    </div>
-                  )}
-                  {lead.timeline && (
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{lead.timeline.replace(/_/g, ' ')}</span>
-                    </div>
-                  )}
-                </div>
-                
-                {(lead.interest_type || lead.vehicle_interest) && (
-                  <div className="mb-4">
-                    <h4 className="font-medium mb-2">Interest Details</h4>
-                    <div className="flex gap-2 flex-wrap">
-                      {lead.interest_type && (
-                        <Badge variant="secondary">{lead.interest_type.replace(/_/g, ' ')}</Badge>
-                      )}
-                      {lead.vehicle_interest && (
-                        <Badge variant="outline">{lead.vehicle_interest}</Badge>
-                      )}
-                    </div>
-                  </div>
-                )}
 
-                {lead.notes && (
-                  <div>
-                    <h4 className="font-medium mb-2">Notes</h4>
-                    <p className="text-sm text-muted-foreground">{lead.notes}</p>
-                  </div>
-                )}
+                  <div className="flex gap-2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => setSelectedLead(lead)}
+                        >
+                          View Details
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl">
+                        <DialogHeader>
+                          <DialogTitle>Lead Details: {lead.first_name} {lead.last_name}</DialogTitle>
+                        </DialogHeader>
+                        
+                        <div className="space-y-4">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label>Status</Label>
+                              <Select 
+                                value={lead.status || "new"} 
+                                onValueChange={(value) => updateLeadStatus(lead.id, value)}
+                              >
+                                <SelectTrigger>
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="new">New</SelectItem>
+                                  <SelectItem value="contacted">Contacted</SelectItem>
+                                  <SelectItem value="qualified">Qualified</SelectItem>
+                                  <SelectItem value="converted">Converted</SelectItem>
+                                  <SelectItem value="lost">Lost</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            
+                            <div>
+                              <Label>Conversion Probability (%)</Label>
+                              <Input
+                                type="number"
+                                min="0"
+                                max="100"
+                                value={lead.conversion_probability || 0}
+                                onChange={(e) => updateConversionProbability(lead.id, parseInt(e.target.value) || 0)}
+                              />
+                            </div>
+                          </div>
 
-                <div className="flex gap-2 mt-4">
-                  <Button variant="outline" size="sm">
-                    Contact
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Edit
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Convert
-                  </Button>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <Label>Budget Range</Label>
+                              <p className="p-2 bg-muted rounded">{lead.budget_range?.replace(/_/g, ' ') || 'Not specified'}</p>
+                            </div>
+                            <div>
+                              <Label>Timeline</Label>
+                              <p className="p-2 bg-muted rounded">{lead.timeline?.replace(/_/g, ' ') || 'Not specified'}</p>
+                            </div>
+                          </div>
+
+                          {lead.notes && (
+                            <div>
+                              <Label>Current Notes</Label>
+                              <div className="p-3 bg-muted rounded whitespace-pre-wrap text-sm max-h-32 overflow-y-auto">
+                                {lead.notes}
+                              </div>
+                            </div>
+                          )}
+
+                          <div>
+                            <Label>Add Note</Label>
+                            <Textarea
+                              value={newNote}
+                              onChange={(e) => setNewNote(e.target.value)}
+                              placeholder="Add a note about this lead..."
+                              className="mt-1"
+                            />
+                            <Button 
+                              onClick={() => addNote(lead.id)}
+                              className="mt-2"
+                              disabled={!newNote.trim()}
+                            >
+                              Add Note
+                            </Button>
+                          </div>
+
+                          <div className="flex gap-2 pt-4 border-t">
+                            <Button 
+                              onClick={() => window.open(`mailto:${lead.email}`, '_blank')}
+                              className="flex-1"
+                            >
+                              <Mail className="w-4 h-4 mr-2" />
+                              Email Lead
+                            </Button>
+                            {lead.phone && (
+                              <Button 
+                                onClick={() => window.open(`tel:${lead.phone}`, '_blank')}
+                                variant="outline"
+                                className="flex-1"
+                              >
+                                <Phone className="w-4 h-4 mr-2" />
+                                Call Lead
+                              </Button>
+                            )}
+                            <Button 
+                              onClick={() => handleDeleteLead(lead.id)}
+                              variant="destructive"
+                              size="sm"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
+
+          {filteredLeads.length === 0 && (
+            <Card>
+              <CardContent className="text-center py-8">
+                <p className="text-muted-foreground">No leads found matching your filters.</p>
+              </CardContent>
+            </Card>
+          )}
         </div>
       )}
     </div>

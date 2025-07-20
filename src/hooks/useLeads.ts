@@ -39,3 +39,42 @@ export const useAddLead = () => {
     },
   });
 };
+
+export const useUpdateLead = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: async ({ id, updates }: { id: string; updates: Partial<Lead> }) => {
+      const { data, error } = await supabase
+        .from('leads')
+        .update(updates)
+        .eq('id', id)
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['leads'] });
+    },
+  });
+};
+
+export const useDeleteLead = () => {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from('leads')
+        .delete()
+        .eq('id', id);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['leads'] });
+    },
+  });
+};
