@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
@@ -8,15 +7,24 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTranslation } from 'react-i18next';
 
 const LanguageSelector = () => {
-  const [currentLanguage, setCurrentLanguage] = useState('EN');
+  const { i18n } = useTranslation();
 
   const languages = [
-    { code: 'EN', name: 'English', flag: '🇺🇸' },
-    { code: 'FR', name: 'Français', flag: '🇫🇷' },
-    { code: 'ES', name: 'Español', flag: '🇪🇸' }
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' }
   ];
+
+  const handleLanguageChange = (languageCode: string) => {
+    i18n.changeLanguage(languageCode);
+  };
+
+  const getCurrentLanguage = () => {
+    const current = languages.find(lang => lang.code === i18n.language);
+    return current ? current.code.toUpperCase() : 'EN';
+  };
 
   return (
     <div className="fixed top-4 left-4 z-50">
@@ -28,14 +36,14 @@ const LanguageSelector = () => {
             className="bg-black/80 border-gray-600 text-white hover:bg-gray-800"
           >
             <Globe className="w-4 h-4 mr-2" />
-            {currentLanguage}
+            {getCurrentLanguage()}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-black border-gray-600">
           {languages.map((lang) => (
             <DropdownMenuItem
               key={lang.code}
-              onClick={() => setCurrentLanguage(lang.code)}
+              onClick={() => handleLanguageChange(lang.code)}
               className="text-white hover:bg-gray-800 cursor-pointer"
             >
               <span className="mr-2">{lang.flag}</span>

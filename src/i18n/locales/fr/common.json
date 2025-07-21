@@ -20,27 +20,43 @@
   },
   "services": {
     "title": "Nos Services",
-    "subtitle": "Solutions complètes d'export de véhicules",
-    "airFreight": {
-      "title": "Fret Aérien",
-      "description": "Livraison rapide en 5-10 jours pour les expéditions urgentes",
-      "features": ["Livraison express", "Contrôle climatique", "Traitement prioritaire", "Suivi en temps réel"]
+    "subtitle": "Solutions automobiles complètes pour les passionnés de véhicules de luxe",
+    "premiumSales": {
+      "title": "Ventes Premium",
+      "description": "Véhicules de luxe sélectionnés"
     },
-    "maritime": {
-      "title": "Transport Maritime",
-      "description": "Transport océanique économique en 4-6 semaines",
-      "features": ["Transport en conteneur", "Roll-on/Roll-off", "Chargement sécurisé", "Service port à port"]
+    "globalExport": {
+      "title": "Export Global",
+      "description": "Solutions d'expédition mondiales"
     },
-    "documentation": {
-      "title": "Documentation",
-      "description": "Documentation d'export complète et dédouanement",
-      "features": ["Permis d'exportation", "Dédouanement", "Papiers d'assurance", "Transferts de titre"]
+    "qualityAssured": {
+      "title": "Qualité Assurée",
+      "description": "Inspections complètes"
     },
-    "inspection": {
-      "title": "Inspection de Véhicule",
-      "description": "Services d'inspection professionnels pré-export",
-      "features": ["Rapport d'état", "Documentation photo", "Vérification mécanique", "Vérification de conformité"]
-    }
+    "vipService": {
+      "title": "Service VIP",
+      "description": "Expérience personnalisée"
+    },
+    "aiPhotography": {
+      "title": "Photographie IA",
+      "description": "Optimisation photo professionnelle"
+    },
+    "liveInspection": {
+      "title": "Inspection Vidéo en Direct",
+      "description": "Inspection de véhicule en temps réel avec nos experts"
+    },
+    "importExport": {
+      "title": "Services Import & Export",
+      "description": "Solutions de fret mondial pour véhicules de luxe, navires et aéronefs"
+    },
+    "advancedTech": {
+      "title": "Technologie Avancée",
+      "description": "Solutions IA et blockchain de nouvelle génération"
+    },
+    "coreServices": "Services Principaux",
+    "advancedSolutions": "Solutions Avancées",
+    "learnMore": "En Savoir Plus",
+    "explore": "Explorer"
   },
   "calculator": {
     "title": "Calculateur de Coût d'Expédition",

@@ -20,27 +20,43 @@
   },
   "services": {
     "title": "Our Services",
-    "subtitle": "Comprehensive vehicle export solutions",
-    "airFreight": {
-      "title": "Air Freight",
-      "description": "Fast delivery in 5-10 days for urgent shipments",
-      "features": ["Express delivery", "Climate controlled", "Priority handling", "Real-time tracking"]
+    "subtitle": "Complete automotive solutions for luxury vehicle enthusiasts",
+    "premiumSales": {
+      "title": "Premium Sales",
+      "description": "Curated luxury vehicles"
     },
-    "maritime": {
-      "title": "Maritime Shipping",
-      "description": "Cost-effective ocean transport in 4-6 weeks",
-      "features": ["Container shipping", "Roll-on/Roll-off", "Secure loading", "Port-to-port service"]
+    "globalExport": {
+      "title": "Global Export",
+      "description": "Worldwide shipping solutions"
     },
-    "documentation": {
-      "title": "Documentation",
-      "description": "Complete export documentation and customs clearance",
-      "features": ["Export permits", "Customs clearance", "Insurance papers", "Title transfers"]
+    "qualityAssured": {
+      "title": "Quality Assured", 
+      "description": "Comprehensive inspections"
     },
-    "inspection": {
-      "title": "Vehicle Inspection",
-      "description": "Professional pre-export inspection services",
-      "features": ["Condition report", "Photo documentation", "Mechanical check", "Compliance verification"]
-    }
+    "vipService": {
+      "title": "VIP Service",
+      "description": "Personalized experience"
+    },
+    "aiPhotography": {
+      "title": "AI Photography",
+      "description": "Professional photo optimization"
+    },
+    "liveInspection": {
+      "title": "Live Video Inspection",
+      "description": "Real-time vehicle inspection with our experts"
+    },
+    "importExport": {
+      "title": "Import & Export Services",
+      "description": "Global freight solutions for luxury vehicles, marine vessels & aircraft"
+    },
+    "advancedTech": {
+      "title": "Advanced Technology",
+      "description": "Next-generation AI and blockchain solutions"
+    },
+    "coreServices": "Core Services",
+    "advancedSolutions": "Advanced Solutions",
+    "learnMore": "Learn More",
+    "explore": "Explore"
   },
   "calculator": {
     "title": "Shipping Cost Calculator",
