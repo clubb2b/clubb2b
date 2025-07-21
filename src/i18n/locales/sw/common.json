@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "vehicles": "Magari",
+    "services": "Huduma",
+    "about": "Kuhusu",
+    "contact": "Wasiliana",
+    "admin": "Dashibodi ya Msimamizi",
+    "login": "Ingia",
+    "logout": "Toka",
+    "profile": "Wasifu"
+  },
+  "hero": {
+    "title": "Wataalamu wa Usafirishaji wa Magari ya Kifahari",
+    "subtitle": "Magari ya hali ya juu kutoka Canada hadi ulimwenguni kote",
+    "description": "Pata huduma ya usafirishaji wa kimataifa wa magari bila matatizo na huduma zetu za kitaalamu za uhamishaji. Tumejipanga katika magari ya kifahari, tukitoa nyaraka kamili, bima na ufuatiliaji wa uwasilishaji.",
+    "getQuote": "Pata Bei",
+    "viewInventory": "Ona Vifaa",
+    "learnMore": "Jifunze Zaidi"
+  },
+  "services": {
+    "title": "Huduma Zetu",
+    "subtitle": "Suluhisho kamili za magari ya kifahari kwa wapenzi wa magari",
+    "premiumSales": {
+      "title": "Mauzo ya Hali ya Juu",
+      "description": "Magari ya kifahari yaliyochaguliwa"
+    },
+    "globalExport": {
+      "title": "Usafirishaji wa Kimataifa",
+      "description": "Suluhisho za usafirishaji duniani kote"
+    },
+    "qualityAssured": {
+      "title": "Ubora Uliohakikishwa",
+      "description": "Uchunguzi wa kina"
+    },
+    "vipService": {
+      "title": "Huduma ya VIP",
+      "description": "Uzoefu wa kibinafsi"
+    },
+    "aiPhotography": {
+      "title": "Upigaji Picha wa AI",
+      "description": "Uboreshaji wa picha wa kitaalamu"
+    },
+    "liveInspection": {
+      "title": "Uchunguzi wa Moja kwa Moja wa Video",
+      "description": "Uchunguzi wa gari wakati halisi na wataalamu wetu"
+    },
+    "importExport": {
+      "title": "Huduma za Uagizaji na Usafirishaji",
+      "description": "Suluhisho za usafirishaji wa kimataifa kwa magari ya kifahari, meli na ndege"
+    },
+    "advancedTech": {
+      "title": "Teknolojia ya Hali ya Juu",
+      "description": "Suluhisho za AI na blockchain za kizazi kipya"
+    },
+    "coreServices": "Huduma za Msingi",
+    "advancedSolutions": "Suluhisho za Hali ya Juu",
+    "learnMore": "Jifunze Zaidi",
+    "explore": "Chunguza"
+  },
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Kosa limetokea",
+    "success": "Imefanikiwa",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "edit": "Hariri",
+    "delete": "Futa",
+    "view": "Ona",
+    "add": "Ongeza",
+    "update": "Sasisha",
+    "create": "Unda",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "all": "Yote",
+    "none": "Hakuna",
+    "na": "Haijulikani",
+    "yes": "Ndio",
+    "no": "Hapana",
+    "required": "Inahitajika",
+    "optional": "Si lazima",
+    "name": "Jina",
+    "email": "Barua pepe",
+    "phone": "Simu",
+    "address": "Anwani",
+    "city": "Mji",
+    "country": "Nchi",
+    "date": "Tarehe",
+    "time": "Wakati",
+    "amount": "Kiasi",
+    "total": "Jumla",
+    "subtotal": "Nusu jumla",
+    "currency": "Sarafu",
+    "status": "Hali",
+    "actions": "Vitendo",
+    "description": "Maelezo",
+    "notes": "Maelezo"
+  },
+  "auth": {
+    "login": "Ingia",
+    "signup": "Jisajili",
+    "signupTitle": "Unda Akaunti",
+    "loginTitle": "Karibu Tena",
+    "email": "Anwani ya Barua pepe",
+    "password": "Nywila",
+    "confirmPassword": "Thibitisha Nywila",
+    "fullName": "Jina Kamili",
+    "firstName": "Jina la Kwanza",
+    "lastName": "Jina la Mwisho",
+    "forgotPassword": "Umesahau nywila?",
+    "dontHaveAccount": "Huna akaunti?",
+    "alreadyHaveAccount": "Una akaunti tayari?",
+    "resetPassword": "Weka Upya Nywila",
+    "sendResetEmail": "Tuma Barua ya Kuweka Upya",
+    "backToLogin": "Rudi Kuingia",
+    "signOut": "Toka",
+    "profile": "Wasifu",
+    "updateProfile": "Sasisha Wasifu",
+    "changePassword": "Badilisha Nywila"
+  },
+  "footer": {
+    "company": "Club B2B Performance",
+    "description": "Mshirika wako wa kuaminika kwa usafirishaji wa magari ya kifahari ulimwenguni kote",
+    "quickLinks": "Viungo vya Haraka",
+    "services": "Huduma",
+    "contact": "Wasiliana",
+    "followUs": "Tufuate",
+    "allRightsReserved": "Haki zote zimehifadhiwa",
+    "privacyPolicy": "Sera ya Faragha",
+    "termsOfService": "Masharti ya Huduma"
+  }
+}

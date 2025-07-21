@@ -13,6 +13,7 @@ import jaTranslations from './locales/ja/common.json';
 import ptTranslations from './locales/pt/common.json';
 import ruTranslations from './locales/ru/common.json';
 import hiTranslations from './locales/hi/common.json';
+import swTranslations from './locales/sw/common.json';
 
 const resources = {
   en: { common: enTranslations },
@@ -24,7 +25,8 @@ const resources = {
   ja: { common: jaTranslations },
   pt: { common: ptTranslations },
   ru: { common: ruTranslations },
-  hi: { common: hiTranslations }
+  hi: { common: hiTranslations },
+  sw: { common: swTranslations }
 };
 
 i18n

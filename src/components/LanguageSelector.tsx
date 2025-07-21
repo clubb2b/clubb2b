@@ -14,7 +14,10 @@ const LanguageSelector = () => {
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+    { code: 'sw', name: 'Kiswahili', flag: '🇰🇪' }
   ];
 
   const handleLanguageChange = (languageCode: string) => {

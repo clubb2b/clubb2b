@@ -20,27 +20,43 @@
   },
   "services": {
     "title": "Nuestros Servicios",
-    "subtitle": "Soluciones integrales de exportación de vehículos",
-    "airFreight": {
-      "title": "Carga Aérea",
-      "description": "Entrega rápida en 5-10 días para envíos urgentes",
-      "features": ["Entrega express", "Control climático", "Manejo prioritario", "Seguimiento en tiempo real"]
+    "subtitle": "Soluciones automotrices completas para entusiastas de vehículos de lujo",
+    "premiumSales": {
+      "title": "Ventas Premium",
+      "description": "Vehículos de lujo seleccionados"
     },
-    "maritime": {
-      "title": "Transporte Marítimo",
-      "description": "Transporte oceánico rentable en 4-6 semanas",
-      "features": ["Envío en contenedor", "Roll-on/Roll-off", "Carga segura", "Servicio puerto a puerto"]
+    "globalExport": {
+      "title": "Exportación Global",
+      "description": "Soluciones de envío mundiales"
     },
-    "documentation": {
-      "title": "Documentación",
-      "description": "Documentación de exportación completa y despacho aduanero",
-      "features": ["Permisos de exportación", "Despacho aduanero", "Papeles de seguro", "Transferencias de título"]
+    "qualityAssured": {
+      "title": "Calidad Asegurada",
+      "description": "Inspecciones integrales"
     },
-    "inspection": {
-      "title": "Inspección de Vehículo",
-      "description": "Servicios de inspección profesional pre-exportación",
-      "features": ["Reporte de condición", "Documentación fotográfica", "Verificación mecánica", "Verificación de cumplimiento"]
-    }
+    "vipService": {
+      "title": "Servicio VIP",
+      "description": "Experiencia personalizada"
+    },
+    "aiPhotography": {
+      "title": "Fotografía IA",
+      "description": "Optimización de fotos profesional"
+    },
+    "liveInspection": {
+      "title": "Inspección de Video en Vivo",
+      "description": "Inspección de vehículo en tiempo real con nuestros expertos"
+    },
+    "importExport": {
+      "title": "Servicios de Importación y Exportación",
+      "description": "Soluciones de flete global para vehículos de lujo, embarcaciones marinas y aeronaves"
+    },
+    "advancedTech": {
+      "title": "Tecnología Avanzada",
+      "description": "Soluciones de IA y blockchain de próxima generación"
+    },
+    "coreServices": "Servicios Principales",
+    "advancedSolutions": "Soluciones Avanzadas",
+    "learnMore": "Saber Más",
+    "explore": "Explorar"
   },
   "calculator": {
     "title": "Calculadora de Costo de Envío",

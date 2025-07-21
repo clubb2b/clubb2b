@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const StickyNavigation = () => {
+  const { t } = useTranslation('common');
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,14 +34,14 @@ const StickyNavigation = () => {
   };
 
   const navItems = [
-    { id: 'hero', label: 'Home', action: () => scrollToSection('hero') },
-    { id: 'inventory', label: 'Cars', action: () => window.location.href = '/cars-collection' },
+    { id: 'hero', label: t('nav.home'), action: () => scrollToSection('hero') },
+    { id: 'inventory', label: t('nav.vehicles'), action: () => window.location.href = '/cars-collection' },
     { id: 'import-export', label: 'Import/Export', action: () => window.location.href = '/import-export' },
     { id: 'leads', label: 'Lead Management', action: () => window.location.href = '/leads' },
     { id: 'shipping', label: 'Shipping', action: () => window.location.href = '/shipping-process' },
-    { id: 'services', label: 'Services', action: () => scrollToSection('services') },
-    { id: 'about', label: 'About', action: () => scrollToSection('about') },
-    { id: 'contact', label: 'Contact', action: () => scrollToSection('contact') }
+    { id: 'services', label: t('nav.services'), action: () => scrollToSection('services') },
+    { id: 'about', label: t('nav.about'), action: () => scrollToSection('about') },
+    { id: 'contact', label: t('nav.contact'), action: () => scrollToSection('contact') }
   ];
 
   if (!isVisible) return null;
