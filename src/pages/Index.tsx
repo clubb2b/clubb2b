@@ -17,7 +17,6 @@ import AuthButton from "@/components/AuthButton";
 import PriceCalculator from "@/components/PriceCalculator";
 import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
 import CarbonOffsetCalculator from "@/components/CarbonOffsetCalculator";
-import LiveChat from "@/components/LiveChat";
 
 import FinancingServices from "@/components/FinancingServices";
 import AIPhotoStudio from "@/components/AIPhotoStudio";
@@ -29,7 +28,8 @@ const Index = () => {
         <AuthButton />
       </div>
       <LanguageSelector />
-      <LiveChat />
+      <AIChatbot />
+      <StickyNavigation />
       <Hero />
       <div className="max-w-7xl mx-auto px-6">
         <NativeFeaturesShowcase />
