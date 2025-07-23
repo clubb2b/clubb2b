@@ -15,7 +15,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 220 14% 20%;
+    --primary-dark: 220 18% 15%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -36,20 +37,23 @@
 
     --radius: 0.5rem;
 
+    /* Luxury design tokens */
+    --luxury-gold: 45 92% 70%;
+    --luxury-gold-dark: 45 88% 55%;
+    --luxury-silver: 210 15% 85%;
+    --luxury-platinum: 210 20% 92%;
+    
+    /* Enhanced shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+    --shadow-elegant: 0 10px 30px -5px hsl(var(--primary) / 0.15);
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 

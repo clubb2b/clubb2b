@@ -14,6 +14,7 @@ import StickyNavigation from "@/components/StickyNavigation";
 import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
 import MobileAppPromo from "@/components/MobileAppPromo";
 import AuthButton from "@/components/AuthButton";
+import ThemeToggle from "@/components/ThemeToggle";
 import PriceCalculator from "@/components/PriceCalculator";
 import EnhancedPaymentSystem from "@/components/EnhancedPaymentSystem";
 import CarbonOffsetCalculator from "@/components/CarbonOffsetCalculator";
@@ -23,8 +24,9 @@ import AIPhotoStudio from "@/components/AIPhotoStudio";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <div className="fixed top-4 right-4 z-50">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <ThemeToggle />
         <AuthButton />
       </div>
       <LanguageSelector />
