@@ -36,6 +36,29 @@
 
     --radius: 0.5rem;
 
+    /* Luxury Color Palette */
+    --luxury-gold: 45 100% 60%;
+    --luxury-gold-dark: 38 75% 45%;
+    --luxury-platinum: 220 5% 85%;
+    --luxury-charcoal: 220 13% 18%;
+    --luxury-black: 0 0% 5%;
+    --luxury-white: 0 0% 98%;
+    
+    /* Premium Gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-gold-dark)) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(var(--luxury-platinum)) 0%, hsl(var(--luxury-white)) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(var(--luxury-black)) 0%, hsl(var(--luxury-charcoal)) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(var(--luxury-gold) / 0.2) 0%, hsl(var(--luxury-gold) / 0.05) 100%);
+    
+    /* Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--luxury-gold) / 0.25);
+    --shadow-premium: 0 20px 40px -8px hsl(var(--luxury-charcoal) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--luxury-gold) / 0.3);
+    
+    /* Typography Scale */
+    --font-luxury: 'Playfair Display', serif;
+    --font-elegant: 'Inter', sans-serif;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
