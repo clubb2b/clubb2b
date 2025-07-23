@@ -2,8 +2,6 @@
 import { Button } from "@/components/ui/button";
 import PaymentButton from "./PaymentButton";
 import { useTranslation } from 'react-i18next';
-import LuxuryBrandLogos from "./LuxuryBrandLogos";
-import { Sparkles, Crown, Star } from "lucide-react";
 
 const Hero = () => {
   const { t } = useTranslation('common');
@@ -29,124 +27,86 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-luxury-black">
-      {/* Luxury enhanced background with sophisticated parallax */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Enhanced background with parallax effect */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000 hover:scale-110"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
           style={{
-            backgroundImage: `linear-gradient(135deg, hsla(var(--luxury-black), 0.3), hsla(var(--luxury-charcoal), 0.6)), url('/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png')`,
-            filter: 'brightness(1.3) contrast(1.2) saturate(1.2)'
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png')`,
+            filter: 'brightness(1.2) contrast(1.1) saturate(1.1)'
           }}
         />
-        {/* Luxury gradient overlays with premium effects */}
-        <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-transparent to-luxury-charcoal/30 opacity-70"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-luxury-black/40 via-transparent to-luxury-black/40"></div>
-        <div className="absolute inset-0 bg-gradient-glow opacity-20"></div>
-        
-        {/* Animated luxury particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-luxury-gold rounded-full animate-luxury-glow opacity-60"></div>
-        <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-luxury-platinum rounded-full animate-pulse opacity-50"></div>
-        <div className="absolute top-1/2 left-1/5 w-1 h-1 bg-luxury-gold rounded-full animate-ping opacity-40"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-luxury-gold/30 rounded-full animate-premium-float opacity-70"></div>
+        {/* Modern overlay with subtle animation */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
       </div>
 
-      {/* Luxury main content with sophisticated layout */}
-      <div className="relative z-10 text-center px-6 max-w-7xl mx-auto flex-1 flex flex-col justify-center">
-        {/* Luxury status indicators */}
-        <div className="flex justify-center items-center space-x-6 mb-8 animate-elegant-slide-up">
-          <div className="flex items-center space-x-2 px-4 py-2 bg-luxury-charcoal/20 backdrop-blur-md rounded-full border border-luxury-gold/30">
-            <Crown className="w-4 h-4 text-luxury-gold" />
-            <span className="text-luxury-platinum text-sm font-elegant tracking-wide">PREMIUM</span>
-          </div>
-          <div className="flex items-center space-x-2 px-4 py-2 bg-luxury-charcoal/20 backdrop-blur-md rounded-full border border-luxury-platinum/30">
-            <Star className="w-4 h-4 text-luxury-platinum" />
-            <span className="text-luxury-platinum text-sm font-elegant tracking-wide">EXCLUSIVE</span>
-          </div>
-          <div className="flex items-center space-x-2 px-4 py-2 bg-luxury-charcoal/20 backdrop-blur-md rounded-full border border-luxury-gold/30">
-            <Sparkles className="w-4 h-4 text-luxury-gold" />
-            <span className="text-luxury-platinum text-sm font-elegant tracking-wide">LUXURY</span>
-          </div>
-        </div>
-
-        {/* Sophisticated title with luxury typography */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-luxury text-luxury-white mb-8 tracking-[0.15em] leading-none animate-elegant-slide-up">
-          <span className="block bg-gradient-to-r from-luxury-white via-luxury-platinum to-luxury-white bg-clip-text text-transparent drop-shadow-2xl">
+      {/* Main content */}
+      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        {/* Enhanced title with modern typography */}
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-white mb-6 tracking-[0.1em] leading-none">
+          <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
             CLUB B2B
           </span>
-          <span className="block text-4xl md:text-5xl lg:text-6xl mt-6 font-light tracking-[0.25em] bg-gradient-luxury bg-clip-text text-transparent animate-luxury-shimmer bg-[length:200%_100%]">
+          <span className="block text-4xl md:text-5xl lg:text-6xl mt-4 font-light tracking-[0.2em]">
             PERFORMANCE
           </span>
         </h1>
 
-        {/* Elegant subtitle with premium styling */}
-        <div className="mb-12 space-y-6 animate-elegant-slide-up" style={{ animationDelay: '0.2s' }}>
-          <p className="text-xl md:text-2xl lg:text-3xl font-elegant text-luxury-platinum tracking-wider leading-relaxed">
+        {/* Enhanced subtitle */}
+        <div className="mb-8 space-y-4">
+          <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-200 tracking-wider">
             {t('hero.title')}
           </p>
-          <p className="text-lg md:text-xl font-elegant text-luxury-platinum/80 tracking-wide leading-relaxed max-w-4xl mx-auto">
+          <p className="text-lg md:text-xl font-light text-gray-300 tracking-wide">
             {t('hero.description')}
           </p>
-          <div className="w-32 h-px bg-gradient-luxury mx-auto"></div>
         </div>
 
-        {/* Luxury CTA buttons with premium interactions */}
-        <div className="flex flex-col lg:flex-row gap-6 justify-center items-center animate-elegant-slide-up" style={{ animationDelay: '0.4s' }}>
+        {/* Enhanced CTA buttons with modern design */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button 
             onClick={handleViewCars}
-            className="group relative bg-transparent border-2 border-luxury-platinum text-luxury-platinum hover:bg-luxury-platinum hover:text-luxury-black px-10 py-4 text-lg font-elegant tracking-wider transition-all duration-500 hover:scale-105 backdrop-blur-md hover:shadow-premium overflow-hidden"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 backdrop-blur-sm"
           >
-            <span className="relative z-10">VIEW CARS FOR SALE</span>
-            <div className="absolute inset-0 bg-gradient-luxury opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+            VIEW CARS FOR SALE
           </Button>
           
           <Button 
             onClick={handleBookVIP}
-            className="group relative bg-transparent border-2 border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black px-10 py-4 text-lg font-elegant tracking-wider transition-all duration-500 hover:scale-105 backdrop-blur-md hover:shadow-glow overflow-hidden animate-luxury-glow"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 backdrop-blur-sm"
           >
-            <span className="relative z-10">BOOK RENTAL</span>
-            <div className="absolute inset-0 bg-gradient-luxury opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            BOOK RENTAL
           </Button>
           
           <Button 
             onClick={handleImportExport}
-            className="group relative bg-gradient-premium text-luxury-charcoal hover:bg-gradient-luxury hover:text-luxury-black px-10 py-4 text-lg font-elegant tracking-wider transition-all duration-500 hover:scale-105 shadow-premium hover:shadow-luxury overflow-hidden"
+            className="bg-white text-black hover:bg-gray-200 px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            <span className="relative z-10">IMPORT EXPORT SERVICES</span>
-            <div className="absolute inset-0 bg-gradient-luxury opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+            IMPORT EXPORT SERVICES
           </Button>
 
           <Button 
             onClick={() => window.location.href = '/vip-membership'}
-            className="group relative bg-gradient-luxury text-luxury-black hover:bg-gradient-dark hover:text-luxury-gold px-10 py-4 text-lg font-elegant tracking-wider transition-all duration-500 hover:scale-105 shadow-luxury hover:shadow-glow overflow-hidden animate-luxury-glow"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 px-8 py-4 text-lg font-light tracking-wider transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            <span className="relative z-10 flex items-center space-x-2">
-              <Crown className="w-5 h-5" />
-              <span>VIP MEMBERSHIP</span>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-luxury-gold-dark opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            VIP MEMBERSHIP
           </Button>
         </div>
 
-        {/* Luxury scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-premium-float">
-          <div className="w-8 h-12 border-2 border-luxury-gold rounded-full flex justify-center bg-luxury-charcoal/20 backdrop-blur-sm hover:shadow-glow transition-all duration-300">
-            <div className="w-1.5 h-4 bg-gradient-luxury rounded-full mt-3 animate-pulse"></div>
+        {/* Modern scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </div>
 
-      {/* Luxury Brand Showcase */}
-      <div className="relative z-10">
-        <LuxuryBrandLogos />
-      </div>
-
-      {/* Sophisticated floating luxury elements */}
-      <div className="absolute top-24 right-24 w-3 h-3 bg-luxury-gold rounded-full animate-luxury-glow opacity-70 shadow-glow"></div>
-      <div className="absolute bottom-40 left-24 w-2 h-2 bg-luxury-platinum rounded-full animate-ping opacity-50"></div>
-      <div className="absolute top-1/2 right-12 w-2.5 h-2.5 bg-luxury-gold rounded-full animate-premium-float opacity-60 shadow-glow"></div>
-      <div className="absolute top-1/3 left-1/6 w-1.5 h-1.5 bg-luxury-platinum rounded-full animate-pulse opacity-40"></div>
-      <div className="absolute bottom-1/3 right-1/5 w-4 h-4 bg-luxury-gold/20 rounded-full animate-luxury-glow opacity-50 blur-sm"></div>
+      {/* Modern floating elements */}
+      <div className="absolute top-20 right-20 w-2 h-2 bg-white rounded-full animate-pulse opacity-60"></div>
+      <div className="absolute bottom-32 left-20 w-1 h-1 bg-white rounded-full animate-ping opacity-40"></div>
+      <div className="absolute top-1/2 right-10 w-1.5 h-1.5 bg-white rounded-full animate-pulse opacity-50"></div>
     </section>
   );
 };
