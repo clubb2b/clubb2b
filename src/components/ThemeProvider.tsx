@@ -9,7 +9,7 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'dark',
+  defaultTheme = 'system',
   storageKey = 'club-b2b-theme',
   ...props
 }: ThemeProviderProps) {
@@ -18,8 +18,9 @@ export function ThemeProvider({
       attribute="class"
       defaultTheme={defaultTheme}
       storageKey={storageKey}
-      enableSystem
+      enableSystem={true}
       disableTransitionOnChange={false}
+      themes={['light', 'dark', 'system']}
       {...props}
     >
       {children}
