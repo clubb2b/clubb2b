@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instanciate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "12.2.12 (cd3cf9e)"
   }
   public: {
     Tables: {
@@ -47,6 +47,54 @@ export type Database = {
           page_url?: string | null
           user_agent?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      appointments: {
+        Row: {
+          appointment_type: string
+          created_at: string
+          customer_email: string
+          customer_id: string | null
+          customer_name: string
+          customer_phone: string | null
+          id: string
+          message: string | null
+          preferred_date: string
+          preferred_time: string
+          status: string | null
+          updated_at: string
+          vehicle_interest: string | null
+        }
+        Insert: {
+          appointment_type: string
+          created_at?: string
+          customer_email: string
+          customer_id?: string | null
+          customer_name: string
+          customer_phone?: string | null
+          id?: string
+          message?: string | null
+          preferred_date: string
+          preferred_time: string
+          status?: string | null
+          updated_at?: string
+          vehicle_interest?: string | null
+        }
+        Update: {
+          appointment_type?: string
+          created_at?: string
+          customer_email?: string
+          customer_id?: string | null
+          customer_name?: string
+          customer_phone?: string | null
+          id?: string
+          message?: string | null
+          preferred_date?: string
+          preferred_time?: string
+          status?: string | null
+          updated_at?: string
+          vehicle_interest?: string | null
         }
         Relationships: []
       }
@@ -416,6 +464,39 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          email: string
+          first_name: string | null
+          id: string
+          is_active: boolean | null
+          last_name: string | null
+          preferences: Json | null
+          subscription_date: string
+          unsubscribe_token: string | null
+        }
+        Insert: {
+          email: string
+          first_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          last_name?: string | null
+          preferences?: Json | null
+          subscription_date?: string
+          unsubscribe_token?: string | null
+        }
+        Update: {
+          email?: string
+          first_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          last_name?: string | null
+          preferences?: Json | null
+          subscription_date?: string
+          unsubscribe_token?: string | null
+        }
+        Relationships: []
+      }
       order_payments: {
         Row: {
           amount: number
@@ -696,6 +777,51 @@ export type Database = {
           old_role?: string | null
           reason?: string | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_location: string | null
+          customer_name: string
+          id: string
+          image_url: string | null
+          is_approved: boolean | null
+          is_featured: boolean | null
+          rating: number
+          review_text: string
+          updated_at: string
+          vehicle_purchased: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_location?: string | null
+          customer_name: string
+          id?: string
+          image_url?: string | null
+          is_approved?: boolean | null
+          is_featured?: boolean | null
+          rating: number
+          review_text: string
+          updated_at?: string
+          vehicle_purchased?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_location?: string | null
+          customer_name?: string
+          id?: string
+          image_url?: string | null
+          is_approved?: boolean | null
+          is_featured?: boolean | null
+          rating?: number
+          review_text?: string
+          updated_at?: string
+          vehicle_purchased?: string | null
         }
         Relationships: []
       }
