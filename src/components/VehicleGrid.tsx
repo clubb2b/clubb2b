@@ -60,7 +60,7 @@ const VehicleGrid = () => {
         { id: "40", image_url: "/lovable-uploads/b35f23c3-8e80-4592-a442-34d7fe74f10f.png", caption: null, is_primary: false, display_order: 10 }
       ],
       make: "Mercedes-Benz",
-      model: "AMG GLE 52",
+      model: "AMG GLE 53",
       year: 2022,
       features: ["3.0L Inline-6 Turbo Engine with EQ Boost", "429 Horsepower", "AMG Panamericana Grille", "4MATIC All-Wheel Drive", "AMG Ride Control Air Suspension", "MBUX Infotainment System", "Premium AMG Interior", "Performance Exhaust System"],
       videoUrl: null,
@@ -68,10 +68,34 @@ const VehicleGrid = () => {
       location: "Canada",
       price: null,
       condition: "excellent",
-      description: "Experience the perfect blend of luxury and performance with this 2022 Mercedes-Benz AMG GLE 52. Featuring a commanding black exterior and sophisticated interior with premium AMG appointments, this SUV delivers 429 horsepower with advanced 4MATIC all-wheel drive for exceptional capability."
+      description: "Experience the perfect blend of luxury and performance with this 2022 Mercedes-Benz AMG GLE 53. Featuring a commanding black exterior and sophisticated interior with premium AMG appointments, this SUV delivers 429 horsepower with advanced 4MATIC all-wheel drive for exceptional capability."
     },
     {
-      id: "4", 
+      id: "4",
+      images: [
+        { id: "41", image_url: "/lovable-uploads/eee3b934-1e80-4770-8a3d-7282c7402e1e.png", caption: null, is_primary: true, display_order: 1 },
+        { id: "42", image_url: "/lovable-uploads/5840dfde-2f36-45c9-a531-27d4e0b575c8.png", caption: null, is_primary: false, display_order: 2 },
+        { id: "43", image_url: "/lovable-uploads/f94a680c-7cda-489e-905a-9f3d0038a07a.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "44", image_url: "/lovable-uploads/e31c381f-42ea-4429-9232-686cb7ee4ea0.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "45", image_url: "/lovable-uploads/3ed236d0-fafd-4b91-aba3-b2d44d1acd32.png", caption: null, is_primary: false, display_order: 5 },
+        { id: "46", image_url: "/lovable-uploads/8cd00401-b84a-4ad6-9faf-308c26c12b7e.png", caption: null, is_primary: false, display_order: 6 },
+        { id: "47", image_url: "/lovable-uploads/dd92bddf-3f23-4cb8-a0a7-aaf87c9de5ad.png", caption: null, is_primary: false, display_order: 7 },
+        { id: "48", image_url: "/lovable-uploads/b7dd8199-f926-4019-b13a-c1857aa2f953.png", caption: null, is_primary: false, display_order: 8 },
+        { id: "49", image_url: "/lovable-uploads/0747cd8f-f291-4a38-a877-aaa9b69c4982.png", caption: null, is_primary: false, display_order: 9 }
+      ],
+      make: "Dodge",
+      model: "Durango GT AWD",
+      year: 2022,
+      features: ["5.7L HEMI V8 Engine", "All-Wheel Drive", "Uconnect 4C NAV System", "Leather-Appointed Seating", "Heated Front Seats", "Remote Start System", "LED Headlamps", "Premium Sound System"],
+      videoUrl: null,
+      status: "available",
+      location: "Canada",
+      price: null,
+      condition: "excellent",
+      description: "Experience the perfect balance of performance and capability with the 2022 Dodge Durango GT AWD. This powerful SUV features a commanding gray exterior with aggressive styling, premium interior appointments, and the legendary HEMI V8 engine delivering exceptional power for any adventure."
+    },
+    {
+      id: "5",
       images: [{ id: "7", image_url: "/lovable-uploads/559fc082-dda3-4fb2-915c-a104e6830322.png", caption: null, is_primary: true, display_order: 1 }],
       make: "McLaren",
       model: "720S", 
@@ -85,7 +109,7 @@ const VehicleGrid = () => {
       description: "Experience breathtaking performance in the McLaren 720S, featuring a striking papaya orange exterior. With 710 horsepower from its twin-turbocharged V8 and a lightweight carbon fiber chassis, it delivers a 0-60 mph time of just 2.8 seconds with uncompromising precision and thrilling dynamics."
     },
     {
-      id: "5",
+      id: "6",
       images: [
         { id: "8", image_url: "/lovable-uploads/dfef9aa3-0fc4-4c1f-b418-b63015bdbe2a.png", caption: null, is_primary: true, display_order: 1 },
         { id: "9", image_url: "/lovable-uploads/57907b7c-a0e8-4f8f-918a-c6729e9e0894.png", caption: null, is_primary: false, display_order: 2 },
@@ -105,7 +129,7 @@ const VehicleGrid = () => {
       description: "An exceptional combination of AMG performance and SUV practicality. The 2024 Mercedes-AMG GLE 53 features the distinctive AMG Panamericana grille, delivering 429 horsepower with its turbocharged inline-6 engine and EQ Boost system for instant response and efficiency."
     },
     {
-      id: "6",
+      id: "7",
       images: [
         { id: "13", image_url: "/lovable-uploads/072c049b-dc6c-45e5-a227-e7d741c35528.png", caption: null, is_primary: true, display_order: 1 },
         { id: "14", image_url: "/lovable-uploads/8a969a91-6f24-4565-9dcd-b0813370e586.png", caption: null, is_primary: false, display_order: 2 },
@@ -123,7 +147,7 @@ const VehicleGrid = () => {
       description: "The pinnacle of Mercedes luxury, the S580 combines breathtaking performance with unparalleled comfort. Featuring a sophisticated black exterior with a sumptuous tan leather interior, this executive sedan offers cutting-edge technology and first-class amenities throughout."
     },
     {
-      id: "7",
+      id: "8",
       images: [
         { id: "16", image_url: "/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png", caption: null, is_primary: true, display_order: 1 },
         { id: "17", image_url: "/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png", caption: null, is_primary: false, display_order: 2 },
@@ -143,7 +167,7 @@ const VehicleGrid = () => {
       description: "Experience unparalleled luxury with the 2025 Range Rover Autobiography. This flagship model redefines SUV opulence with its commanding presence, masterful performance, and handcrafted interior featuring the finest leathers and veneers. The perfect blend of British craftsmanship and cutting-edge technology."
     },
     {
-      id: "8",
+      id: "9",
       images: [
         { id: "24", image_url: "/lovable-uploads/65e689ae-1df4-49a9-a317-bb8251b3da02.png", caption: null, is_primary: true, display_order: 1 },
         { id: "25", image_url: "/lovable-uploads/a6a7948c-8536-4a96-a73c-31af4cc2938e.png", caption: null, is_primary: false, display_order: 2 },

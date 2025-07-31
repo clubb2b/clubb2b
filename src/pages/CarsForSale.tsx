@@ -7,30 +7,100 @@ import { useState } from "react";
 const CarsForSale = () => {
   const carsForSale = [
     {
-      images: ["/lovable-uploads/6cc198e0-a2f6-420b-96e2-bd97bc9b39f7.png"],
+      images: [
+        "/lovable-uploads/232a13f0-e68d-4874-806c-0c6bdf94008c.png",
+        "/lovable-uploads/e49ec679-cd55-4452-8d42-6d5b23efc8f4.png",
+        "/lovable-uploads/ea6e633f-31a5-4496-92ca-7fdecbb544cf.png",
+        "/lovable-uploads/65fbf4f2-5a57-49e2-b01d-3cc72f439e8f.png",
+        "/lovable-uploads/d0d7e2e5-0cb3-46f9-8555-da0a58f9251d.png",
+        "/lovable-uploads/9bbb7d4e-26de-4d51-89b0-19f15ba4cb39.png"
+      ],
       name: "2024 Cadillac Escalade",
-      features: ["8 Pieces of luggage", "Up to 6 passengers", "Black interior"],
+      features: ["Premium Platinum Package", "Super Cruise Technology", "OLED Displays", "AKG Premium Audio System"],
       status: "Available",
       location: "Canada"
     },
     {
-      images: ["/lovable-uploads/e31fe280-a6c2-40c4-96cb-3d9f0d9032f8.png"],
+      images: [
+        "/lovable-uploads/20ea0960-3c5f-4707-b1aa-767f704c9323.png",
+        "/lovable-uploads/69964ad9-ab08-4c57-821f-1701d9cf1e0b.png",
+        "/lovable-uploads/dfd6f4a9-d41c-4aa7-b581-94a64d4e4e56.png",
+        "/lovable-uploads/45669357-148f-4fee-a7df-a38290bef43e.png",
+        "/lovable-uploads/bfb62425-608b-4dcb-ab10-22dda9a7e46c.png",
+        "/lovable-uploads/397e6a08-7ff6-49ee-94e9-ec92db8e6e19.png",
+        "/lovable-uploads/0ab77332-1a39-478c-be56-54324b76f289.png",
+        "/lovable-uploads/fe103580-0077-4002-bfc1-2dc7b2e9427c.png",
+        "/lovable-uploads/114e4aa4-ba2f-4c60-92ea-9b52891b9317.png",
+        "/lovable-uploads/b93c1bfb-2ccc-43d2-93aa-91170efcdf34.png"
+      ],
+      name: "2023 Mercedes-Benz AMG S580",
+      features: ["AMG Line Package", "MBUX Hyperscreen", "Burmester 4D Sound", "Active Body Control"],
+      status: "Available",
+      location: "Canada"
+    },
+    {
+      images: [
+        "/lovable-uploads/494e1c6f-c7bb-41e8-91c2-4ebf59d5330a.png",
+        "/lovable-uploads/776a2181-f2a3-48fc-a9fa-c7dd66c400ab.png",
+        "/lovable-uploads/5f2c8b47-ddd3-4aa8-9318-87f508177619.png",
+        "/lovable-uploads/6ac99e6c-b851-4d65-860e-71bd3d47ce19.png",
+        "/lovable-uploads/e23f2138-f0c9-4889-83e0-e827e3a2efa8.png",
+        "/lovable-uploads/5e783fa2-f884-4b9f-b558-16e37ba595f1.png",
+        "/lovable-uploads/bd5a2209-1a4f-4bb4-aa44-bdd6da96ed04.png",
+        "/lovable-uploads/c34460f2-dd43-4191-abda-680105e0ce78.png",
+        "/lovable-uploads/5cb41c82-67f5-40ec-bc9f-649c565ba848.png",
+        "/lovable-uploads/b35f23c3-8e80-4592-a442-34d7fe74f10f.png"
+      ],
+      name: "2022 Mercedes-Benz AMG GLE 53",
+      features: ["AMG Panamericana Grille", "429 Horsepower", "4MATIC All-Wheel Drive", "Premium AMG Interior"],
+      status: "Available",
+      location: "Canada"
+    },
+    {
+      images: [
+        "/lovable-uploads/eee3b934-1e80-4770-8a3d-7282c7402e1e.png",
+        "/lovable-uploads/5840dfde-2f36-45c9-a531-27d4e0b575c8.png",
+        "/lovable-uploads/f94a680c-7cda-489e-905a-9f3d0038a07a.png",
+        "/lovable-uploads/e31c381f-42ea-4429-9232-686cb7ee4ea0.png",
+        "/lovable-uploads/3ed236d0-fafd-4b91-aba3-b2d44d1acd32.png",
+        "/lovable-uploads/8cd00401-b84a-4ad6-9faf-308c26c12b7e.png",
+        "/lovable-uploads/dd92bddf-3f23-4cb8-a0a7-aaf87c9de5ad.png",
+        "/lovable-uploads/b7dd8199-f926-4019-b13a-c1857aa2f953.png",
+        "/lovable-uploads/0747cd8f-f291-4a38-a877-aaa9b69c4982.png"
+      ],
+      name: "2022 Dodge Durango GT AWD",
+      features: ["5.7L HEMI V8 Engine", "All-Wheel Drive", "Uconnect 4C NAV System", "Premium Sound System"],
+      status: "Available",
+      location: "Canada"
+    },
+    {
+      images: ["/lovable-uploads/559fc082-dda3-4fb2-915c-a104e6830322.png"],
       name: "2024 McLaren 720S",
-      features: ["Twin-Turbo V8", "Butterfly Doors", "Carbon Fiber Monocoque"],
+      features: ["710 Horsepower", "Carbon Fiber Monocoque", "Butterfly Doors", "Track Telemetry System"],
       status: "Available",
       location: "Canada"
     },
     {
-      images: ["/lovable-uploads/fe0d3397-d164-45b0-a302-c07afb31b3c1.png"],
+      images: [
+        "/lovable-uploads/dfef9aa3-0fc4-4c1f-b418-b63015bdbe2a.png",
+        "/lovable-uploads/57907b7c-a0e8-4f8f-918a-c6729e9e0894.png",
+        "/lovable-uploads/a388b99d-efa8-418d-b71d-77581b323df9.png",
+        "/lovable-uploads/a151fa8d-8073-4a61-b3a9-633e5deeac7d.png",
+        "/lovable-uploads/4364b345-baff-48a8-900e-462967541b24.png"
+      ],
       name: "2024 Mercedes-AMG GLE 53",
-      features: ["AMG Performance", "Red & Black Interior", "Premium Sound System"],
+      features: ["AMG Panamericana Grille", "429 Horsepower", "AMG Performance Exhaust", "21-inch AMG Wheels"],
       status: "Available",
       location: "Canada"
     },
     {
-      images: ["/lovable-uploads/c20aeb80-5c8c-4f37-9bb9-0f7583e27158.png"],
+      images: [
+        "/lovable-uploads/072c049b-dc6c-45e5-a227-e7d741c35528.png",
+        "/lovable-uploads/8a969a91-6f24-4565-9dcd-b0813370e586.png",
+        "/lovable-uploads/4e2687f3-6659-476f-b8ca-e624a094f893.png"
+      ],
       name: "2024 Mercedes-AMG S580",
-      features: ["Executive Luxury", "Massaging Seats", "Advanced Driver Assistance"],
+      features: ["493 Horsepower", "MBUX Hyperscreen", "Burmester 4D Surround Sound", "Executive Rear Seats"],
       status: "Available",
       location: "Canada"
     },
@@ -40,15 +110,10 @@ const CarsForSale = () => {
         "/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png",
         "/lovable-uploads/e15c69f6-6d3b-4aa1-b7f2-85292123b295.png",
         "/lovable-uploads/1a0d54fe-3d0e-4693-b7dc-73554ed8c7a4.png",
-        "/lovable-uploads/32031a20-8ac8-43d6-b351-5d654dad669e.png",
-        "/lovable-uploads/554fc9ef-9529-4d80-963b-67be431b3bf2.png",
-        "/lovable-uploads/747124d4-2310-4462-8d1b-fb1c45d466ed.png",
-        "/lovable-uploads/74a5c922-b528-464a-b9db-da0f3ea7d193.png",
-        "/lovable-uploads/4af3716b-3bd1-4e07-b6f3-95344e4311f2.png",
-        "/lovable-uploads/212d5dcf-479c-4ff6-880b-322353e5f148.png"
+        "/lovable-uploads/32031a20-8ac8-43d6-b351-5d654dad669e.png"
       ],
-      name: "2025 Range Rover",
-      features: ["Luxury Interior", "Advanced Technology", "Premium Performance"],
+      name: "2025 Range Rover Autobiography",
+      features: ["518 Horsepower", "Electronic Air Suspension", "Meridian™ Signature Sound", "Hot Stone Massage"],
       status: "Available",
       location: "Canada"
     },
@@ -57,14 +122,14 @@ const CarsForSale = () => {
         "/lovable-uploads/65e689ae-1df4-49a9-a317-bb8251b3da02.png",
         "/lovable-uploads/a6a7948c-8536-4a96-a73c-31af4cc2938e.png",
         "/lovable-uploads/c00631e6-b2ff-4eb2-80a0-4ef009b23f74.png",
-        "/lovable-uploads/ce65b3ce-1420-4e71-b62d-a69b21f316fb.png",
-        "/lovable-uploads/a48ed54a-5f9b-401c-8e99-133d3def0999.png",
-        "/lovable-uploads/0c3939cf-05d7-4a24-8e56-aa046293559e.png",
-        "/lovable-uploads/9f32dd48-49ea-45e1-98cd-93c533d8ea6f.png",
-        "/lovable-uploads/a5527b0b-0a3d-4db2-a234-bf367c715a14.png"
+        "/lovable-uploads/f901eb9b-d0f8-47c2-bd92-82e39cbbb3b2.png",
+        "/lovable-uploads/fb5b4401-9790-4c9b-a13e-6b7861649cdd.png",
+        "/lovable-uploads/05105e45-f845-4b0c-9ecc-038198730dd6.png",
+        "/lovable-uploads/9789d1ca-4816-4541-a17d-df2d08aeee74.png",
+        "/lovable-uploads/b9105ab2-5cea-4296-8450-c36bd1785d39.png"
       ],
       name: "2024 Audi RS Q8 TFSI Quattro",
-      features: ["Twin-Turbo V8", "Quattro AWD", "Sport Interior", "Premium Technology"],
+      features: ["591 Horsepower", "Quattro All-Wheel Drive", "Carbon Ceramic Brakes", "Bang & Olufsen 3D Sound"],
       status: "Available",
       location: "Canada"
     }
