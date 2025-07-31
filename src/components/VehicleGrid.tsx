@@ -46,7 +46,32 @@ const VehicleGrid = () => {
       description: "Experience the pinnacle of luxury and performance with this stunning 2023 Mercedes-Benz AMG S580. Featuring a sleek black exterior, premium quilted leather interior, advanced MBUX system, and powerful AMG-tuned engine delivering exceptional comfort and driving dynamics."
     },
     {
-      id: "3", 
+      id: "3",
+      images: [
+        { id: "31", image_url: "/lovable-uploads/494e1c6f-c7bb-41e8-91c2-4ebf59d5330a.png", caption: null, is_primary: true, display_order: 1 },
+        { id: "32", image_url: "/lovable-uploads/776a2181-f2a3-48fc-a9fa-c7dd66c400ab.png", caption: null, is_primary: false, display_order: 2 },
+        { id: "33", image_url: "/lovable-uploads/5f2c8b47-ddd3-4aa8-9318-87f508177619.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "34", image_url: "/lovable-uploads/6ac99e6c-b851-4d65-860e-71bd3d47ce19.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "35", image_url: "/lovable-uploads/e23f2138-f0c9-4889-83e0-e827e3a2efa8.png", caption: null, is_primary: false, display_order: 5 },
+        { id: "36", image_url: "/lovable-uploads/5e783fa2-f884-4b9f-b558-16e37ba595f1.png", caption: null, is_primary: false, display_order: 6 },
+        { id: "37", image_url: "/lovable-uploads/bd5a2209-1a4f-4bb4-aa44-bdd6da96ed04.png", caption: null, is_primary: false, display_order: 7 },
+        { id: "38", image_url: "/lovable-uploads/c34460f2-dd43-4191-abda-680105e0ce78.png", caption: null, is_primary: false, display_order: 8 },
+        { id: "39", image_url: "/lovable-uploads/5cb41c82-67f5-40ec-bc9f-649c565ba848.png", caption: null, is_primary: false, display_order: 9 },
+        { id: "40", image_url: "/lovable-uploads/b35f23c3-8e80-4592-a442-34d7fe74f10f.png", caption: null, is_primary: false, display_order: 10 }
+      ],
+      make: "Mercedes-Benz",
+      model: "AMG GLE 52",
+      year: 2022,
+      features: ["3.0L Inline-6 Turbo Engine with EQ Boost", "429 Horsepower", "AMG Panamericana Grille", "4MATIC All-Wheel Drive", "AMG Ride Control Air Suspension", "MBUX Infotainment System", "Premium AMG Interior", "Performance Exhaust System"],
+      videoUrl: null,
+      status: "available",
+      location: "Canada",
+      price: null,
+      condition: "excellent",
+      description: "Experience the perfect blend of luxury and performance with this 2022 Mercedes-Benz AMG GLE 52. Featuring a commanding black exterior and sophisticated interior with premium AMG appointments, this SUV delivers 429 horsepower with advanced 4MATIC all-wheel drive for exceptional capability."
+    },
+    {
+      id: "4", 
       images: [{ id: "7", image_url: "/lovable-uploads/559fc082-dda3-4fb2-915c-a104e6830322.png", caption: null, is_primary: true, display_order: 1 }],
       make: "McLaren",
       model: "720S", 
@@ -60,7 +85,7 @@ const VehicleGrid = () => {
       description: "Experience breathtaking performance in the McLaren 720S, featuring a striking papaya orange exterior. With 710 horsepower from its twin-turbocharged V8 and a lightweight carbon fiber chassis, it delivers a 0-60 mph time of just 2.8 seconds with uncompromising precision and thrilling dynamics."
     },
     {
-      id: "4",
+      id: "5",
       images: [
         { id: "8", image_url: "/lovable-uploads/dfef9aa3-0fc4-4c1f-b418-b63015bdbe2a.png", caption: null, is_primary: true, display_order: 1 },
         { id: "9", image_url: "/lovable-uploads/57907b7c-a0e8-4f8f-918a-c6729e9e0894.png", caption: null, is_primary: false, display_order: 2 },
@@ -80,7 +105,7 @@ const VehicleGrid = () => {
       description: "An exceptional combination of AMG performance and SUV practicality. The 2024 Mercedes-AMG GLE 53 features the distinctive AMG Panamericana grille, delivering 429 horsepower with its turbocharged inline-6 engine and EQ Boost system for instant response and efficiency."
     },
     {
-      id: "5",
+      id: "6",
       images: [
         { id: "13", image_url: "/lovable-uploads/072c049b-dc6c-45e5-a227-e7d741c35528.png", caption: null, is_primary: true, display_order: 1 },
         { id: "14", image_url: "/lovable-uploads/8a969a91-6f24-4565-9dcd-b0813370e586.png", caption: null, is_primary: false, display_order: 2 },
@@ -98,13 +123,13 @@ const VehicleGrid = () => {
       description: "The pinnacle of Mercedes luxury, the S580 combines breathtaking performance with unparalleled comfort. Featuring a sophisticated black exterior with a sumptuous tan leather interior, this executive sedan offers cutting-edge technology and first-class amenities throughout."
     },
     {
-      id: "6",
+      id: "7",
       images: [
-        { id: "14", image_url: "/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png", caption: null, is_primary: true, display_order: 1 },
-        { id: "15", image_url: "/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png", caption: null, is_primary: false, display_order: 2 },
-        { id: "16", image_url: "/lovable-uploads/e15c69f6-6d3b-4aa1-b7f2-85292123b295.png", caption: null, is_primary: false, display_order: 3 },
-        { id: "17", image_url: "/lovable-uploads/1a0d54fe-3d0e-4693-b7dc-73554ed8c7a4.png", caption: null, is_primary: false, display_order: 4 },
-        { id: "18", image_url: "/lovable-uploads/32031a20-8ac8-43d6-b351-5d654dad669e.png", caption: null, is_primary: false, display_order: 5 }
+        { id: "16", image_url: "/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png", caption: null, is_primary: true, display_order: 1 },
+        { id: "17", image_url: "/lovable-uploads/527d7368-7510-4039-a647-850a6054e780.png", caption: null, is_primary: false, display_order: 2 },
+        { id: "18", image_url: "/lovable-uploads/e15c69f6-6d3b-4aa1-b7f2-85292123b295.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "19", image_url: "/lovable-uploads/1a0d54fe-3d0e-4693-b7dc-73554ed8c7a4.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "20", image_url: "/lovable-uploads/32031a20-8ac8-43d6-b351-5d654dad669e.png", caption: null, is_primary: false, display_order: 5 }
       ],
       make: "Range Rover",
       model: "Autobiography",
@@ -118,7 +143,7 @@ const VehicleGrid = () => {
       description: "Experience unparalleled luxury with the 2025 Range Rover Autobiography. This flagship model redefines SUV opulence with its commanding presence, masterful performance, and handcrafted interior featuring the finest leathers and veneers. The perfect blend of British craftsmanship and cutting-edge technology."
     },
     {
-      id: "7",
+      id: "8",
       images: [
         { id: "24", image_url: "/lovable-uploads/65e689ae-1df4-49a9-a317-bb8251b3da02.png", caption: null, is_primary: true, display_order: 1 },
         { id: "25", image_url: "/lovable-uploads/a6a7948c-8536-4a96-a73c-31af4cc2938e.png", caption: null, is_primary: false, display_order: 2 },
