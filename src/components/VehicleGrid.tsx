@@ -41,7 +41,7 @@ const VehicleGrid = () => {
       videoUrl: null,
       status: "available",
       location: "Canada",
-      price: 165000,
+      price: null,
       condition: "excellent",
       description: "Experience the pinnacle of luxury and performance with this stunning 2023 Mercedes-Benz AMG S580. Featuring a sleek black exterior, premium quilted leather interior, advanced MBUX system, and powerful AMG-tuned engine delivering exceptional comfort and driving dynamics."
     },
