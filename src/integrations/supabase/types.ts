@@ -116,6 +116,30 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_form_submissions: {
+        Row: {
+          email: string
+          id: string
+          ip_address: unknown | null
+          submitted_at: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          email: string
+          id?: string
+          ip_address?: unknown | null
+          submitted_at?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          email?: string
+          id?: string
+          ip_address?: unknown | null
+          submitted_at?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       customer_communications: {
         Row: {
           communication_type: string
@@ -858,6 +882,30 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          assigned_at: string | null
+          assigned_by: string | null
+          id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Insert: {
+          assigned_at?: string | null
+          assigned_by?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Update: {
+          assigned_at?: string | null
+          assigned_by?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       vehicle_images: {
         Row: {
           caption: string | null
@@ -1030,6 +1078,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_contact_rate_limit: {
+        Args: { check_email: string; check_ip: unknown }
+        Returns: boolean
+      }
       generate_order_number: {
         Args: Record<PropertyKey, never>
         Returns: string
@@ -1042,11 +1094,16 @@ export type Database = {
         Args: { user_id?: string }
         Returns: string
       }
+      has_role: {
+        Args: { check_user_id: string; check_role: string }
+        Returns: boolean
+      }
     }
     Enums: {
       membership_tier: "basic" | "premium" | "vip" | "ultra_vip" | "platinum"
       payment_frequency: "monthly" | "quarterly" | "yearly"
       subscription_status: "active" | "cancelled" | "expired" | "pending"
+      user_role: "user" | "admin" | "vip"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1177,6 +1234,7 @@ export const Constants = {
       membership_tier: ["basic", "premium", "vip", "ultra_vip", "platinum"],
       payment_frequency: ["monthly", "quarterly", "yearly"],
       subscription_status: ["active", "cancelled", "expired", "pending"],
+      user_role: ["user", "admin", "vip"],
     },
   },
 } as const

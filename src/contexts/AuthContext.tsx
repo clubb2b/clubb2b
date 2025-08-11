@@ -49,18 +49,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
+      // Get profile data
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
       
-      if (error && error.code !== 'PGRST116') {
-        console.error('Error fetching profile:', error);
+      if (profileError && profileError.code !== 'PGRST116') {
+        console.error('Error fetching profile:', profileError);
         return null;
       }
+
+      // Get user role from the secure user_roles table
+      const { data: roleData, error: roleError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .order('role', { ascending: true })
+        .limit(1)
+        .single();
+
+      const userRole = roleData?.role || 'user';
       
-      return data;
+      return {
+        ...profileData,
+        role: userRole
+      } as Profile;
     } catch (error) {
       console.error('Error in fetchProfile:', error);
       return null;
@@ -79,7 +94,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (session?.user) {
           setTimeout(async () => {
             const profileData = await fetchProfile(session.user.id);
-            setProfile(profileData as Profile);
+            setProfile(profileData);
           }, 0);
         } else {
           setProfile(null);
@@ -107,7 +122,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (session?.user) {
         setTimeout(async () => {
           const profileData = await fetchProfile(session.user.id);
-          setProfile(profileData as Profile);
+          setProfile(profileData);
         }, 0);
       }
       
