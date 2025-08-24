@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -53,6 +52,24 @@ const CarsForSale = () => {
       ],
       name: "2022 Mercedes-Benz AMG GLE 53",
       features: ["AMG Panamericana Grille", "429 Horsepower", "4MATIC All-Wheel Drive", "Premium AMG Interior"],
+      status: "Available",
+      location: "Canada"
+    },
+    {
+      images: [
+        "/lovable-uploads/ab4b854e-c830-4009-9ac2-41f6249ca40a.png",
+        "/lovable-uploads/5803e967-d5eb-4c38-913e-d32d4a7ecee4.png",
+        "/lovable-uploads/80117c0e-d345-4e33-9f39-9a977f13a27f.png",
+        "/lovable-uploads/66f8bb82-13a2-4788-b982-d44e3c6aa1df.png",
+        "/lovable-uploads/4f9bda36-53af-4dbd-a60f-4e34fb80accd.png",
+        "/lovable-uploads/35a52588-a76f-4e4d-9ed8-cc6cbe6a441b.png",
+        "/lovable-uploads/c25b0b0b-6f88-4470-975c-acaf692b4985.png",
+        "/lovable-uploads/96aeba47-12a8-477b-bb6c-11e731a15687.png",
+        "/lovable-uploads/88c31605-76da-478d-a974-6430e32ec51a.png",
+        "/lovable-uploads/accea9d9-7dcc-4eef-89f7-6d4c055c278f.png"
+      ],
+      name: "2025 GMC Yukon Denali",
+      features: ["6.2L V8 Engine", "420 Horsepower", "Advanced Trailering Package", "15-inch Infotainment Display"],
       status: "Available",
       location: "Canada"
     },

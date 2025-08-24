@@ -1,4 +1,3 @@
-
 import VehicleCard from "./VehicleCard";
 
 const VehicleGrid = () => {
@@ -69,6 +68,31 @@ const VehicleGrid = () => {
       price: null,
       condition: "excellent",
       description: "Experience the perfect blend of luxury and performance with this 2022 Mercedes-Benz AMG GLE 53. Featuring a commanding black exterior and sophisticated interior with premium AMG appointments, this SUV delivers 429 horsepower with advanced 4MATIC all-wheel drive for exceptional capability."
+    },
+    {
+      id: "10",
+      images: [
+        { id: "101", image_url: "/lovable-uploads/ab4b854e-c830-4009-9ac2-41f6249ca40a.png", caption: null, is_primary: true, display_order: 1 },
+        { id: "102", image_url: "/lovable-uploads/5803e967-d5eb-4c38-913e-d32d4a7ecee4.png", caption: null, is_primary: false, display_order: 2 },
+        { id: "103", image_url: "/lovable-uploads/80117c0e-d345-4e33-9f39-9a977f13a27f.png", caption: null, is_primary: false, display_order: 3 },
+        { id: "104", image_url: "/lovable-uploads/66f8bb82-13a2-4788-b982-d44e3c6aa1df.png", caption: null, is_primary: false, display_order: 4 },
+        { id: "105", image_url: "/lovable-uploads/4f9bda36-53af-4dbd-a60f-4e34fb80accd.png", caption: null, is_primary: false, display_order: 5 },
+        { id: "106", image_url: "/lovable-uploads/35a52588-a76f-4e4d-9ed8-cc6cbe6a441b.png", caption: null, is_primary: false, display_order: 6 },
+        { id: "107", image_url: "/lovable-uploads/c25b0b0b-6f88-4470-975c-acaf692b4985.png", caption: null, is_primary: false, display_order: 7 },
+        { id: "108", image_url: "/lovable-uploads/96aeba47-12a8-477b-bb6c-11e731a15687.png", caption: null, is_primary: false, display_order: 8 },
+        { id: "109", image_url: "/lovable-uploads/88c31605-76da-478d-a974-6430e32ec51a.png", caption: null, is_primary: false, display_order: 9 },
+        { id: "110", image_url: "/lovable-uploads/accea9d9-7dcc-4eef-89f7-6d4c055c278f.png", caption: null, is_primary: false, display_order: 10 }
+      ],
+      make: "GMC",
+      model: "Yukon Denali",
+      year: 2025,
+      features: ["6.2L V8 Engine", "420 Horsepower", "Advanced Trailering Package", "Magnetic Ride Control", "Premium Interior with Real Wood Trim", "Head-Up Display", "Wireless Charging", "Panoramic Power Sunroof", "Adaptive Cruise Control", "15-inch Diagonal Infotainment Display"],
+      videoUrl: null,
+      status: "available",
+      location: "Canada",
+      price: null,
+      condition: "excellent",
+      description: "Experience ultimate luxury and capability with the 2025 GMC Yukon Denali. This full-size SUV combines commanding presence with refined comfort, featuring a premium white exterior, sophisticated interior with real wood trim, advanced infotainment system, and powerful V8 performance for any journey."
     },
     {
       id: "4",
