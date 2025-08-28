@@ -39,6 +39,8 @@ interface RoleChange {
   reason: string;
 }
 
+type ValidRole = 'admin' | 'vip' | 'user';
+
 const SecureRoleManagement = () => {
   const { user, isAdmin } = useAuth();
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -49,8 +51,8 @@ const SecureRoleManagement = () => {
   const [selectedRole, setSelectedRole] = useState<string>('all');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<Profile | null>(null);
-  const [currentUserRole, setCurrentUserRole] = useState<string>('user');
-  const [newRole, setNewRole] = useState<string>('');
+  const [currentUserRole, setCurrentUserRole] = useState<ValidRole>('user');
+  const [newRole, setNewRole] = useState<ValidRole>('user');
   const [reason, setReason] = useState('');
 
   // Only admins can access this component
@@ -114,13 +116,14 @@ const SecureRoleManagement = () => {
     loadData();
   }, []);
 
-  const getUserRole = (userId: string): string => {
+  const getUserRole = (userId: string): ValidRole => {
     const roles = userRoles.filter(role => role.user_id === userId);
     if (roles.length === 0) return 'user';
     
     // Return highest priority role
     const roleOrder = { admin: 1, vip: 2, user: 3 };
-    return roles.sort((a, b) => (roleOrder[a.role as keyof typeof roleOrder] || 3) - (roleOrder[b.role as keyof typeof roleOrder] || 3))[0].role;
+    const sortedRoles = roles.sort((a, b) => (roleOrder[a.role as ValidRole] || 3) - (roleOrder[b.role as ValidRole] || 3));
+    return sortedRoles[0].role as ValidRole;
   };
 
   const handleRoleChange = async () => {
@@ -169,7 +172,7 @@ const SecureRoleManagement = () => {
           .from('user_roles')
           .insert({
             user_id: selectedUser.id,
-            role: newRole,
+            role: newRole as ValidRole,
             assigned_by: user?.id
           });
 
@@ -199,7 +202,7 @@ const SecureRoleManagement = () => {
       // Reset form
       setIsDialogOpen(false);
       setSelectedUser(null);
-      setNewRole('');
+      setNewRole('user');
       setReason('');
     } catch (error) {
       console.error('Error updating role:', error);
@@ -354,7 +357,7 @@ const SecureRoleManagement = () => {
                         setIsDialogOpen(open);
                         if (!open) {
                           setSelectedUser(null);
-                          setNewRole('');
+                          setNewRole('user');
                           setReason('');
                         }
                       }}>
@@ -388,7 +391,7 @@ const SecureRoleManagement = () => {
                             
                             <div>
                               <Label htmlFor="role">New Role</Label>
-                              <Select value={newRole} onValueChange={setNewRole}>
+                              <Select value={newRole} onValueChange={(value) => setNewRole(value as ValidRole)}>
                                 <SelectTrigger>
                                   <SelectValue />
                                 </SelectTrigger>
