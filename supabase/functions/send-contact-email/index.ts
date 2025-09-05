@@ -77,40 +77,40 @@ const handler = async (req: Request): Promise<Response> => {
     const clientIP = getClientIP(req);
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    // Check rate limiting
-    const { data: rateLimitCheck, error: rateLimitError } = await supabase
-      .rpc('check_contact_rate_limit', {
-        check_email: sanitizedEmail,
-        check_ip: clientIP
-      });
+    // Use the secure contact submission function with built-in rate limiting and validation
+    const { data: submissionId, error: submissionError } = await supabase.rpc(
+      'secure_contact_submission',
+      {
+        p_email: sanitizedEmail,
+        p_ip_address: clientIP,
+        p_user_agent: userAgent
+      }
+    );
 
-    if (rateLimitError) {
-      console.error('Rate limit check error:', rateLimitError);
+    if (submissionError) {
+      console.error('Contact submission failed:', submissionError);
+      
+      // Check if it's a rate limit error
+      if (submissionError.message === 'Rate limit exceeded') {
+        return new Response(
+          JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
+          { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+      
+      // Check if it's a validation error
+      if (submissionError.message === 'Invalid email format') {
+        return new Response(
+          JSON.stringify({ error: 'Invalid email format provided.' }),
+          { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+
+      // General error
       return new Response(
-        JSON.stringify({ error: 'Rate limit check failed' }),
+        JSON.stringify({ error: 'Failed to process submission. Please try again.' }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
-    }
-
-    if (!rateLimitCheck) {
-      return new Response(
-        JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
-        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
-
-    // Log the contact form submission
-    const { error: logError } = await supabase
-      .from('contact_form_submissions')
-      .insert({
-        email: sanitizedEmail,
-        ip_address: clientIP,
-        user_agent: userAgent
-      });
-
-    if (logError) {
-      console.error('Failed to log submission:', logError);
-      // Continue anyway - don't block the email
     }
 
     // TODO: Integrate with Resend for actual email sending
