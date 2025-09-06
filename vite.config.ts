@@ -25,10 +25,20 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom'],
         },
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return `assets/[name]-[hash][extname]`;
+          const info = assetInfo.name.split('.');
+          const extType = info[info.length - 1];
+          if (/css/i.test(extType)) {
+            return `assets/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
       },
     },
     cssCodeSplit: true,
     assetsInlineLimit: 0,
+    cssMinify: true,
   },
   css: {
     preprocessorOptions: {
