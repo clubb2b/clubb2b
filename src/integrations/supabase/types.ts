@@ -1075,7 +1075,42 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_testimonials: {
+        Row: {
+          created_at: string | null
+          customer_location: string | null
+          customer_name: string | null
+          id: string | null
+          image_url: string | null
+          is_featured: boolean | null
+          rating: number | null
+          review_text: string | null
+          vehicle_purchased: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          customer_location?: string | null
+          customer_name?: string | null
+          id?: string | null
+          image_url?: string | null
+          is_featured?: boolean | null
+          rating?: number | null
+          review_text?: string | null
+          vehicle_purchased?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          customer_location?: string | null
+          customer_name?: string | null
+          id?: string | null
+          image_url?: string | null
+          is_featured?: boolean | null
+          rating?: number | null
+          review_text?: string | null
+          vehicle_purchased?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       check_contact_rate_limit: {
