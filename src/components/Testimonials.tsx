@@ -1,25 +1,54 @@
 
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+
 const Testimonials = () => {
-  const testimonials = [
+  const [testimonials, setTestimonials] = useState([
+    // Fallback testimonials in case database is unavailable
     {
-      name: "Marcus Johnson",
-      location: "Toronto, Canada",
-      text: "Exceptional service and attention to detail. The team's professionalism and expertise made the entire export process seamless.",
+      customer_name: "Marcus Johnson",
+      customer_location: "Toronto, Canada",
+      review_text: "Exceptional service and attention to detail. The team's professionalism and expertise made the entire export process seamless.",
       rating: 5
     },
     {
-      name: "Sarah Mitchell",
-      location: "Vancouver, Canada", 
-      text: "Outstanding quality and service. They delivered exactly what was promised with remarkable precision and care.",
+      customer_name: "Sarah Mitchell",
+      customer_location: "Vancouver, Canada", 
+      review_text: "Outstanding quality and service. They delivered exactly what was promised with remarkable precision and care.",
       rating: 5
     },
     {
-      name: "David Uwimana",
-      location: "Kigali, Rwanda",
-      text: "Club B2B Performance sets the standard for luxury vehicle export. Professional, reliable, and trustworthy partners.",
+      customer_name: "David Uwimana",
+      customer_location: "Kigali, Rwanda",
+      review_text: "Club B2B Performance sets the standard for luxury vehicle export. Professional, reliable, and trustworthy partners.",
       rating: 5
     }
-  ];
+  ]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        // Use the secure public_testimonials view that excludes sensitive customer data
+        const { data, error } = await supabase
+          .from('public_testimonials')
+          .select('*')
+          .eq('is_featured', true)
+          .order('created_at', { ascending: false })
+          .limit(6);
+
+        if (error) throw error;
+        
+        if (data && data.length > 0) {
+          setTestimonials(data);
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error);
+        // Fallback testimonials are already set in state
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -47,12 +76,12 @@ const Testimonials = () => {
               </div>
               
               <p className="text-gray-300 mb-6 italic leading-relaxed">
-                "{testimonial.text}"
+                "{testimonial.review_text}"
               </p>
               
               <div className="border-t border-gray-700 pt-4">
-                <div className="font-medium text-white">{testimonial.name}</div>
-                <div className="text-gray-400 text-sm">{testimonial.location}</div>
+                <div className="font-medium text-white">{testimonial.customer_name}</div>
+                <div className="text-gray-400 text-sm">{testimonial.customer_location}</div>
               </div>
             </div>
           ))}
