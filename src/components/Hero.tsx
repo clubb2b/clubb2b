@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import PaymentButton from "./PaymentButton";
 import { useTranslation } from 'react-i18next';
+import clubLogo from "@/assets/club-b2b-logo.png";
 const Hero = () => {
   const {
     t
@@ -38,6 +39,15 @@ const Hero = () => {
 
       {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
+          <img 
+            src={clubLogo} 
+            alt="Club B2B Performance Logo" 
+            className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-2xl"
+          />
+        </div>
+        
         {/* Enhanced title with modern typography */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-white mb-6 tracking-[0.1em] leading-none">
           <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-xl font-bold text-slate-50">CLUB B2B PERFORMANCE</span>
