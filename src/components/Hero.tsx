@@ -41,9 +41,7 @@ const Hero = () => {
         {/* Enhanced title with modern typography */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-white mb-6 tracking-[0.1em] leading-none">
           <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-xl font-bold text-slate-50">CLUB B2B PERFORMANCE</span>
-          <span className="block text-4xl md:text-5xl lg:text-6xl mt-4 font-light tracking-[0.2em]">
-            PERFORMANCE
-          </span>
+          <span className="block text-4xl md:text-5xl lg:text-6xl mt-4 font-light tracking-[0.2em]">​</span>
         </h1>
 
         {/* Enhanced subtitle */}
