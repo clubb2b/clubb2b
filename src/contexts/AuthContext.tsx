@@ -57,7 +57,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         .single();
       
       if (profileError && profileError.code !== 'PGRST116') {
-        console.error('Error fetching profile:', profileError);
+        if (import.meta.env.DEV) {
+          console.error('Error fetching profile:', profileError);
+        }
         return null;
       }
 
@@ -77,7 +79,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role: userRole
       } as Profile;
     } catch (error) {
-      console.error('Error in fetchProfile:', error);
+      if (import.meta.env.DEV) {
+        console.error('Error in fetchProfile:', error);
+      }
       return null;
     }
   };
@@ -86,7 +90,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.email);
+        if (import.meta.env.DEV) {
+          console.log('Auth state changed:', event);
+        }
         setSession(session);
         setUser(session?.user ?? null);
 
@@ -115,7 +121,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('Initial session:', session?.user?.email);
+      if (import.meta.env.DEV) {
+        console.log('Initial session established');
+      }
       setSession(session);
       setUser(session?.user ?? null);
       
@@ -141,13 +149,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       
       if (error) {
-        console.error('Sign in error:', error);
+        if (import.meta.env.DEV) {
+          console.error('Sign in error:', error);
+        }
         toast.error(error.message);
       }
       
       return { error };
     } catch (err) {
-      console.error('Unexpected sign in error:', err);
+      if (import.meta.env.DEV) {
+        console.error('Unexpected sign in error:', err);
+      }
       return { error: err };
     } finally {
       setLoading(false);
@@ -169,7 +181,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       
       if (error) {
-        console.error('Sign up error:', error);
+        if (import.meta.env.DEV) {
+          console.error('Sign up error:', error);
+        }
         toast.error(error.message);
       } else {
         toast.success('Account created! Please check your email to verify your account.');
@@ -177,7 +191,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       return { error };
     } catch (err) {
-      console.error('Unexpected sign up error:', err);
+      if (import.meta.env.DEV) {
+        console.error('Unexpected sign up error:', err);
+      }
       return { error: err };
     } finally {
       setLoading(false);
@@ -189,11 +205,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(true);
       const { error } = await supabase.auth.signOut();
       if (error) {
-        console.error('Sign out error:', error);
+        if (import.meta.env.DEV) {
+          console.error('Sign out error:', error);
+        }
         toast.error('Error signing out');
       }
     } catch (err) {
-      console.error('Unexpected sign out error:', err);
+      if (import.meta.env.DEV) {
+        console.error('Unexpected sign out error:', err);
+      }
     } finally {
       setLoading(false);
     }
@@ -213,7 +233,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       return { error };
     } catch (err) {
-      console.error('Password reset error:', err);
+      if (import.meta.env.DEV) {
+        console.error('Password reset error:', err);
+      }
       return { error: err };
     }
   };
@@ -232,7 +254,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       return { error };
     } catch (err) {
-      console.error('Profile update error:', err);
+      if (import.meta.env.DEV) {
+        console.error('Profile update error:', err);
+      }
       return { error: err };
     }
   };

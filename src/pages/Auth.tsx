@@ -12,6 +12,29 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, Building2, AlertCircle } from 'lucide-react';
 import BrandLogo from '@/components/BrandLogo';
+import { z } from 'zod';
+
+// Zod schemas for validation
+const signInSchema = z.object({
+  email: z.string().email('Invalid email address').max(255, 'Email must be less than 255 characters'),
+  password: z.string().min(6, 'Password must be at least 6 characters').max(100, 'Password must be less than 100 characters'),
+});
+
+const signUpSchema = z.object({
+  email: z.string().email('Invalid email address').max(255, 'Email must be less than 255 characters'),
+  password: z.string().min(6, 'Password must be at least 6 characters').max(100, 'Password must be less than 100 characters'),
+  confirmPassword: z.string(),
+  firstName: z.string().trim().min(1, 'First name is required').max(50, 'First name must be less than 50 characters'),
+  lastName: z.string().trim().min(1, 'Last name is required').max(50, 'Last name must be less than 50 characters'),
+  company: z.string().trim().max(100, 'Company name must be less than 100 characters').optional(),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords do not match",
+  path: ["confirmPassword"],
+});
+
+const resetPasswordSchema = z.object({
+  email: z.string().email('Invalid email address').max(255, 'Email must be less than 255 characters'),
+});
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -39,28 +62,23 @@ const Auth = () => {
     }
   }, [user, navigate, location]);
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validatePassword = (password: string) => {
-    return password.length >= 6;
-  };
-
   const clearErrors = () => setErrors({});
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     clearErrors();
     
-    if (!validateEmail(email)) {
-      setErrors({ email: 'Please enter a valid email address' });
-      return;
-    }
+    // Validate with zod schema
+    const result = signInSchema.safeParse({ email, password });
     
-    if (!validatePassword(password)) {
-      setErrors({ password: 'Password must be at least 6 characters long' });
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0].toString()] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
       return;
     }
     
@@ -83,31 +101,32 @@ const Auth = () => {
     e.preventDefault();
     clearErrors();
     
-    if (!validateEmail(email)) {
-      setErrors({ email: 'Please enter a valid email address' });
-      return;
-    }
+    // Validate with zod schema
+    const result = signUpSchema.safeParse({ 
+      email, 
+      password, 
+      confirmPassword,
+      firstName,
+      lastName,
+      company 
+    });
     
-    if (!validatePassword(password)) {
-      setErrors({ password: 'Password must be at least 6 characters long' });
-      return;
-    }
-    
-    if (password !== confirmPassword) {
-      setErrors({ confirmPassword: 'Passwords do not match' });
-      return;
-    }
-    
-    if (!firstName.trim() || !lastName.trim()) {
-      setErrors({ firstName: 'First name is required', lastName: 'Last name is required' });
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0].toString()] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
       return;
     }
     
     setLoading(true);
     const { error } = await signUp(email, password, {
-      first_name: firstName.trim(),
-      last_name: lastName.trim(),
-      company: company.trim() || null,
+      first_name: result.data.firstName,
+      last_name: result.data.lastName,
+      company: result.data.company || null,
     });
     
     if (error) {
@@ -126,8 +145,17 @@ const Auth = () => {
     e.preventDefault();
     clearErrors();
     
-    if (!validateEmail(resetEmail)) {
-      setErrors({ resetEmail: 'Please enter a valid email address' });
+    // Validate with zod schema
+    const result = resetPasswordSchema.safeParse({ email: resetEmail });
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[`reset${err.path[0].toString().charAt(0).toUpperCase() + err.path[0].toString().slice(1)}`] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
       return;
     }
     
