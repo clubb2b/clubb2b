@@ -42,7 +42,7 @@ const Hero = () => {
         <img 
           src={clubLogo} 
           alt="Club B2B Performance Logo" 
-          className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl"
+          className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]"
         />
       </div>
 
