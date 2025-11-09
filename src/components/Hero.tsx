@@ -37,17 +37,17 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
       </div>
 
+      {/* Logo in corner */}
+      <div className="absolute top-8 left-8 z-20">
+        <img 
+          src={clubLogo} 
+          alt="Club B2B Performance Logo" 
+          className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl"
+        />
+      </div>
+
       {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-        {/* Logo */}
-        <div className="mb-8 flex justify-center">
-          <img 
-            src={clubLogo} 
-            alt="Club B2B Performance Logo" 
-            className="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-2xl"
-          />
-        </div>
-        
         {/* Enhanced title with modern typography */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight text-white mb-6 tracking-[0.1em] leading-none">
           <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-xl font-bold text-slate-50">CLUB B2B PERFORMANCE</span>
