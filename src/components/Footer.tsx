@@ -1,12 +1,16 @@
+import clubLogo from "@/assets/club-b2b-logo.png";
+
 const Footer = () => {
   return <footer className="bg-black border-t border-gray-700 py-12">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
           {/* Logo */}
           <div className="mb-6 flex justify-center">
-            <div className="w-16 h-20 border-2 border-white bg-white flex items-center justify-center transform rotate-45 rounded-sm">
-              <span className="text-black font-bold text-xl transform -rotate-45">P</span>
-            </div>
+            <img 
+              src={clubLogo} 
+              alt="Club B2B Performance" 
+              className="w-24 h-24 object-contain drop-shadow-2xl transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+            />
           </div>
           
           <h3 className="text-white mb-4 tracking-wider font-semibold text-lg">

@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import clubLogo from "@/assets/club-b2b-logo.png";
 
 const StickyNavigation = () => {
   const { t } = useTranslation('common');
@@ -50,7 +50,14 @@ const StickyNavigation = () => {
     <div className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="text-white font-light tracking-wider">CLUB B2B</div>
+          <a href="/" className="flex items-center space-x-3 cursor-pointer group">
+            <img 
+              src={clubLogo} 
+              alt="Club B2B Performance" 
+              className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+            />
+            <div className="text-white font-light tracking-wider">CLUB B2B</div>
+          </a>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
