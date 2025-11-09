@@ -58,14 +58,14 @@ const EnhancedPaymentSystem = ({
   });
 
   const currencies = [
-    { code: 'USD', symbol: '$', name: 'US Dollar' },
-    { code: 'EUR', symbol: '€', name: 'Euro' },
-    { code: 'GBP', symbol: '£', name: 'British Pound' },
-    { code: 'CAD', symbol: 'C$', name: 'Canadian Dollar' },
-    { code: 'AUD', symbol: 'A$', name: 'Australian Dollar' },
-    { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
-    { code: 'CHF', symbol: 'Fr', name: 'Swiss Franc' },
-    { code: 'CNY', symbol: '¥', name: 'Chinese Yuan' }
+    { code: 'USD', symbol: '$', name: 'US Dollar', min: 1, max: 1000000, decimals: 2 },
+    { code: 'EUR', symbol: '€', name: 'Euro', min: 1, max: 1000000, decimals: 2 },
+    { code: 'GBP', symbol: '£', name: 'British Pound', min: 1, max: 1000000, decimals: 2 },
+    { code: 'CAD', symbol: 'C$', name: 'Canadian Dollar', min: 1, max: 1000000, decimals: 2 },
+    { code: 'AUD', symbol: 'A$', name: 'Australian Dollar', min: 1, max: 1000000, decimals: 2 },
+    { code: 'JPY', symbol: '¥', name: 'Japanese Yen', min: 100, max: 100000000, decimals: 0 },
+    { code: 'CHF', symbol: 'Fr', name: 'Swiss Franc', min: 1, max: 1000000, decimals: 2 },
+    { code: 'CNY', symbol: '¥', name: 'Chinese Yuan', min: 1, max: 10000000, decimals: 2 }
   ];
 
   const cryptoCurrencies = [
@@ -108,25 +108,72 @@ const EnhancedPaymentSystem = ({
     }
   ];
 
+  const validatePaymentAmount = (amount: number, currency: string): { valid: boolean; error?: string } => {
+    // Find currency configuration
+    const currencyConfig = currencies.find(c => c.code === currency);
+    if (!currencyConfig) {
+      return { valid: false, error: "Invalid currency selected" };
+    }
+
+    // Check if amount is a valid number
+    if (isNaN(amount) || !isFinite(amount)) {
+      return { valid: false, error: "Please enter a valid number" };
+    }
+
+    // Check minimum amount
+    if (amount < currencyConfig.min) {
+      return { valid: false, error: `Minimum amount is ${currencyConfig.symbol}${currencyConfig.min}` };
+    }
+
+    // Check maximum amount
+    if (amount > currencyConfig.max) {
+      return { valid: false, error: `Maximum amount is ${currencyConfig.symbol}${currencyConfig.max.toLocaleString()}` };
+    }
+
+    // Validate decimal places for currency
+    const decimalPlaces = (amount.toString().split('.')[1] || '').length;
+    if (decimalPlaces > currencyConfig.decimals) {
+      if (currencyConfig.decimals === 0) {
+        return { valid: false, error: `${currency} does not support decimal amounts` };
+      }
+      return { valid: false, error: `${currency} supports maximum ${currencyConfig.decimals} decimal places` };
+    }
+
+    return { valid: true };
+  };
+
   const handlePayment = async () => {
     if (!user) {
       toast.error("Please sign in to make a payment");
       return;
     }
 
-    if (paymentAmount <= 0) {
-      toast.error("Please enter a valid amount");
+    // Validate payment amount with currency-specific rules
+    const validation = validatePaymentAmount(paymentAmount, selectedCurrency);
+    if (!validation.valid) {
+      toast.error(validation.error || "Invalid payment amount");
+      return;
+    }
+
+    // For crypto payments, validate against USD equivalent minimum
+    if (selectedMethod === 'crypto' && paymentAmount < 10) {
+      toast.error("Minimum amount for cryptocurrency payments is $10 USD equivalent");
       return;
     }
 
     try {
+      // Round amount to proper decimal places to prevent floating-point issues
+      const currencyConfig = currencies.find(c => c.code === selectedCurrency);
+      const roundedAmount = Number(paymentAmount.toFixed(currencyConfig?.decimals || 2));
+
       const paymentData: PaymentData = {
-        amount: paymentAmount,
+        amount: roundedAmount,
         currency: selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency,
         payment_method: selectedMethod,
         metadata: {
           purpose,
-          original_currency: selectedCurrency
+          original_currency: selectedCurrency,
+          original_amount: roundedAmount
         }
       };
 
@@ -136,8 +183,7 @@ const EnhancedPaymentSystem = ({
 
       await createPayment.mutateAsync(paymentData);
       
-      // Simulate payment processing
-      toast.success(`Payment of ${paymentAmount} ${selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency} initiated successfully!`);
+      toast.success(`Payment of ${roundedAmount} ${selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency} initiated successfully!`);
       onSuccess?.();
       
     } catch (error) {
