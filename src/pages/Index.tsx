@@ -12,7 +12,6 @@ import AdvancedFeatures from "@/components/AdvancedFeatures";
 import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
 import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
-import MobileAppPromo from "@/components/MobileAppPromo";
 import AuthButton from "@/components/AuthButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import PriceCalculator from "@/components/PriceCalculator";
@@ -39,7 +38,6 @@ const Index = () => {
       <LuxuryInventory />
       <Services />
       
-      <MobileAppPromo />
       <EnhancedPaymentSystem amount={5000} purpose="service_payment" />
       <FinancingServices />
       <PriceCalculator />
