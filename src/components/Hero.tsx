@@ -46,10 +46,10 @@ const Hero = () => {
 
         {/* Enhanced subtitle */}
         <div className="mb-8 space-y-4">
-          <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-200 tracking-wider">
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 tracking-wider font-semibold">
             {t('hero.title')}
           </p>
-          <p className="text-lg md:text-xl font-light text-gray-300 tracking-wide">
+          <p className="text-lg md:text-xl text-gray-300 tracking-wide font-semibold">
             {t('hero.description')}
           </p>
         </div>
