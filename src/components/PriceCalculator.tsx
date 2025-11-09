@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,11 +9,9 @@ import PaymentButton from './PaymentButton';
 import { useAddQuote } from '@/hooks/useQuotes';
 import { useAddLead } from '@/hooks/useLeads';
 import { toast } from 'sonner';
-
 const PriceCalculator = () => {
   const addQuote = useAddQuote();
   const addLead = useAddLead();
-  
   const [formData, setFormData] = useState({
     vehicleValue: '',
     fromCountry: 'canada',
@@ -24,10 +21,8 @@ const PriceCalculator = () => {
     customerEmail: '',
     vehicleType: ''
   });
-
   const [quote, setQuote] = useState<any>(null);
   const [showContactForm, setShowContactForm] = useState(false);
-
   const calculateQuote = () => {
     const vehicleValue = parseFloat(formData.vehicleValue) || 0;
     const baseShippingCost = formData.shippingMethod === 'air' ? 8000 : 3500;
@@ -37,7 +32,6 @@ const PriceCalculator = () => {
     const documentationFee = 850;
     const inspectionCost = 450;
     const totalCost = shippingCost + customsDuties + insuranceCost + documentationFee + inspectionCost;
-
     setQuote({
       shippingCost,
       customsDuties,
@@ -48,7 +42,6 @@ const PriceCalculator = () => {
       timeline: formData.shippingMethod === 'air' ? '5-10 days' : '4-6 weeks'
     });
   };
-
   const handleGetQuote = () => {
     if (!formData.customerName || !formData.customerEmail) {
       setShowContactForm(true);
@@ -56,10 +49,8 @@ const PriceCalculator = () => {
     }
     saveQuoteAndLead();
   };
-
   const saveQuoteAndLead = async () => {
     if (!quote || !formData.customerName || !formData.customerEmail) return;
-
     try {
       // Save quote to database
       await addQuote.mutateAsync({
@@ -90,8 +81,7 @@ const PriceCalculator = () => {
         company: null,
         country: null,
         vehicle_interest: formData.vehicleType,
-        budget_range: parseFloat(formData.vehicleValue) > 100000 ? '100k_plus' : 
-                     parseFloat(formData.vehicleValue) > 50000 ? '50k_100k' : 'under_50k',
+        budget_range: parseFloat(formData.vehicleValue) > 100000 ? '100k_plus' : parseFloat(formData.vehicleValue) > 50000 ? '50k_100k' : 'under_50k',
         timeline: formData.shippingMethod === 'air' ? '1_month' : '3_months',
         source: 'website',
         notes: `Quote request: ${formData.shippingMethod} shipping from ${formData.fromCountry} to ${formData.toCountry}`,
@@ -102,9 +92,8 @@ const PriceCalculator = () => {
         last_contact_date: null,
         next_follow_up: null
       });
-
       toast.success('Quote saved successfully! We will contact you soon.');
-      
+
       // Also send WhatsApp message
       const message = `Hello! I've submitted a quote request:
 
@@ -119,22 +108,18 @@ Estimated Total: $${quote.totalCost.toLocaleString()}
 Timeline: ${quote.timeline}
 
 Please confirm this quote and provide next steps.`;
-
       const whatsappUrl = `https://wa.me/15185077243?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
-
     } catch (error) {
       console.error('Error saving quote:', error);
       toast.error('Failed to save quote. Please try again.');
     }
   };
-
-  return (
-    <section id="price-calculator" className="py-20 bg-gray-50">
+  return <section id="price-calculator" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Shipping Cost Calculator</h2>
-          <p className="text-xl text-gray-600">Get an instant estimate for your vehicle export</p>
+          <p className="text-gray-600 font-semibold text-lg">Get an instant estimate for your vehicle export</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -149,28 +134,26 @@ Please confirm this quote and provide next steps.`;
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="vehicleValue">Vehicle Value (USD)</Label>
-                  <Input
-                    id="vehicleValue"
-                    type="number"
-                    placeholder="50000"
-                    value={formData.vehicleValue}
-                    onChange={(e) => setFormData({ ...formData, vehicleValue: e.target.value })}
-                  />
+                  <Input id="vehicleValue" type="number" placeholder="50000" value={formData.vehicleValue} onChange={e => setFormData({
+                  ...formData,
+                  vehicleValue: e.target.value
+                })} />
                 </div>
 
                 <div>
                   <Label htmlFor="vehicleType">Vehicle Type</Label>
-                  <Input
-                    id="vehicleType"
-                    placeholder="e.g., BMW X7, Mercedes S-Class"
-                    value={formData.vehicleType}
-                    onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
-                  />
+                  <Input id="vehicleType" placeholder="e.g., BMW X7, Mercedes S-Class" value={formData.vehicleType} onChange={e => setFormData({
+                  ...formData,
+                  vehicleType: e.target.value
+                })} />
                 </div>
 
                 <div>
                   <Label htmlFor="toCountry">Destination Country</Label>
-                  <Select value={formData.toCountry} onValueChange={(value) => setFormData({ ...formData, toCountry: value })}>
+                  <Select value={formData.toCountry} onValueChange={value => setFormData({
+                  ...formData,
+                  toCountry: value
+                })}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select destination" />
                     </SelectTrigger>
@@ -190,7 +173,10 @@ Please confirm this quote and provide next steps.`;
 
                 <div>
                   <Label htmlFor="fromCountry">From Country</Label>
-                  <Select value={formData.fromCountry} onValueChange={(value) => setFormData({ ...formData, fromCountry: value })}>
+                  <Select value={formData.fromCountry} onValueChange={value => setFormData({
+                  ...formData,
+                  fromCountry: value
+                })}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -203,7 +189,10 @@ Please confirm this quote and provide next steps.`;
 
                 <div>
                   <Label htmlFor="shippingMethod">Shipping Method</Label>
-                  <Select value={formData.shippingMethod} onValueChange={(value) => setFormData({ ...formData, shippingMethod: value })}>
+                  <Select value={formData.shippingMethod} onValueChange={value => setFormData({
+                  ...formData,
+                  shippingMethod: value
+                })}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -220,8 +209,7 @@ Please confirm this quote and provide next steps.`;
                 Calculate Shipping Cost
               </Button>
 
-              {quote && (
-                <Card className="bg-blue-50 border-blue-200">
+              {quote && <Card className="bg-blue-50 border-blue-200">
                   <CardContent className="p-6 space-y-4">
                     <h3 className="text-xl font-bold text-blue-800">Estimated Shipping Costs</h3>
                     
@@ -263,74 +251,49 @@ Please confirm this quote and provide next steps.`;
                       </div>
                     </div>
                     
-                    {!showContactForm ? (
-                      <div className="flex flex-col sm:flex-row gap-4">
+                    {!showContactForm ? <div className="flex flex-col sm:flex-row gap-4">
                         <Button onClick={handleGetQuote} className="flex-1" size="lg">
                           <MapPin className="w-4 h-4 mr-2" />
                           Get Detailed Quote
                         </Button>
                         
-                        <PaymentButton
-                          amount={Math.round(quote.totalCost * 0.1)} // 10% deposit
-                          currency="USD"
-                          itemDescription="Shipping Service Deposit"
-                          className="flex-1"
-                        >
+                        <PaymentButton amount={Math.round(quote.totalCost * 0.1)} // 10% deposit
+                  currency="USD" itemDescription="Shipping Service Deposit" className="flex-1">
                           Pay Deposit (10%)
                         </PaymentButton>
-                      </div>
-                    ) : (
-                      <div className="space-y-4 border-t pt-4">
+                      </div> : <div className="space-y-4 border-t pt-4">
                         <h4 className="font-semibold">Contact Information Required</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <Label htmlFor="customerName">Full Name *</Label>
-                            <Input
-                              id="customerName"
-                              placeholder="Your full name"
-                              value={formData.customerName}
-                              onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                              required
-                            />
+                            <Input id="customerName" placeholder="Your full name" value={formData.customerName} onChange={e => setFormData({
+                        ...formData,
+                        customerName: e.target.value
+                      })} required />
                           </div>
                           <div>
                             <Label htmlFor="customerEmail">Email *</Label>
-                            <Input
-                              id="customerEmail"
-                              type="email"
-                              placeholder="your@email.com"
-                              value={formData.customerEmail}
-                              onChange={(e) => setFormData({ ...formData, customerEmail: e.target.value })}
-                              required
-                            />
+                            <Input id="customerEmail" type="email" placeholder="your@email.com" value={formData.customerEmail} onChange={e => setFormData({
+                        ...formData,
+                        customerEmail: e.target.value
+                      })} required />
                           </div>
                         </div>
                         <div className="flex gap-4">
-                          <Button 
-                            onClick={saveQuoteAndLead} 
-                            disabled={!formData.customerName || !formData.customerEmail || addQuote.isPending}
-                            className="flex-1"
-                          >
+                          <Button onClick={saveQuoteAndLead} disabled={!formData.customerName || !formData.customerEmail || addQuote.isPending} className="flex-1">
                             {addQuote.isPending ? 'Saving...' : 'Save Quote & Contact Me'}
                           </Button>
-                          <Button 
-                            variant="outline" 
-                            onClick={() => setShowContactForm(false)}
-                          >
+                          <Button variant="outline" onClick={() => setShowContactForm(false)}>
                             Cancel
                           </Button>
                         </div>
-                      </div>
-                    )}
+                      </div>}
                   </CardContent>
-                </Card>
-              )}
+                </Card>}
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default PriceCalculator;
