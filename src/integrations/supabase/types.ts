@@ -21,7 +21,7 @@ export type Database = {
           event_data: Json | null
           event_type: string
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           page_url: string | null
           user_agent: string | null
           user_id: string | null
@@ -32,7 +32,7 @@ export type Database = {
           event_data?: Json | null
           event_type: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           page_url?: string | null
           user_agent?: string | null
           user_id?: string | null
@@ -43,7 +43,7 @@ export type Database = {
           event_data?: Json | null
           event_type?: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           page_url?: string | null
           user_agent?: string | null
           user_id?: string | null
@@ -120,21 +120,21 @@ export type Database = {
         Row: {
           email: string
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           submitted_at: string | null
           user_agent: string | null
         }
         Insert: {
           email: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           submitted_at?: string | null
           user_agent?: string | null
         }
         Update: {
           email?: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           submitted_at?: string | null
           user_agent?: string | null
         }
@@ -339,7 +339,7 @@ export type Database = {
           stripe_payment_intent_id: string | null
           transaction_hash: string | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           amount: number
@@ -356,7 +356,7 @@ export type Database = {
           stripe_payment_intent_id?: string | null
           transaction_hash?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           amount?: number
@@ -373,7 +373,7 @@ export type Database = {
           stripe_payment_intent_id?: string | null
           transaction_hash?: string | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -1117,18 +1117,9 @@ export type Database = {
         Args: { check_email: string; check_ip: unknown }
         Returns: boolean
       }
-      generate_order_number: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
-      generate_quote_number: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
-      get_user_role: {
-        Args: { user_id?: string }
-        Returns: string
-      }
+      generate_order_number: { Args: never; Returns: string }
+      generate_quote_number: { Args: never; Returns: string }
+      get_user_role: { Args: { user_id?: string }; Returns: string }
       has_role: {
         Args: { check_role: string; check_user_id: string }
         Returns: boolean
