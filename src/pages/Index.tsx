@@ -11,7 +11,6 @@ import AIChatbot from "@/components/AIChatbot";
 import AdvancedFeatures from "@/components/AdvancedFeatures";
 import BackToTop from "@/components/BackToTop";
 import StickyNavigation from "@/components/StickyNavigation";
-import NativeFeaturesShowcase from "@/components/NativeFeaturesShowcase";
 import AuthButton from "@/components/AuthButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import PriceCalculator from "@/components/PriceCalculator";
@@ -32,9 +31,6 @@ const Index = () => {
       <AIChatbot />
       <StickyNavigation />
       <Hero />
-      <div className="max-w-7xl mx-auto px-6">
-        <NativeFeaturesShowcase />
-      </div>
       <LuxuryInventory />
       <Services />
       
