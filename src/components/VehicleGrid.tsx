@@ -153,24 +153,6 @@ const VehicleGrid = () => {
       description: "An exceptional combination of AMG performance and SUV practicality. The 2024 Mercedes-AMG GLE 53 features the distinctive AMG Panamericana grille, delivering 429 horsepower with its turbocharged inline-6 engine and EQ Boost system for instant response and efficiency."
     },
     {
-      id: "7",
-      images: [
-        { id: "13", image_url: "/lovable-uploads/072c049b-dc6c-45e5-a227-e7d741c35528.png", caption: null, is_primary: true, display_order: 1 },
-        { id: "14", image_url: "/lovable-uploads/8a969a91-6f24-4565-9dcd-b0813370e586.png", caption: null, is_primary: false, display_order: 2 },
-        { id: "15", image_url: "/lovable-uploads/4e2687f3-6659-476f-b8ca-e624a094f893.png", caption: null, is_primary: false, display_order: 3 },
-      ],
-      make: "Mercedes-AMG",
-      model: "S580",
-      year: 2024,
-      features: ["4.0L V8 Biturbo Engine", "493 Horsepower", "MBUX Hyperscreen", "4MATIC All-Wheel Drive", "Burmester 4D Surround Sound", "Nappa Leather Interior", "Augmented Reality Navigation", "Executive Rear Seats with Massage"],
-      videoUrl: null,
-      status: "available", 
-      location: "Canada",
-      price: null,
-      condition: "excellent",
-      description: "The pinnacle of Mercedes luxury, the S580 combines breathtaking performance with unparalleled comfort. Featuring a sophisticated black exterior with a sumptuous tan leather interior, this executive sedan offers cutting-edge technology and first-class amenities throughout."
-    },
-    {
       id: "8",
       images: [
         { id: "16", image_url: "/lovable-uploads/c7257e02-0bee-428c-96ed-aa62be0331a3.png", caption: null, is_primary: true, display_order: 1 },
