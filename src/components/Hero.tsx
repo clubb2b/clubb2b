@@ -38,11 +38,11 @@ const Hero = () => {
       </div>
 
       {/* Logo in corner */}
-      <div className="absolute top-8 left-8 z-20">
+      <div className="absolute top-6 left-6 z-20 bg-black/30 backdrop-blur-sm rounded-lg p-2 border border-white/10">
         <img 
           src={clubLogo} 
           alt="Club B2B Performance Logo" 
-          className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl"
+          className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl"
         />
       </div>
 
