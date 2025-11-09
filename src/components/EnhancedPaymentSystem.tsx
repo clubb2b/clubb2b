@@ -148,16 +148,10 @@ const EnhancedPaymentSystem = ({
       return;
     }
 
-    // Validate payment amount with currency-specific rules
+    // Client-side validation first for immediate feedback
     const validation = validatePaymentAmount(paymentAmount, selectedCurrency);
     if (!validation.valid) {
       toast.error(validation.error || "Invalid payment amount");
-      return;
-    }
-
-    // For crypto payments, validate against USD equivalent minimum
-    if (selectedMethod === 'crypto' && paymentAmount < 10) {
-      toast.error("Minimum amount for cryptocurrency payments is $10 USD equivalent");
       return;
     }
 
@@ -166,14 +160,39 @@ const EnhancedPaymentSystem = ({
       const currencyConfig = currencies.find(c => c.code === selectedCurrency);
       const roundedAmount = Number(paymentAmount.toFixed(currencyConfig?.decimals || 2));
 
+      // Backend validation via edge function for security
+      toast.loading("Validating payment...", { id: 'payment-validation' });
+      
+      const { data: validationResult, error: validationError } = await supabase.functions.invoke('validate-payment', {
+        body: {
+          amount: roundedAmount,
+          currency: selectedCurrency,
+          payment_method: selectedMethod,
+          crypto_currency: selectedMethod === 'crypto' ? cryptoCurrency : undefined
+        }
+      });
+
+      toast.dismiss('payment-validation');
+
+      if (validationError || !validationResult?.valid) {
+        const errorMessage = validationResult?.error || validationError?.message || 'Payment validation failed';
+        console.error('Backend validation failed:', errorMessage);
+        toast.error(errorMessage);
+        return;
+      }
+
+      // Use the validated amount from backend
+      const validatedAmount = validationResult.validated_amount || roundedAmount;
+
       const paymentData: PaymentData = {
-        amount: roundedAmount,
+        amount: validatedAmount,
         currency: selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency,
         payment_method: selectedMethod,
         metadata: {
           purpose,
           original_currency: selectedCurrency,
-          original_amount: roundedAmount
+          original_amount: validatedAmount,
+          validated_at: new Date().toISOString()
         }
       };
 
@@ -183,7 +202,7 @@ const EnhancedPaymentSystem = ({
 
       await createPayment.mutateAsync(paymentData);
       
-      toast.success(`Payment of ${roundedAmount} ${selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency} initiated successfully!`);
+      toast.success(`Payment of ${validatedAmount} ${selectedMethod === 'crypto' ? cryptoCurrency : selectedCurrency} initiated successfully!`);
       onSuccess?.();
       
     } catch (error) {
