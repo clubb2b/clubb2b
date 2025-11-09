@@ -1,7 +1,5 @@
-
 const Footer = () => {
-  return (
-    <footer className="bg-black border-t border-gray-700 py-12">
+  return <footer className="bg-black border-t border-gray-700 py-12">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
           {/* Logo */}
@@ -11,11 +9,11 @@ const Footer = () => {
             </div>
           </div>
           
-          <h3 className="text-2xl font-light text-white mb-4 tracking-wider">
+          <h3 className="text-white mb-4 tracking-wider font-semibold text-lg">
             CLUB B2B PERFORMANCE
           </h3>
           
-          <p className="text-gray-300 text-lg font-light tracking-wide mb-8">
+          <p className="text-gray-300 tracking-wide mb-8 font-semibold text-base">
             EXCELLENCE IN AUTOMOTIVE EXPORT
           </p>
         </div>
@@ -59,8 +57,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
