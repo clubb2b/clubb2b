@@ -39,11 +39,7 @@ const Hero = () => {
 
       {/* Logo - Top Left */}
       <div className="absolute top-8 left-8 z-20">
-        <img 
-          src={clubLogo} 
-          alt="Club B2B Performance Logo" 
-          className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]"
-        />
+        
       </div>
 
       {/* Main content */}
