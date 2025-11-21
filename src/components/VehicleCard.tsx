@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Calendar, Gauge, Fuel, Settings, Palette, Video } from "lucide-react";
 import { VideoPlayer } from "@/components/ui/video-player";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -39,8 +39,9 @@ interface VehicleCardProps {
   index?: number;
 }
 
-const VehicleCard = ({ vehicle }: VehicleCardProps) => {
+const VehicleCard = ({ vehicle, index = 0 }: VehicleCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
 
   // Fallback images if no images in database
   const fallbackImages = [
@@ -55,12 +56,25 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
 
   const vehicleName = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
 
+  // Preload all images immediately
+  useEffect(() => {
+    images.forEach((src, idx) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setLoadedImages(prev => new Set([...prev, idx]));
+      };
+    });
+  }, [images]);
+
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    const nextIdx = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(nextIdx);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    const prevIdx = (currentImageIndex - 1 + images.length) % images.length;
+    setCurrentImageIndex(prevIdx);
   };
 
   const handleInquiry = (vehicleName: string) => {
@@ -94,7 +108,9 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
                 <img 
                   src={images[currentImageIndex]} 
                   alt={vehicleName}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading={index < 3 ? "eager" : "lazy"}
+                  fetchPriority={index < 3 ? "high" : "auto"}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Video size={48} className="text-white" />
@@ -110,7 +126,9 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
           <img 
             src={images[currentImageIndex]} 
             alt={vehicleName}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading={index < 3 ? "eager" : "lazy"}
+            fetchPriority={index < 3 ? "high" : "auto"}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         )}
         
