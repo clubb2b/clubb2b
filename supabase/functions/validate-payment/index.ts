@@ -55,19 +55,16 @@ serve(async (req) => {
       }
     );
 
-    // Verify authentication using getClaims
-    const token = authHeader.replace('Bearer ', '');
-    const { data: claimsData, error: authError } = await supabaseClient.auth.getClaims(token);
+    // Verify authentication using getUser
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
 
-    if (authError || !claimsData?.claims) {
+    if (authError || !user) {
       console.error('Authentication failed:', authError);
       return new Response(
         JSON.stringify({ error: 'Unauthorized', valid: false }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
-
-    const user = { id: claimsData.claims.sub as string };
     console.log(`Payment validation request from user: ${user.id}`);
 
     const { amount, currency, payment_method, crypto_currency }: PaymentValidationRequest = await req.json();
